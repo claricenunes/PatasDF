@@ -905,6 +905,257 @@
     }
 
     /* ===========================
+       FORMULÁRIOS ADOÇÃO / LAR TEMP
+    =========================== */
+    .interest-section {
+      background: var(--bg-warm);
+      padding: 6rem 0;
+    }
+
+    .interest-tabs {
+      display: flex;
+      gap: 0;
+      margin-top: 3rem;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      overflow: hidden;
+      border: 1px solid var(--border-md);
+      border-bottom: none;
+    }
+
+    .interest-tab {
+      flex: 1;
+      padding: 1.1rem 1.5rem;
+      background: var(--bg-card);
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.22s;
+      border-right: 1px solid var(--border-md);
+      position: relative;
+    }
+    .interest-tab:last-child { border-right: none; }
+    .interest-tab::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: transparent;
+      transition: background 0.22s;
+    }
+    .interest-tab.active {
+      color: var(--text);
+      background: var(--bg);
+    }
+    .interest-tab.active.tab-adopt::after { background: var(--teal); }
+    .interest-tab.active.tab-temp::after  { background: var(--amber); }
+
+    .interest-tab .tab-icon {
+      font-size: 1.3rem;
+    }
+    .interest-tab .tab-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .tab-adopt .tab-badge { background: var(--teal-light); color: var(--teal-dark); }
+    .tab-temp  .tab-badge { background: var(--amber-light); color: var(--amber-dark); }
+
+    .interest-panels {
+      border: 1px solid var(--border-md);
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      background: var(--bg);
+      padding: 2.5rem;
+    }
+
+    .interest-panel { display: none; }
+    .interest-panel.active { display: block; }
+
+    .interest-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .interest-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .interest-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-highlight {
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .info-highlight.teal { background: var(--teal-light); border-left: 3px solid var(--teal); }
+    .info-highlight.amber { background: var(--amber-light); border-left: 3px solid var(--amber); }
+
+    .info-highlight p {
+      font-size: 13px;
+      margin: 0;
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--teal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .radio-item input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--teal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn-adopt  { background: var(--teal); color: #fff; }
+    .btn-adopt:hover  { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.25); }
+    .btn-amber-form { background: var(--amber); color: var(--text); font-weight: 600; }
+    .btn-amber-form:hover { background: var(--amber-dark); color: #fff; transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .interest-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .interest-tab { font-size: 13px; padding: 1rem; }
+      .interest-panels { padding: 1.5rem; }
+      .radio-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===========================
+       SELETOR DE ANIMAL (adoção/lar temp)
+    =========================== */
+    .animal-choice-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .choice-btn {
+      border: 1.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      padding: 14px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .choice-btn:hover { border-color: var(--teal); }
+    .choice-btn.selected-adopt {
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+    .choice-btn.selected-temp {
+      border-color: var(--amber);
+      background: var(--amber-light);
+    }
+    .choice-btn .choice-icon { font-size: 1.6rem; display: block; margin-bottom: 5px; }
+    .choice-btn .choice-label { font-size: 13px; font-weight: 500; color: var(--text); }
+    .choice-btn .choice-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .animal-list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .animal-select-card {
+      border: 1.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg);
+    }
+    .animal-select-card:hover { border-color: var(--teal); }
+    .animal-select-card.selected {
+      border-color: var(--teal);
+      background: var(--teal-light);
+    }
+    .animal-select-card.selected-temp {
+      border-color: var(--amber);
+      background: var(--amber-light);
+    }
+    .animal-select-card input[type="radio"],
+    .animal-select-card input[type="checkbox"] {
+      accent-color: var(--teal);
+      width: 15px; height: 15px;
+      flex-shrink: 0;
+    }
+    .animal-card-mini { flex: 1; }
+    .animal-card-mini .mini-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .animal-card-mini .mini-info { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .animal-card-mini .mini-emoji { font-size: 1.4rem; }
+
+    .collapsible-section {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .collapsible-section.open {
+      max-height: 800px;
+      opacity: 1;
+    }
+
+    /* ===========================
        CTA SECTION
     =========================== */
     .cta-section {
@@ -1095,6 +1346,7 @@
         <li><a href="#animais">Animais</a></li>
         <li><a href="#mapa">Mapa</a></li>
         <li><a href="#ajudar">Como ajudar</a></li>
+        <li><a href="#quero-ajudar">Adotar / Lar temp</a></li>
         <li><a href="#cadastrar" class="nav-cta">Cadastrar animal</a></li>
       </ul>
     </div>
@@ -1412,14 +1664,14 @@
           <span class="help-icon">🏠</span>
           <h3>Adotar</h3>
           <p>Abra sua casa para um animal que precisa de amor. A adoção responsável transforma duas vidas: a sua e a dele.</p>
-          <a href="#animais" class="btn">Ver animais para adotar</a>
+          <a href="#quero-ajudar" class="btn" onclick="openTab('adopt')">Quero adotar</a>
         </div>
 
         <div class="help-card temporario reveal">
           <span class="help-icon">⏳</span>
           <h3>Ser lar temporário</h3>
           <p>Não pode adotar definitivamente? Cuide de um animal por um tempo enquanto ele não encontra um lar permanente.</p>
-          <a href="#cadastrar" class="btn">Quero ser lar temporário</a>
+          <a href="#quero-ajudar" class="btn" onclick="openTab('temp')">Quero ser lar temporário</a>
         </div>
 
         <div class="help-card divulgar reveal">
@@ -1546,6 +1798,400 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       FORMULÁRIOS: ADOTAR / LAR TEMP
+  ======================== -->
+  <section class="interest-section" id="quero-ajudar">
+    <div class="container">
+      <span class="section-label reveal">Quero ajudar</span>
+      <h2 class="section-title reveal">Você quer adotar ou ser<br>lar temporário?</h2>
+      <p class="section-sub reveal">Preencha o formulário abaixo e entraremos em contato com animais compatíveis com o seu perfil.</p>
+
+      <!-- Abas -->
+      <div class="interest-tabs reveal">
+        <button class="interest-tab tab-adopt active" id="tabAdopt" onclick="openTab('adopt')">
+          <span class="tab-icon">🏠</span>
+          Quero adotar
+          <span class="tab-badge">Permanente</span>
+        </button>
+        <button class="interest-tab tab-temp" id="tabTemp" onclick="openTab('temp')">
+          <span class="tab-icon">⏳</span>
+          Quero ser lar temporário
+          <span class="tab-badge">Temporário</span>
+        </button>
+      </div>
+
+      <!-- Painéis -->
+      <div class="interest-panels reveal">
+
+        <!-- ===== PAINEL: ADOÇÃO ===== -->
+        <div class="interest-panel active" id="panelAdopt">
+          <div class="interest-layout">
+
+            <!-- Info lateral -->
+            <div class="interest-info">
+              <h3>Adoção responsável começa aqui</h3>
+              <p>
+                Ao preencher este formulário, você entra para nossa lista de adotantes interessados.
+                Quando um animal compatível com o seu perfil for cadastrado, entraremos em contato.
+              </p>
+
+              <div class="info-highlight teal">
+                <p>🐾 A adoção no AdotaDF é sempre <strong>gratuita</strong>. Nunca pague por um animal!</p>
+              </div>
+
+              <p>O que esperamos de um adotante responsável:</p>
+              <ul class="form-checklist">
+                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Oferecer ambiente seguro e amoroso</li>
+                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Comprometer-se com vacinação e saúde</li>
+                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Não abandonar o animal em nenhuma circunstância</li>
+                <li><div class="check-icon" style="background:var(--teal-light);">✓</div> Permitir visita de acompanhamento (opcional)</li>
+              </ul>
+            </div>
+
+            <!-- Formulário adoção -->
+            <div>
+              <div id="adoptFormContent">
+
+                <!-- STEP 1: Escolha o animal ou aceite qualquer um -->
+                <div class="form-group">
+                  <label>Você tem um animal em mente? *</label>
+                  <div class="animal-choice-toggle">
+                    <div class="choice-btn" id="adoptChoiceSpecific" onclick="setAdoptChoice('specific')">
+                      <span class="choice-icon">🔍</span>
+                      <div class="choice-label">Escolher um animal</div>
+                      <div class="choice-sub">Vi um animal específico</div>
+                    </div>
+                    <div class="choice-btn" id="adoptChoiceAny" onclick="setAdoptChoice('any')">
+                      <span class="choice-icon">🐾</span>
+                      <div class="choice-label">Aceito qualquer um</div>
+                      <div class="choice-sub">Me indiquem o melhor match</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Seção: escolher animal específico -->
+                <div class="collapsible-section" id="adoptSpecificSection">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label>Selecione o animal que você quer adotar *</label>
+                    <div class="animal-list-grid" id="adoptAnimalList">
+                      <!-- Preenchido via JS com os animais disponíveis -->
+                    </div>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+                      Não encontrou o que procura? Veja todos os animais na seção
+                      <a href="#animais" style="color:var(--teal);">Animais disponíveis</a>.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Seção: preferências quando aceita qualquer animal -->
+                <div class="collapsible-section" id="adoptAnySection">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label>Qual tipo de animal você prefere?</label>
+                    <div class="radio-grid" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="cachorro"> 🐶 Cachorro</label>
+                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="gato"> 🐱 Gato</label>
+                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="qualquer"> Tanto faz</label>
+                      <label class="radio-item"><input type="radio" name="adoptTipoPref" value="outro"> Outro</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Porte preferido</label>
+                    <div class="radio-grid" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="adoptPorte" value="pequeno"> Pequeno</label>
+                      <label class="radio-item"><input type="radio" name="adoptPorte" value="medio"> Médio</label>
+                      <label class="radio-item"><input type="radio" name="adoptPorte" value="grande"> Grande</label>
+                      <label class="radio-item"><input type="radio" name="adoptPorte" value="indiferente"> Indiferente</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos comuns (aparecem após escolha) -->
+                <div class="collapsible-section" id="adoptCommonFields">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label for="adoptNome">Seu nome completo *</label>
+                    <input type="text" id="adoptNome" placeholder="Ex: Maria da Silva" />
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="adoptContato">WhatsApp *</label>
+                      <input type="tel" id="adoptContato" placeholder="(61) 9xxxx-xxxx" />
+                    </div>
+                    <div class="form-group">
+                      <label for="adoptEmail">E-mail</label>
+                      <input type="email" id="adoptEmail" placeholder="seu@email.com" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="adoptCidade">Cidade/Bairro *</label>
+                      <input type="text" id="adoptCidade" placeholder="Ex: Asa Norte, Gama..." />
+                    </div>
+                    <div class="form-group">
+                      <label for="adoptIdade">Sua faixa etária</label>
+                      <select id="adoptIdade">
+                        <option value="">Selecione...</option>
+                        <option>18–25 anos</option>
+                        <option>26–35 anos</option>
+                        <option>36–50 anos</option>
+                        <option>50+ anos</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Sua situação de moradia *</label>
+                    <div class="radio-group" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="casa_quintal"> Casa com quintal</label>
+                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="casa_sem"> Casa sem quintal</label>
+                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="apto"> Apartamento</label>
+                      <label class="radio-item"><input type="radio" name="adoptMoradia" value="outro"> Outro</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Sua casa já tem outros animais?</label>
+                    <div class="checkbox-group" style="margin-top:6px;">
+                      <label class="checkbox-item"><input type="checkbox"> Cachorro(s)</label>
+                      <label class="checkbox-item"><input type="checkbox"> Gato(s)</label>
+                      <label class="checkbox-item"><input type="checkbox"> Nenhum animal ainda</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Há crianças em casa?</label>
+                    <div class="radio-group" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="adoptCriancas" value="sim"> Sim</label>
+                      <label class="radio-item"><input type="radio" name="adoptCriancas" value="nao"> Não</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="adoptMotivo">Por que você quer adotar? *</label>
+                    <textarea id="adoptMotivo" placeholder="Conte um pouco sobre sua motivação, sua rotina e como será a vida do animal com você..."></textarea>
+                  </div>
+
+                  <button class="btn btn-adopt" style="width:100%; justify-content:center; padding:13px; border-radius:50px;" onclick="submitAdopt()">
+                    🏠 Enviar interesse em adotar
+                  </button>
+
+                  <p class="form-note">
+                    Suas informações serão usadas apenas para encontrar o animal mais compatível com você.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Sucesso adoção -->
+              <div class="form-success" id="adoptSuccess">
+                <div class="success-icon">🥰</div>
+                <h4>Interesse registrado!</h4>
+                <p>
+                  Muito obrigado! Quando um animal compatível com o seu perfil for cadastrado,
+                  entraremos em contato pelo WhatsApp informado. Você está salvando uma vida!
+                </p>
+                <button class="btn btn-adopt" style="margin: 1.5rem auto 0; border-radius:50px; padding:10px 24px;" onclick="resetAdopt()">
+                  Registrar outro interesse
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /panelAdopt -->
+
+        <!-- ===== PAINEL: LAR TEMPORÁRIO ===== -->
+        <div class="interest-panel" id="panelTemp">
+          <div class="interest-layout">
+
+            <!-- Info lateral -->
+            <div class="interest-info">
+              <h3>Lar temporário salva vidas</h3>
+              <p>
+                O lar temporário é fundamental para animais que precisam de cuidados enquanto aguardam adoção.
+                Você não precisa adotar definitivamente — apenas acolher por um tempo.
+              </p>
+
+              <div class="info-highlight amber">
+                <p>⏳ A duração média do lar temporário no DF é de <strong>2 a 8 semanas</strong>.</p>
+              </div>
+
+              <p>O que o lar temporário envolve:</p>
+              <ul class="form-checklist">
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Alimentação e cuidados básicos</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Acompanhamento veterinário (apoio da ONG)</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Ajudar a divulgar o animal para adoção</li>
+                <li><div class="check-icon" style="background:var(--amber-light);">✓</div> Suporte da rede AdotaDF durante todo o período</li>
+              </ul>
+            </div>
+
+            <!-- Formulário lar temporário -->
+            <div>
+              <div id="tempFormContent">
+
+                <!-- STEP 1: Escolha um animal específico ou aceita qualquer um -->
+                <div class="form-group">
+                  <label>Você tem um animal em mente? *</label>
+                  <div class="animal-choice-toggle">
+                    <div class="choice-btn" id="tempChoiceSpecific" onclick="setTempChoice('specific')">
+                      <span class="choice-icon">🔍</span>
+                      <div class="choice-label">Escolher um animal</div>
+                      <div class="choice-sub">Vi um animal específico</div>
+                    </div>
+                    <div class="choice-btn" id="tempChoiceAny" onclick="setTempChoice('any')">
+                      <span class="choice-icon">🐾</span>
+                      <div class="choice-label">Aceito qualquer um</div>
+                      <div class="choice-sub">Me indiquem quem precisa</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Seção: escolher animal específico (lar temp) -->
+                <div class="collapsible-section" id="tempSpecificSection">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label>Selecione o(s) animal(is) que você pode acolher *</label>
+                    <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Pode selecionar mais de um.</p>
+                    <div class="animal-list-grid" id="tempAnimalList">
+                      <!-- Preenchido via JS -->
+                    </div>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">
+                      Veja mais animais na seção
+                      <a href="#animais" style="color:var(--amber);">Animais disponíveis</a>.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Seção: preferências quando aceita qualquer animal (lar temp) -->
+                <div class="collapsible-section" id="tempAnySection">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label>Quais tipos de animais você pode acolher? *</label>
+                    <div class="checkbox-group" style="margin-top:6px;">
+                      <label class="checkbox-item"><input type="checkbox" id="tempCachorro"> 🐶 Cachorros</label>
+                      <label class="checkbox-item"><input type="checkbox" id="tempGato"> 🐱 Gatos</label>
+                      <label class="checkbox-item"><input type="checkbox" id="tempFilhote"> 🍼 Filhotes (exige mais atenção)</label>
+                      <label class="checkbox-item"><input type="checkbox" id="tempIdoso"> 🐾 Idosos ou com necessidades especiais</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Porte que consegue acolher</label>
+                    <div class="radio-grid" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="tempPorte" value="pequeno"> Pequeno</label>
+                      <label class="radio-item"><input type="radio" name="tempPorte" value="medio"> Médio</label>
+                      <label class="radio-item"><input type="radio" name="tempPorte" value="grande"> Grande</label>
+                      <label class="radio-item"><input type="radio" name="tempPorte" value="indiferente"> Indiferente</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Campos comuns lar temporário -->
+                <div class="collapsible-section" id="tempCommonFields">
+                  <div class="form-group" style="margin-top:4px;">
+                    <label for="tempNome">Seu nome completo *</label>
+                    <input type="text" id="tempNome" placeholder="Ex: João Souza" />
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="tempContato">WhatsApp *</label>
+                      <input type="tel" id="tempContato" placeholder="(61) 9xxxx-xxxx" />
+                    </div>
+                    <div class="form-group">
+                      <label for="tempEmail">E-mail</label>
+                      <input type="email" id="tempEmail" placeholder="seu@email.com" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="tempCidade">Cidade/Bairro *</label>
+                      <input type="text" id="tempCidade" placeholder="Ex: Brasília, Taguatinga..." />
+                    </div>
+                    <div class="form-group">
+                      <label for="tempDisponibilidade">Disponibilidade *</label>
+                      <select id="tempDisponibilidade">
+                        <option value="">Selecione...</option>
+                        <option>Imediata</option>
+                        <option>Em até 2 semanas</option>
+                        <option>Em até 1 mês</option>
+                        <option>Depende do caso</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Por quanto tempo pode acolher? *</label>
+                    <div class="radio-group" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="tempDuracao" value="2sem"> Até 2 semanas</label>
+                      <label class="radio-item"><input type="radio" name="tempDuracao" value="1mes"> Até 1 mês</label>
+                      <label class="radio-item"><input type="radio" name="tempDuracao" value="3mes"> Até 3 meses</label>
+                      <label class="radio-item"><input type="radio" name="tempDuracao" value="indefinido"> Até ser adotado (sem prazo)</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Sua situação de moradia *</label>
+                    <div class="radio-group" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="tempMoradia" value="casa_quintal"> Casa com quintal</label>
+                      <label class="radio-item"><input type="radio" name="tempMoradia" value="casa_sem"> Casa sem quintal</label>
+                      <label class="radio-item"><input type="radio" name="tempMoradia" value="apto"> Apartamento</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Há outros animais em casa?</label>
+                    <div class="checkbox-group" style="margin-top:6px;">
+                      <label class="checkbox-item"><input type="checkbox"> Cachorro(s)</label>
+                      <label class="checkbox-item"><input type="checkbox"> Gato(s)</label>
+                      <label class="checkbox-item"><input type="checkbox"> Nenhum</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Já foi lar temporário antes?</label>
+                    <div class="radio-group" style="margin-top:6px;">
+                      <label class="radio-item"><input type="radio" name="tempExp" value="sim"> Sim, tenho experiência</label>
+                      <label class="radio-item"><input type="radio" name="tempExp" value="nao"> Não, mas estou disposto(a) a aprender</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tempObs">Informações adicionais</label>
+                    <textarea id="tempObs" placeholder="Conte sobre sua rotina, restrições ou qualquer informação que ajude a encontrar o match certo..."></textarea>
+                  </div>
+
+                  <button class="btn btn-amber-form" style="width:100%; justify-content:center; padding:13px; border-radius:50px;" onclick="submitTemp()">
+                    ⏳ Quero ser lar temporário
+                  </button>
+
+                  <p class="form-note">
+                    Entraremos em contato assim que houver um animal que combine com seu perfil.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Sucesso lar temporário -->
+              <div class="form-success" id="tempSuccess">
+                <div class="success-icon">🌟</div>
+                <h4>Incrível! Você é um herói!</h4>
+                <p>
+                  Seu cadastro de lar temporário foi registrado com sucesso.
+                  Entraremos em contato quando houver um animal compatível esperando por um lar como o seu.
+                </p>
+                <button class="btn btn-amber-form" style="margin: 1.5rem auto 0; border-radius:50px; padding:10px 24px;" onclick="resetTemp()">
+                  Atualizar meu cadastro
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /panelTemp -->
+
+      </div><!-- /interest-panels -->
     </div>
   </section>
 
@@ -1700,6 +2346,176 @@
       document.getElementById('formSuccess').style.display = 'none';
       ['animalNome','animalTipo','animalIdade','animalPorte','animalCidade','animalDesc','animalContato','animalFoto']
         .forEach(id => { document.getElementById(id).value = ''; });
+    }
+
+    /* ---------- Abas: Adotar / Lar temporário ---------- */
+    function openTab(tab) {
+      const isAdopt = tab === 'adopt';
+      document.getElementById('tabAdopt').classList.toggle('active', isAdopt);
+      document.getElementById('tabTemp').classList.toggle('active', !isAdopt);
+      document.getElementById('panelAdopt').classList.toggle('active', isAdopt);
+      document.getElementById('panelTemp').classList.toggle('active', !isAdopt);
+    }
+
+    /* ---------- Dados dos animais disponíveis ---------- */
+    const ANIMALS = [
+      { id: 'bolinha', nome: 'Bolinha',  tipo: 'cachorro', info: 'Cachorro · ~2 anos · Asa Sul',   emoji: '🐶' },
+      { id: 'mimi',    nome: 'Mimi',     tipo: 'gato',     info: 'Gato · ~8 meses · Taguatinga',  emoji: '🐱' },
+      { id: 'thor',    nome: 'Thor',     tipo: 'cachorro', info: 'Cachorro · ~4 anos · Ceilândia', emoji: '🐶' },
+      { id: 'mingau',  nome: 'Mingau',   tipo: 'gato',     info: 'Gato · ~3 anos · Guará',         emoji: '🐱' },
+      { id: 'pipoca',  nome: 'Pipoca',   tipo: 'cachorro', info: 'Cachorro · ~1 ano · Sobradinho', emoji: '🐶' },
+      { id: 'nala',    nome: 'Nala',     tipo: 'gato',     info: 'Gato · ~6 meses · Samambaia',   emoji: '🐱' },
+    ];
+
+    /* ---------- Renderiza lista de animais no formulário ---------- */
+    function renderAnimalList(containerId, mode) {
+      const container = document.getElementById(containerId);
+      const inputType = mode === 'adopt' ? 'radio' : 'checkbox';
+      const inputName = mode === 'adopt' ? 'adoptAnimalChoice' : 'tempAnimalChoice';
+      const selectedClass = mode === 'adopt' ? 'selected' : 'selected-temp';
+
+      container.innerHTML = ANIMALS.map(a => `
+        <label class="animal-select-card" id="card-${mode}-${a.id}" onclick="selectAnimalCard('${mode}','${a.id}','${inputType}')">
+          <input type="${inputType}" name="${inputName}" value="${a.id}" style="accent-color:${mode==='adopt'?'var(--teal)':'var(--amber)'};">
+          <div class="animal-card-mini">
+            <div class="mini-emoji">${a.emoji}</div>
+            <div class="mini-name">${a.nome}</div>
+            <div class="mini-info">${a.info}</div>
+          </div>
+        </label>
+      `).join('');
+    }
+
+    function selectAnimalCard(mode, id, type) {
+      const selectedClass = mode === 'adopt' ? 'selected' : 'selected-temp';
+      if (type === 'radio') {
+        document.querySelectorAll(`[id^="card-${mode}-"]`).forEach(c => c.classList.remove(selectedClass));
+        document.getElementById(`card-${mode}-${id}`).classList.add(selectedClass);
+      } else {
+        const card = document.getElementById(`card-${mode}-${id}`);
+        card.classList.toggle(selectedClass);
+      }
+    }
+
+    /* ---------- Lógica de escolha adoção ---------- */
+    let adoptChoice = null;
+
+    function setAdoptChoice(choice) {
+      adoptChoice = choice;
+      const selClass = 'selected-adopt';
+
+      document.getElementById('adoptChoiceSpecific').classList.toggle(selClass, choice === 'specific');
+      document.getElementById('adoptChoiceAny').classList.toggle(selClass, choice === 'any');
+
+      document.getElementById('adoptSpecificSection').classList.toggle('open', choice === 'specific');
+      document.getElementById('adoptAnySection').classList.toggle('open', choice === 'any');
+      document.getElementById('adoptCommonFields').classList.add('open');
+
+      if (choice === 'specific') {
+        renderAnimalList('adoptAnimalList', 'adopt');
+      }
+    }
+
+    /* ---------- Lógica de escolha lar temporário ---------- */
+    let tempChoice = null;
+
+    function setTempChoice(choice) {
+      tempChoice = choice;
+      const selClass = 'selected-temp';
+
+      document.getElementById('tempChoiceSpecific').classList.toggle(selClass, choice === 'specific');
+      document.getElementById('tempChoiceAny').classList.toggle(selClass, choice === 'any');
+
+      document.getElementById('tempSpecificSection').classList.toggle('open', choice === 'specific');
+      document.getElementById('tempAnySection').classList.toggle('open', choice === 'any');
+      document.getElementById('tempCommonFields').classList.add('open');
+
+      if (choice === 'specific') {
+        renderAnimalList('tempAnimalList', 'temp');
+      }
+    }
+
+    /* ---------- Formulário de adoção ---------- */
+    function submitAdopt() {
+      const nome    = document.getElementById('adoptNome').value.trim();
+      const contato = document.getElementById('adoptContato').value.trim();
+      const cidade  = document.getElementById('adoptCidade').value.trim();
+      const motivo  = document.getElementById('adoptMotivo').value.trim();
+      const moradia = document.querySelector('input[name="adoptMoradia"]:checked');
+
+      if (!adoptChoice) { alert('Por favor, indique se você quer um animal específico ou aceita qualquer um.'); return; }
+      if (!nome || !contato || !cidade || !motivo || !moradia) {
+        alert('Por favor, preencha todos os campos obrigatórios (*).');
+        return;
+      }
+      if (adoptChoice === 'specific' && !document.querySelector('input[name="adoptAnimalChoice"]:checked')) {
+        alert('Por favor, selecione o animal que você deseja adotar.'); return;
+      }
+
+      document.getElementById('adoptFormContent').style.display = 'none';
+      document.getElementById('adoptSuccess').style.display = 'block';
+    }
+
+    function resetAdopt() {
+      adoptChoice = null;
+      document.getElementById('adoptFormContent').style.display = '';
+      document.getElementById('adoptSuccess').style.display = 'none';
+      ['adoptChoiceSpecific','adoptChoiceAny'].forEach(id => {
+        document.getElementById(id).classList.remove('selected-adopt');
+      });
+      ['adoptSpecificSection','adoptAnySection','adoptCommonFields'].forEach(id => {
+        document.getElementById(id).classList.remove('open');
+      });
+      ['adoptNome','adoptContato','adoptEmail','adoptCidade','adoptMotivo'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.querySelectorAll('#panelAdopt input[type="radio"], #panelAdopt input[type="checkbox"]')
+        .forEach(el => { el.checked = false; });
+    }
+
+    /* ---------- Formulário lar temporário ---------- */
+    function submitTemp() {
+      const nome    = document.getElementById('tempNome').value.trim();
+      const contato = document.getElementById('tempContato').value.trim();
+      const cidade  = document.getElementById('tempCidade').value.trim();
+      const disp    = document.getElementById('tempDisponibilidade').value;
+      const duracao = document.querySelector('input[name="tempDuracao"]:checked');
+      const moradia = document.querySelector('input[name="tempMoradia"]:checked');
+
+      if (!tempChoice) { alert('Por favor, indique se você tem um animal em mente ou aceita qualquer um.'); return; }
+      if (!nome || !contato || !cidade || !disp || !duracao || !moradia) {
+        alert('Por favor, preencha todos os campos obrigatórios (*).');
+        return;
+      }
+      if (tempChoice === 'specific') {
+        const checked = document.querySelectorAll('input[name="tempAnimalChoice"]:checked');
+        if (checked.length === 0) { alert('Por favor, selecione pelo menos um animal.'); return; }
+      } else {
+        const tipoOk = document.getElementById('tempCachorro').checked || document.getElementById('tempGato').checked
+                    || document.getElementById('tempFilhote').checked || document.getElementById('tempIdoso').checked;
+        if (!tipoOk) { alert('Por favor, selecione pelo menos um tipo de animal que você pode acolher.'); return; }
+      }
+
+      document.getElementById('tempFormContent').style.display = 'none';
+      document.getElementById('tempSuccess').style.display = 'block';
+    }
+
+    function resetTemp() {
+      tempChoice = null;
+      document.getElementById('tempFormContent').style.display = '';
+      document.getElementById('tempSuccess').style.display = 'none';
+      ['tempChoiceSpecific','tempChoiceAny'].forEach(id => {
+        document.getElementById(id).classList.remove('selected-temp');
+      });
+      ['tempSpecificSection','tempAnySection','tempCommonFields'].forEach(id => {
+        document.getElementById(id).classList.remove('open');
+      });
+      ['tempNome','tempContato','tempEmail','tempCidade','tempObs'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.getElementById('tempDisponibilidade').value = '';
+      document.querySelectorAll('#panelTemp input[type="radio"], #panelTemp input[type="checkbox"]')
+        .forEach(el => { el.checked = false; });
     }
   </script>
 
