@@ -60,6 +60,83 @@ patasdf
 
 ---
 
+## ⚙️ Manual de Instalação
+
+Siga os passos abaixo para executar o projeto localmente.
+
+### 1. Clonar o repositório
+
+Abra o terminal e execute:
+
+```
+git clone https://github.com/seu-usuario/patasdf.git
+```
+
+### 2. Acessar a pasta do projeto
+
+```
+cd patasdf
+```
+
+### 3. Abrir o projeto
+
+Você pode abrir o projeto de duas formas:
+
+**Opção 1 — Abrir no VS Code**
+
+```
+code .
+```
+
+**Opção 2 — Abrir diretamente no navegador**
+
+Basta abrir o arquivo:
+
+```
+index.html
+```
+
+---
+
+## 🔗 Configuração dos formulários
+
+O projeto utiliza **Google Forms** para coletar informações de adoção e de voluntários.
+
+Para configurar:
+
+1. Crie um formulário no **Google Forms**
+2. Crie perguntas como:
+   - Nome
+   - Contato
+   - Interesse (adoção ou lar temporário)
+   - Experiência com animais
+3. No Google Forms, clique em **Enviar**
+4. Copie o **link de incorporação ou do formulário**
+5. Cole o link no arquivo `index.html` do projeto
+
+As respostas serão automaticamente armazenadas em uma **planilha do Google Sheets**.
+
+---
+
+## 📦 Requisitos
+
+Para rodar o projeto você precisa apenas de:
+
+- Navegador web moderno (Chrome, Edge, Firefox ou Safari)
+- Editor de código (recomendado: **VS Code**)
+
+Não é necessário instalar:
+
+- servidor
+- banco de dados
+- dependências externas
+
+---
+
+## 🚀 Execução
+
+Após abrir o arquivo `index.html` no navegador, o site já estará funcionando localmente.
+
 ## 🤝 Contribuição
 
 Contribuições são bem-vindas!
