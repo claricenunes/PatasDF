@@ -1872,7 +1872,7 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="animalPorte">Porte</label>
+                <label for="animalPorte">Porte *</label>
                 <select id="animalPorte">
                   <option value="">Selecione...</option>
                   <option>Pequeno</option>
@@ -2433,7 +2433,7 @@
   const contato = document.getElementById('animalContato').value.trim();
   const fotoUrl = document.getElementById('animalFoto').value.trim();
 
-  if (!nome || !tipo || !idade || !cidade || !desc || !contato) {
+  if (!nome || !tipo || !idade || !cidade || !desc || !contato || !fotoUrl) {
     alert('Por favor, preencha todos os campos obrigatórios (*).');
     return;
   }
