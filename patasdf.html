@@ -301,7 +301,6 @@
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
             <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
-            👩‍💻
           </div>
           <div class="criadora-badge cb1">
             <span class="cb-emoji">🐾</span>
@@ -423,14 +422,19 @@
     let ANIMALS = [], filtroAtual = 'todos';
 
     async function carregarAnimais() {
-      try {
-        const resp = await fetch('animais.json?t=' + Date.now());
-        if (resp.ok) { const d = await resp.json(); if (d.length > 0) ANIMALS = d; else ANIMALS = ANIMAIS_EMBUTIDOS; }
-        else ANIMALS = ANIMAIS_EMBUTIDOS;
-      } catch(e) { ANIMALS = ANIMAIS_EMBUTIDOS; }
+      // Mostra dados embutidos imediatamente
+      ANIMALS = ANIMAIS_EMBUTIDOS;
       document.getElementById('animaisLoading').style.display = 'none';
       document.getElementById('animalsGrid').style.display = '';
       renderizarCards(filtroAtual);
+      // Tenta atualizar com JSON do servidor
+      try {
+        const resp = await fetch('animais.json?t=' + Date.now());
+        if (resp.ok) {
+          const d = await resp.json();
+          if (d.length > 0) { ANIMALS = d; renderizarCards(filtroAtual); }
+        }
+      } catch(e) { /* mantém embutidos */ }
     }
 
     function filterAnimals(tipo, btn) {
@@ -530,7 +534,7 @@
           'Bem-estar do animal: pedimos que o animal seja mantido em segurança enquanto aguarda o dono, sempre que possível.'
         ],
         btnBg: 'var(--gold)', btnText: '🐾 Li e aceito — ir para o formulário',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform?usp=dialog'
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform?usp=publish-editor'
       }
     };
 

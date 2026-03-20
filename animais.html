@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Todos os animais — PatasDF</title>
-  <meta name="description" content="Veja todos os animais perdidos, encontrados e disponíveis para adoção no Distrito Federal." />
+  <title>Animais perdidos e encontrados — PatasDF</title>
+  <meta name="description" content="Veja todos os animais perdidos e encontrados no Distrito Federal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -25,8 +25,6 @@
     .st-perdido .tab-count { background:rgba(255,255,255,0.25); color:white; }
     .st-encontrado{ background:var(--gold); color:white; border-color:var(--gold); }
     .st-encontrado .tab-count { background:rgba(255,255,255,0.25); color:white; }
-    .st-disponivel{ background:var(--sage); color:white; border-color:var(--sage); }
-    .st-disponivel .tab-count { background:rgba(255,255,255,0.25); color:white; }
 
     .ctx-banner {
       border-radius:var(--r-xl); padding:1.75rem 2rem;
@@ -35,7 +33,6 @@
     }
     .ctx-banner.perdido   { background:var(--rust-pale); border:1.5px solid rgba(184,92,56,0.18); }
     .ctx-banner.encontrado{ background:var(--gold-pale);  border:1.5px solid rgba(196,146,42,0.18); }
-    .ctx-banner.disponivel{ background:var(--sage-pale);  border:1.5px solid rgba(74,124,89,0.18); }
     .ctx-icon { font-size:2.2rem; flex-shrink:0; }
     .ctx-text h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; margin-bottom:4px; }
     .ctx-text p  { font-size:13px; font-weight:300; color:var(--ink-soft); line-height:1.6; }
@@ -43,8 +40,6 @@
     .ctx-btn-rust:hover { background:#8f3e23; transform:translateY(-1px); }
     .ctx-btn-gold { background:var(--gold); color:white; padding:11px 22px; border-radius:100px; font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:all 0.2s; }
     .ctx-btn-gold:hover { background:#a87824; transform:translateY(-1px); }
-    .ctx-btn-sage { background:var(--sage); color:white; padding:11px 22px; border-radius:100px; font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:all 0.2s; }
-    .ctx-btn-sage:hover { background:#3a6647; transform:translateY(-1px); }
   </style>
 </head>
 <body>
@@ -84,12 +79,11 @@
         <span>›</span>
         <span style="color:rgba(255,255,255,.6);">Todos os animais</span>
       </div>
-      <h1>Perdidos, encontrados<br>e esperando por <em>você</em></h1>
-      <p>Todos os animais cadastrados na comunidade PatasDF no Distrito Federal.</p>
+      <h1>Perdidos e <em>encontrados</em><br>no DF</h1>
+      <p>Todos os animais perdidos e encontrados cadastrados na comunidade PatasDF no Distrito Federal.</p>
       <div class="page-header-meta">
         <div class="meta-chip" id="countPerdidos">😢 carregando...</div>
         <div class="meta-chip" id="countEncontrados">🐾 carregando...</div>
-        <div class="meta-chip" id="countDisponiveis">🏠 carregando...</div>
       </div>
     </div>
   </div>
@@ -126,9 +120,6 @@
         </button>
         <button class="status-tab" onclick="filtrarStatus('encontrado', this)">
           🐾 Encontrados <span class="tab-count" id="tabEncontrado">—</span>
-        </button>
-        <button class="status-tab" onclick="filtrarStatus('disponivel', this)">
-          🏠 Para adoção <span class="tab-count" id="tabDisponivel">—</span>
         </button>
       </div>
 
@@ -189,7 +180,7 @@
           <li><a href="index.html">Give&Grow</a></li>
           <li><a href="sobre.html">Sobre a Clarice</a></li>
           <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#543121373835263d37313a213a3127143339353d387a373b39">Contato</a></li>
         </ul>
       </div>
     </div>
@@ -199,9 +190,9 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const URL_PERDI    = 'https://docs.google.com/forms/d/e/1FAIpQLSdwkBiDv1es0LKBWcML1goLfLYHsVaSYuPup9HgPXHWBcM21w/viewform?usp=dialog';
-    const URL_ENCONTREI = 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform?usp=header';
+    const URL_ENCONTREI = 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform?usp=publish-editor';
 
     const ANIMAIS_EMBUTIDOS = [
       { id:'ex1', nome:'Bolinha',  status:'perdido',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Vira-lata caramelo com mancha branca no peito. Desapareceu perto da quadra 308 Sul no dia 18/03.',  contato:'(61) 98888-1111' },
@@ -210,33 +201,37 @@
       { id:'ex4', nome:'Mingau',   status:'encontrado', tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Gato cinza, castrado. Encontrado no Guará II. Muito tranquilo. Aguardando dono.',                    contato:'(61) 95555-4444' },
       { id:'ex5', nome:'Pipoca',   status:'perdido',    tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Lhasa apso branca. Usava roupa rosa quando desapareceu. Sumiu há 3 dias no centro de Sobradinho.',   contato:'(61) 94444-5555' },
       { id:'ex6', nome:'Nala',     status:'encontrado', tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Filhote de gato preto com patinhas brancas. Encontrada na QR 416. Precisando de lar temporário.',    contato:'(61) 93333-6666' },
-      { id:'ex7', nome:'Bolota',   status:'disponivel', tipo:'cachorro', idade:'~3 anos',  porte:'Médio',   cidade:'Asa Norte',  descricao:'Muito carinhoso, brinca com crianças e já é castrado. Resgatado pela ONG Patinhas. Precisa de lar!', contato:'(61) 93333-7777' },
-      { id:'ex8', nome:'Mel',      status:'disponivel', tipo:'gato',     idade:'~1 ano',   porte:'Pequeno', cidade:'Guará',      descricao:'Gatinha ruiva, vacinada e sociável com outros gatos. Adora carinho e dormir no colo.',                contato:'(61) 93333-8888' },
     ];
 
     let TODOS = [], statusAtual = 'todos', tipoAtual = 'todos', buscaAtual = '';
 
     async function carregar() {
-      try {
-        const resp = await fetch('animais.json?t=' + Date.now());
-        if (resp.ok) { const d = await resp.json(); TODOS = d.length > 0 ? d : ANIMAIS_EMBUTIDOS; }
-        else TODOS = ANIMAIS_EMBUTIDOS;
-      } catch(e) { TODOS = ANIMAIS_EMBUTIDOS; }
+      // Carrega os dados embutidos imediatamente para garantir que algo aparece
+      TODOS = ANIMAIS_EMBUTIDOS;
       atualizarContadores();
       renderizar();
+      // Tenta buscar dados atualizados do JSON (funciona quando hospedado em servidor)
+      try {
+        const resp = await fetch('animais.json?t=' + Date.now());
+        if (resp.ok) {
+          const d = await resp.json();
+          if (d.length > 0) {
+            TODOS = d;
+            atualizarContadores();
+            renderizar();
+          }
+        }
+      } catch(e) { /* mantém os dados embutidos */ }
     }
 
     function atualizarContadores() {
       const p = TODOS.filter(a => a.status === 'perdido').length;
       const e = TODOS.filter(a => a.status === 'encontrado').length;
-      const d = TODOS.filter(a => a.status === 'disponivel' || !a.status).length;
       document.getElementById('countPerdidos').textContent    = `😢 ${p} perdido${p!==1?'s':''}`;
       document.getElementById('countEncontrados').textContent  = `🐾 ${e} encontrado${e!==1?'s':''}`;
-      document.getElementById('countDisponiveis').textContent  = `🏠 ${d} para adoção`;
       document.getElementById('tabTodos').textContent      = TODOS.length;
       document.getElementById('tabPerdido').textContent    = p;
       document.getElementById('tabEncontrado').textContent  = e;
-      document.getElementById('tabDisponivel').textContent  = d;
     }
 
     function filtrarStatus(status, btn) {
@@ -262,7 +257,6 @@
       let l = TODOS;
       if (statusAtual !== 'todos') {
         l = l.filter(a => {
-          if (statusAtual === 'disponivel') return a.status === 'disponivel' || !a.status;
           return a.status === statusAtual;
         });
       }
@@ -294,15 +288,7 @@
           </div>
           <a href="${URL_ENCONTREI}" target="_blank" rel="noopener" class="ctx-btn-gold">🐾 Encontrei um animal</a>
         </div>`;
-      } else if (status === 'disponivel') {
-        el.innerHTML = `<div class="ctx-banner disponivel">
-          <span class="ctx-icon">🏠</span>
-          <div class="ctx-text">
-            <h3>Pronto para adotar?</h3>
-            <p>Esses animais estão esperando por uma família responsável. Entre em contato com o resgatador pelo número no card.</p>
-          </div>
-          <a href="patasdf.html#ajudar" class="ctx-btn-sage">🐾 Saiba mais</a>
-        </div>`;
+     
       } else {
         el.innerHTML = '';
       }
@@ -325,15 +311,13 @@
       const em = { cachorro:'🐶', gato:'🐱' };
 
       grid.innerHTML = lista.map((a, i) => {
-        const st = a.status || 'disponivel';
-        const badgeCls = st === 'perdido' ? 'badge-perdido' : st === 'encontrado' ? 'badge-encontrado' : 'badge-disponivel';
-        const badgeLbl = st === 'perdido' ? 'Perdido' : st === 'encontrado' ? 'Encontrado' : 'Para adoção';
-        const btnBg    = st === 'perdido' ? 'var(--ink)' : st === 'encontrado' ? 'var(--gold)' : 'var(--sage)';
+        const st = a.status || 'encontrado';
+        const badgeCls = st === 'perdido' ? 'badge-perdido' : st === 'encontrado' ? 'badge-encontrado' : 'badge-encontrado';
+        const badgeLbl = st === 'perdido' ? 'Perdido' : 'Encontrado';
+        const btnBg    = st === 'perdido' ? 'var(--ink)' : 'var(--gold)';
         const btnLbl   = st === 'perdido'
           ? '📞 Vi este animal — avisar o dono'
-          : st === 'encontrado'
-          ? '🏠 Este é meu animal'
-          : '🏠 Quero adotar';
+          : '🏠 Este é meu animal';
         const ctt = (a.contato || 'Não informado').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*50}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
@@ -350,7 +334,7 @@
               ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
             </div>
             <p class="animal-desc">${a.descricao||''}</p>
-            <button class="btn-adotar-main" style="background:${btnBg};" onclick="alert('Entre em contato:\\n${ctt}')">${btnLbl}</button>
+            <button class="btn-contato-main" style="background:${btnBg};" onclick="alert('Entre em contato:\\n${ctt}')">${btnLbl}</button>
           </div>
         </div>`;
       }).join('');
