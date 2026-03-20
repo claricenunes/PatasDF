@@ -778,7 +778,8 @@
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px;transition: top 0.3s; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; }
+      .navbar.scrolled .nav-links {top: 58px;}
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       .steps-row { flex-direction: column; gap: 2rem; }
@@ -789,7 +790,9 @@
       .stat-item { padding: 0 1.5rem; }
       .stat-item:nth-child(3), .stat-item:nth-child(4) { display: none; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links li:last-child {margin-top: 8px;}
     }
+
     @media (max-width: 600px) {
       .causas-grid { grid-template-columns: 1fr; }
       .section { padding: 70px 1.5rem; }
