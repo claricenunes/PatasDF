@@ -191,6 +191,22 @@
         <h3>Nenhum animal encontrado</h3>
         <p>Tente outro filtro.</p>
       </div>
+      <!-- VER MAIS -->
+      <div id="verMaisWrap" style="text-align:center;margin-top:2.5rem;display:none;">
+        <div style="width:1px;height:40px;background:var(--border);margin:0 auto 1.5rem;"></div>
+        <a href="animais.html" style="
+          display:inline-flex;align-items:center;gap:10px;
+          background:var(--white);color:var(--ink);
+          padding:14px 32px;border-radius:100px;
+          font-size:15px;font-weight:600;text-decoration:none;
+          border:1.5px solid var(--border-dark);
+          transition:all 0.2s;
+          box-shadow:var(--shadow);
+        " onmouseover="this.style.borderColor='var(--sage)';this.style.color='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-dark)';this.style.color='var(--ink)';this.style.transform='translateY(0)'">
+          🐾 Ver todos os animais perdidos e encontrados →
+        </a>
+        <p style="font-size:12px;font-weight:300;color:var(--ink-soft);margin-top:10px;" id="verMaisCount"></p>
+      </div>
     </div>
   </section>
 
@@ -223,7 +239,7 @@
     <div class="container">
       <span class="label reveal">Conheça e apoie</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">ONGs que fazem<br><em style="color:var(--sage)">a diferença</em></h2>
-      <p class="lead reveal" style="max-width:520px;">Organizações (ilustrativas) do DF que cuidam dos animais. Conheça, apoie e compartilhe.</p>
+      <p class="lead reveal" style="max-width:520px;">Organizações do DF que cuidam dos animais. Conheça, apoie e compartilhe.</p>
       <div class="ongs-grid">
         <div class="ong-card verde reveal">
           <span class="ong-icon">🐾</span>
@@ -285,6 +301,7 @@
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
             <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+            👩‍💻
           </div>
           <div class="criadora-badge cb1">
             <span class="cb-emoji">🐾</span>
@@ -313,7 +330,7 @@
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;"> Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">✨ Conheça mais →</a>
         </div>
       </div>
     </div>
@@ -424,12 +441,17 @@
     function renderizarCards(filtro) {
       const grid = document.getElementById('animalsGrid');
       const empty = document.getElementById('emptyState');
+      const verMais = document.getElementById('verMaisWrap');
+      const verMaisCount = document.getElementById('verMaisCount');
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.status === filtro);
-      if (lista.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+      if (lista.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; verMais.style.display = 'none'; return; }
       empty.style.display = 'none';
+      // Mostra só os 3 primeiros no patasdf — o resto fica em animais.html
+      const preview = lista.slice(0, 3);
+      const restante = lista.length - 3;
       const bg = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
       const em = { cachorro:'🐶', gato:'🐱' };
-      grid.innerHTML = lista.map((a, i) => {
+      grid.innerHTML = preview.map((a, i) => {
         const isPerdido = a.status === 'perdido';
         const badgeCls = isPerdido ? 'badge-perdido' : 'badge-encontrado';
         const badgeLbl = isPerdido ? 'Perdido' : 'Encontrado';
@@ -455,6 +477,14 @@
           </div>
         </div>`;
       }).join('');
+      // Botão ver mais
+      if (restante > 0) {
+        verMais.style.display = 'block';
+        verMaisCount.textContent = `Exibindo 3 de ${lista.length} animais cadastrados`;
+      } else {
+        verMais.style.display = lista.length > 0 ? 'block' : 'none';
+        verMaisCount.textContent = `${lista.length} animal${lista.length!==1?'is':''} cadastrado${lista.length!==1?'s':''}`;
+      }
     }
 
     window.addEventListener('scroll', () => {
@@ -487,7 +517,7 @@
           'Atualização: caso o animal seja encontrado, pedimos que você nos avise para retirarmos o cadastro da listagem.'
         ],
         btnBg: 'var(--sage)', btnText: '😢 Li e aceito — ir para o formulário',
-        url: 'SEU_LINK_GOOGLE_FORMS_PERDI'
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSdwkBiDv1es0LKBWcML1goLfLYHsVaSYuPup9HgPXHWBcM21w/viewform?usp=dialog'
       },
       encontrado: {
         cor: 'var(--gold)', corPale: 'var(--gold-pale)',
@@ -500,7 +530,7 @@
           'Bem-estar do animal: pedimos que o animal seja mantido em segurança enquanto aguarda o dono, sempre que possível.'
         ],
         btnBg: 'var(--gold)', btnText: '🐾 Li e aceito — ir para o formulário',
-        url: 'SEU_LINK_GOOGLE_FORMS_ENCONTREI'
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSeOyUEvjqoL2VwW3kJSf5gsE197C9LvIaPMh03FFTpZJVA-6A/viewform?usp=dialog'
       }
     };
 
