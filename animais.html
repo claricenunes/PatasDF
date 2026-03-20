@@ -4,43 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animais disponíveis — PatasDF</title>
-  <meta name="description" content="Veja todos os animais disponíveis para adoção no Distrito Federal. Cachorros e gatos esperando por uma família." />
+  <meta name="description" content="Veja todos os animais disponíveis para adoção no Distrito Federal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
+  <!-- BACK LINK -->
+  <div class="back-link-wrap">
+    <a href="patasdf.html" class="back-link">← Voltar para o PatasDF</a>
+  </div>
+
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="index.html" class="logo">
+      <a href="patasdf.html" class="logo">
         <div class="logo-paw">🐾</div>
-        PatasDF
+        Patas<em>DF</em>
       </a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#como-funciona">Como funciona</a></li>
-        <li><a href="animais.html" class="active">Animais</a></li>
-        <li><a href="index.html#mapa">Mapa</a></li>
+        <li><a href="patasdf.html#animais">Animais</a></li>
+        <li><a href="patasdf.html#mapa">Mapa</a></li>
+        <li><a href="patasdf.html#ongs">ONGs</a></li>
         <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="index.html#quero-ajudar" class="nav-cta">Quero participar</a></li>
+        <li><a href="patasdf.html#ajudar" class="nav-cta">Quero ajudar</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- CABEÇALHO -->
+  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="container">
       <div class="breadcrumb">
-        <a href="index.html">Início</a>
+        <a href="index.html">Give&Grow</a>
         <span>›</span>
-        <span style="color:rgba(255,255,255,.75);">Animais disponíveis</span>
+        <a href="patasdf.html">PatasDF</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,.6);">Animais disponíveis</span>
       </div>
-      <h1>Animais esperando<br>por uma <span class="hl">família</span></h1>
+      <h1>Animais esperando<br>por uma <em>família</em></h1>
       <p>Todos os animais abaixo estão disponíveis para adoção no Distrito Federal. Gratuito e sem burocracia.</p>
       <div class="page-header-meta">
         <div class="meta-chip">🐾 100% gratuito</div>
@@ -50,7 +57,7 @@
     </div>
   </div>
 
-  <!-- BARRA DE FILTROS -->
+  <!-- TOOLBAR -->
   <div class="toolbar">
     <div class="container">
       <div class="filter-pills">
@@ -68,25 +75,36 @@
     </div>
   </div>
 
-  <!-- ANIMAIS -->
+  <!-- ANIMALS -->
   <section class="animals-section">
     <div class="container">
-
       <div class="cta-banner">
         <div class="cta-banner-text">
-          <h3>Encontrou um animal abandonado?</h3>
-          <p>Leia os termos e preencha o formulário — leva menos de 2 minutos e ajuda a salvar uma vida.</p>
+          <h3>Quer adotar um desses animais?</h3>
+          <p>Preencha o formulário de adoção — leva menos de 2 minutos e ajuda a salvar uma vida.</p>
         </div>
-        <a href="index.html#quero-ajudar" class="btn-banner">🐾 Quero participar</a>
+        <a href="patasdf.html#ajudar" class="btn-gold">🐾 Quero adotar</a>
       </div>
-
       <div class="animals-grid" id="animalsGrid">
-        <div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--bark-soft);">
+        <div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--ink-soft);">
           <div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div>
-          <p>Carregando animais...</p>
+          <p style="font-weight:300;">Carregando animais...</p>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <div class="cta-inner">
+      <h2>Não encontrou<br><em>o que procura?</em></h2>
+      <p>Cadastre um animal perdido ou encontrado e ajude a comunidade a reencontrar famílias.</p>
+      <div class="cta-btns">
+        <a href="patasdf.html#ajudar" class="btn-white">🐾 Ir para o PatasDF</a>
+        <a href="index.html" class="btn-white-outline">🌱 Ver o Give&Grow →</a>
+      </div>
     </div>
   </section>
 
@@ -94,131 +112,106 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><div class="logo-paw">🐾</div> PatasDF</a>
-        <p>Plataforma gratuita e comunitária para conectar animais abandonados do DF com famílias amorosas.</p>
+        <a href="patasdf.html" class="footer-logo">Patas<em>DF</em></a>
+        <p>Plataforma gratuita e comunitária para conectar animais disponíveis do DF com famílias amorosas.</p>
       </div>
       <div class="footer-col">
         <h4>Navegação</h4>
         <ul>
-          <li><a href="index.html#como-funciona">Como funciona</a></li>
-          <li><a href="animais.html">Animais disponíveis</a></li>
-          <li><a href="index.html#mapa">Mapa do DF</a></li>
-          <li><a href="index.html#quero-ajudar">Como ajudar</a></li>
+          <li><a href="patasdf.html#animais">Animais</a></li>
+          <li><a href="patasdf.html#mapa">Mapa do DF</a></li>
+          <li><a href="patasdf.html#ongs">ONGs parceiras</a></li>
+          <li><a href="patasdf.html#ajudar">Quero ajudar</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Projeto</h4>
         <ul>
-          <li><a href="sobre.html">Sobre a criadora</a></li>
+          <li><a href="index.html">Give&Grow</a></li>
+          <li><a href="sobre.html">Sobre a Clarice</a></li>
           <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Engenharia de Software · Todos os direitos garantidos</span>
+      <span>© 2025 PatasDF · Engenharia de Software · CEUB · Brasília</span>
       <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
   <script>
-    const ANIMALS_URL = 'animais.json';
-
     const ANIMAIS_EMBUTIDOS = [
-      { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.',   contato:'(61) 98888-1111' },
-      { id:'ex2', nome:'Mimi',    tipo:'gato',     idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.',                      contato:'(61) 97777-2222' },
-      { id:'ex3', nome:'Thor',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.',                      contato:'(61) 96666-3333' },
-      { id:'ex4', nome:'Mingau',  tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.',               contato:'(61) 95555-4444' },
-      { id:'ex5', nome:'Pipoca',  tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.',            contato:'(61) 94444-5555' },
-      { id:'ex6', nome:'Nala',    tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.',         contato:'(61) 93333-6666' },
+      { id:'ex1', nome:'Bolinha', tipo:'cachorro', idade:'~2 anos', porte:'Médio', cidade:'Asa Sul', descricao:'Muito carinhoso, brinca com crianças e já é castrado. Encontrado abandonado na quadra 308 Sul.', contato:'(61) 98888-1111' },
+      { id:'ex2', nome:'Mimi', tipo:'gato', idade:'~8 meses', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha dócil, vacinada e sociável com outros gatos. Adora dormir no colo.', contato:'(61) 97777-2222' },
+      { id:'ex3', nome:'Thor', tipo:'cachorro', idade:'~4 anos', porte:'Grande', cidade:'Ceilândia', descricao:'Cão tranquilo e protetor, gosta de caminhadas longas. Ótimo com crianças.', contato:'(61) 96666-3333' },
+      { id:'ex4', nome:'Mingau', tipo:'gato', idade:'~3 anos', porte:'Médio', cidade:'Guará', descricao:'Independente mas carinhoso. Castrado e vacinado em dia. Vive bem em apartamento.', contato:'(61) 95555-4444' },
+      { id:'ex5', nome:'Pipoca', tipo:'cachorro', idade:'~1 ano', porte:'Pequeno', cidade:'Sobradinho', descricao:'Brincalhona e energética. Adora crianças e outros cães. Ainda precisa ser castrada.', contato:'(61) 94444-5555' },
+      { id:'ex6', nome:'Nala', tipo:'gato', idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia', descricao:'Curiosa e cheia de energia. Filhote resgatada da rua, precisa de vacinas e muito amor.', contato:'(61) 93333-6666' },
     ];
-
     let ANIMALS = [], filtroAtual = 'todos', buscaAtual = '';
 
     async function carregar() {
-      let ok = false;
       try {
-        const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
-        if (resp.ok) {
-          const dados = await resp.json();
-          const disp = dados.filter(a => !a.status || a.status === 'disponivel');
-          if (disp.length > 0) { ANIMALS = disp; ok = true; }
-        }
-      } catch(e) {}
-      if (!ok) ANIMALS = ANIMAIS_EMBUTIDOS;
-      document.getElementById('headerCount').textContent =
-        `${ANIMALS.length} animal${ANIMALS.length !== 1 ? 'is' : ''} disponível${ANIMALS.length !== 1 ? 'is' : ''}`;
+        const resp = await fetch('animais.json?t=' + Date.now());
+        if (resp.ok) { const d = await resp.json(); const disp = d.filter(a => !a.status || a.status === 'disponivel'); ANIMALS = disp.length > 0 ? disp : ANIMAIS_EMBUTIDOS; }
+        else ANIMALS = ANIMAIS_EMBUTIDOS;
+      } catch(e) { ANIMALS = ANIMAIS_EMBUTIDOS; }
+      document.getElementById('headerCount').textContent = `${ANIMALS.length} animal${ANIMALS.length!==1?'is':''} disponível${ANIMALS.length!==1?'is':''}`;
       renderizar();
     }
 
     function filtrar(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      filtroAtual = tipo;
-      renderizar();
+      btn.classList.add('active'); filtroAtual = tipo; renderizar();
     }
-
     function buscar(val) { buscaAtual = val.toLowerCase().trim(); renderizar(); }
-
     function getLista() {
       let l = filtroAtual === 'todos' ? ANIMALS : ANIMALS.filter(a => a.tipo === filtroAtual);
-      if (buscaAtual) l = l.filter(a =>
-        (a.nome||'').toLowerCase().includes(buscaAtual) || (a.cidade||'').toLowerCase().includes(buscaAtual)
-      );
+      if (buscaAtual) l = l.filter(a => (a.nome||'').toLowerCase().includes(buscaAtual)||(a.cidade||'').toLowerCase().includes(buscaAtual));
       return l;
     }
 
     function renderizar() {
-      const grid  = document.getElementById('animalsGrid');
+      const grid = document.getElementById('animalsGrid');
       const lista = getLista();
-      document.getElementById('countBadge').innerHTML = `<strong>${lista.length}</strong> animal${lista.length !== 1 ? 'is' : ''}`;
+      document.getElementById('countBadge').innerHTML = `<strong>${lista.length}</strong> animal${lista.length!==1?'is':''}`;
       if (lista.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">🔍</div>
-            <h3>Nenhum animal encontrado</h3>
-            <p>Tente outro filtro ou limpe a busca.</p>
-          </div>`;
-        return;
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;color:var(--ink-soft);">
+          <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.5rem;">Nenhum animal encontrado</h3>
+          <p style="font-weight:300;">Tente outro filtro ou limpe a busca.</p>
+        </div>`; return;
       }
-      const bgMap    = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
-      const emojiMap = { cachorro:'🐶', gato:'🐱' };
-      grid.innerHTML = lista.map((a, i) => {
-        const bg    = bgMap[a.tipo]    || '#F5F3EE';
-        const emoji = emojiMap[a.tipo] || '🐾';
-        const tipo  = a.tipo ? (a.tipo[0].toUpperCase() + a.tipo.slice(1)) : 'Animal';
-        return `
-        <div class="animal-card" style="animation:fadeUp .4s ${i * 60}ms ease both;">
-          <div class="animal-img" style="background:${bg};">
-            <div class="animal-img-bg">${emoji}</div>
-            <div class="animal-emoji" style="font-size:5.5rem;">${emoji}</div>
-            <div class="animal-badge">${tipo}</div>
+      const bg = {cachorro:'#FFF3E8',gato:'#F0ECF9'};
+      const em = {cachorro:'🐶',gato:'🐱'};
+      grid.innerHTML = lista.map((a,i) => `
+        <div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
+          <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
+            <div class="animal-img-bg">${em[a.tipo]||'🐾'}</div>
+            <div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${em[a.tipo]||'🐾'}</div>
+            <div class="animal-badge badge-disponivel">${a.tipo?a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1):'Animal'}</div>
             <div class="animal-status-badge">Disponível</div>
           </div>
           <div class="animal-body">
-            <div class="animal-name">${a.nome || 'Sem nome'}</div>
+            <div class="animal-name">${a.nome||'Sem nome'}</div>
             <div class="animal-meta">
-              ${a.idade  ? `<span class="pill">${a.idade}</span>`       : ''}
-              ${a.cidade ? `<span class="pill">📍 ${a.cidade}</span>`   : ''}
-              ${a.porte  ? `<span class="pill">${a.porte}</span>`       : ''}
+              ${a.idade?`<span class="pill">${a.idade}</span>`:''}
+              ${a.cidade?`<span class="pill">📍 ${a.cidade}</span>`:''}
+              ${a.porte?`<span class="pill">${a.porte}</span>`:''}
             </div>
-            <p class="animal-desc">${a.descricao || ''}</p>
+            <p class="animal-desc">${a.descricao||''}</p>
             <div class="card-action-area">
               <button class="btn-adotar-main" onclick="irParaAdotar()">🏠 Quero adotar este animal</button>
             </div>
           </div>
-        </div>`;
-      }).join('');
+        </div>`).join('');
     }
 
-    function irParaAdotar() { window.location.href = 'index.html?adotar=1#quero-ajudar'; }
-
+    function irParaAdotar() { window.location.href = 'patasdf.html#ajudar'; }
+    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40); });
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.querySelectorAll('#navLinks a').forEach(l =>
-      l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
-    );
-
+    document.querySelectorAll('#navLinks a').forEach(l => l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
     carregar();
   </script>
 </body>

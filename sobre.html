@@ -7,34 +7,15 @@
   <meta name="description" content="Conheça Clarice Nunes, estudante de Engenharia de Software e criadora do Give&Grow e do PatasDF." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
-    .logo h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; color: var(--bark); }
-    footer .logo h3 { color: white; }
-    footer { background: #1C1210 !important; }
-    .contact-cta { background: var(--bark); }
-
-    /* Foto sem zoom */
-    .photo-circle {
-      box-shadow: 0 0 0 4px white, 0 0 0 7px var(--sage-light), 0 12px 40px rgba(61,107,79,0.18);
-    }
-    .photo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-      display: block;
-    }
-  </style>
 </head>
 <body>
 
-  <nav class="navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="index.html" class="logo"><h3>Give&amp;Grow</h3></a>
+      <a href="index.html" class="logo">Give<em>&</em>Grow</a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -48,82 +29,75 @@
     </div>
   </nav>
 
-  <!-- HERO PERFIL -->
+  <!-- PROFILE HERO -->
   <section class="profile-hero">
-    <div class="container">
-      <div class="profile-layout">
+    <div class="profile-layout">
 
-        <!-- FOTO -->
-        <div class="photo-wrapper reveal">
-          <div class="photo-frame">
-            <div class="photo-circle">
-              <img src="fotos/clarice2.jpg" alt="Clarice Nunes"
-                   onerror="this.style.display='none'" />
+      <!-- FOTO -->
+      <div style="display:flex;justify-content:center;padding-bottom:3rem;animation:fadeUp 0.7s ease both;">
+        <div class="photo-frame">
+          <div class="photo-circle">
+            <img src="fotos/clarice.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+          </div>
+          <div class="badge-float badge-ceub">
+            <span class="bf-icon">🎓</span>
+            <div>
+              <strong>Engenharia de Software</strong>
+              <span>CEUB · 2º semestre</span>
             </div>
-            <div class="badge-float badge-ceub">
-              <span class="bf-icon">🎓</span>
-              <div>
-                <strong>Engenharia de Software</strong>
-                <span class="label">· 2º semestre · CEUB</span>
-              </div>
-            </div>
-            <div class="badge-float badge-bolt">
-              <span class="bf-icon">🌱</span>
-              <div>
-                <strong>Criadora do Give&amp;Grow</strong>
-                <span class="label">e do PatasDF</span>
-              </div>
+          </div>
+          <div class="badge-float badge-bolt">
+            <span class="bf-icon">🌱</span>
+            <div>
+              <strong>Criadora do Give&Grow</strong>
+              <span>e do PatasDF</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- TEXTO -->
-        <div class="profile-text">
-          <span class="section-eyebrow reveal">Conheça a criadora</span>
-          <h1 class="reveal">
-            Oi, eu sou a<br>
-            <span class="name-teal">Clarice Nunes</span>
-          </h1>
-          <p class="tagline reveal">
-            Estudante de Engenharia de Software em Brasília, apaixonada por comunidade e acredito que a tecnologia existe para gerar impacto real — conectando pessoas, saberes e causas.
-          </p>
-          <div class="criadora-chips reveal">
-            <span class="chip teal">📍 Brasília, DF</span>
-            <span class="chip teal">💻 Engenharia de Software</span>
-            <span class="chip amber">🌱 Criadora do Give&amp;Grow</span>
-            <span class="chip">🐾 PatasDF</span>
-            <span class="chip">🤝 Voluntariado</span>
-          </div>
-          <div class="social-links reveal">
-            <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-btn instagram">📸 Instagram</a>
-            <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-btn linkedin">💼 LinkedIn</a>
-            <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-btn github">🐙 GitHub</a>
-          </div>
+      <!-- TEXTO -->
+      <div class="profile-text">
+        <span class="section-eyebrow reveal">Conheça a criadora</span>
+        <h1 class="reveal">
+          Oi, eu sou a<br>
+          <span class="name-highlight">Clarice Nunes</span>
+        </h1>
+        <p class="tagline reveal">
+          Estudante de Engenharia de Software em Brasília, apaixonada por comunidade. Acredito que a tecnologia existe para gerar impacto real — conectando pessoas, saberes e causas.
+        </p>
+        <div class="criadora-chips reveal">
+          <span class="chip chip-sage">📍 Brasília, DF</span>
+          <span class="chip chip-sage">💻 Engenharia de Software</span>
+          <span class="chip" style="background:var(--gold-pale);color:var(--gold);border-color:transparent;">🌱 Give&Grow</span>
+          <span class="chip">🐾 PatasDF</span>
+          <span class="chip">🤝 Voluntariado</span>
         </div>
-
+        <div class="social-links reveal">
+          <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-btn">📸 Instagram</a>
+          <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-btn">💼 LinkedIn</a>
+          <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-btn">🐙 GitHub</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <!-- DIVISOR -->
+  <div style="height:1px;background:var(--border);max-width:1200px;margin:0 auto;"></div>
 
-  <!-- POR QUE CRIEI OS PROJETOS -->
-  <section class="content-section">
+  <!-- POR QUE CRIEI -->
+  <section class="content-section" style="padding:80px 2rem;">
     <div class="container">
       <div class="two-col">
         <div>
           <span class="section-eyebrow reveal">A motivação</span>
-          <h2 class="section-heading reveal">Por que criei o Give&amp;Grow</h2>
+          <h2 class="section-heading reveal">Por que criei o Give&Grow</h2>
           <div class="pullquote reveal">
             <p>"Vejo gente querendo ajudar, mas sem saber como. Vejo gente querendo aprender, mas sem acesso. Então decidi criar um lugar que conecta essas duas partes."</p>
             <cite>— Clarice Nunes</cite>
           </div>
-          <p class="body-text reveal">
-            O Give&amp;Grow nasceu da percepção de que existe um gap enorme entre pessoas que têm algo a oferecer — um tempo, uma habilidade, uma vontade — e causas que precisam exatamente disso. Falta um espaço simples, gratuito e sem burocracia que una essas pontas.
-          </p>
-          <p class="body-text reveal">
-            A ideia é criar uma rede de troca real: inglês, tecnologia, artesanato, voluntariado com ONGs, visitas a lares de idosos — tudo organizado em eventos semanais e mensais, online e presencial, no Distrito Federal.
-          </p>
+          <p class="body-text reveal">O Give&Grow nasceu da percepção de que existe um gap enorme entre pessoas que têm algo a oferecer — um tempo, uma habilidade, uma vontade — e causas que precisam exatamente disso. Falta um espaço simples, gratuito e sem burocracia que una essas pontas.</p>
+          <p class="body-text reveal">A ideia é criar uma rede de troca real: inglês, tecnologia, artesanato, voluntariado com ONGs, visitas a lares de idosos — tudo organizado em eventos semanais e mensais, online e presencial, no Distrito Federal.</p>
         </div>
 
         <div>
@@ -134,7 +108,7 @@
               <div class="tl-dot"></div>
               <span class="tl-label">O começo</span>
               <h4>Vontade de contribuir</h4>
-              <p>Sempre participei de trabalhos voluntários, mas a rotina corrida de faculdade tornava difícil dedicar tempo. Comecei a pensar em como usar tecnologia para facilitar esse processo para mim e para outras pessoas.</p>
+              <p>Sempre participei de trabalhos voluntários, mas a rotina corrida de faculdade tornava difícil dedicar tempo. Comecei a pensar em como usar tecnologia para facilitar esse processo.</p>
             </div>
             <div class="tl-item">
               <div class="tl-dot"></div>
@@ -145,8 +119,8 @@
             <div class="tl-item">
               <div class="tl-dot"></div>
               <span class="tl-label">A expansão</span>
-              <h4>Give&amp;Grow — algo maior</h4>
-              <p>Percebi que o mesmo problema existia em outras causas: gente querendo ajudar idosos, ensinar inglês, fazer crochê, apoiar o meio ambiente — sem saber onde. O Give&amp;Grow é a resposta para isso.</p>
+              <h4>Give&Grow — algo maior</h4>
+              <p>Percebi que o mesmo problema existia em outras causas: gente querendo ajudar idosos, ensinar inglês, fazer crochê, apoiar o meio ambiente — sem saber onde.</p>
             </div>
             <div class="tl-item">
               <div class="tl-dot"></div>
@@ -160,53 +134,43 @@
     </div>
   </section>
 
-  <!-- MINHA HISTÓRIA COM ANIMAIS -->
-  <section class="content-section alt">
+  <!-- ANIMAIS -->
+  <section class="content-section alt" style="padding:80px 2rem;">
     <div class="container">
       <span class="section-eyebrow reveal">Minha história</span>
       <h2 class="section-heading reveal">Animais que marcaram minha vida</h2>
-      <p class="body-text reveal" style="max-width:600px;margin-bottom:2.5rem;">
-        Sempre gostei muito de animais. Eles me ensinaram sobre amor incondicional, presença e a importância de cada vida — por menor que pareça.
-      </p>
-      <div class="two-col reveal">
-        <div class="pet-cards">
+      <p class="body-text reveal" style="max-width:600px;margin-bottom:2.5rem;">Sempre gostei muito de animais. Eles me ensinaram sobre amor incondicional, presença e a importância de cada vida — por menor que pareça.</p>
+      <div class="two-col">
+        <div class="pet-cards reveal">
           <div class="pet-card memorial">
-            <div class="pet-emoji" style="padding:0;overflow:hidden;width:80px;height:80px;border-radius:var(--r-md);flex-shrink:0;">
-              <img src="fotos/bolt.jpg" alt="Bolt" style="width:100%;height:100%;object-fit:contain;object-position:center center;">
+            <div class="pet-emoji">
+              <img src="fotos/bolt.jpg" alt="Bolt" onerror="this.style.display='none';this.parentElement.innerHTML='🐶';">
             </div>
             <div class="pet-info">
-              <p class="pet-meta">Vira-lata · Médio porte · In memoriam 🌿</p>
+              <p class="pet-meta">Vira-lata · In memoriam 🌿</p>
               <h4>Bolt</h4>
               <p>Meu primeiro cachorro adotado. Um vira-lata cheio de energia e personalidade que me ensinou desde cedo que amor não tem raça.</p>
             </div>
           </div>
           <div class="pet-card memorial">
-            <div class="pet-emoji" style="padding:0;overflow:hidden;width:80px;height:80px;border-radius:var(--r-md);flex-shrink:0;">
-              <img src="fotos/max.jpg" alt="Max" style="width:100%;height:100%;object-fit:contain;object-position:center center;">
+            <div class="pet-emoji">
+              <img src="fotos/max.jpg" alt="Max" onerror="this.style.display='none';this.parentElement.innerHTML='🐕';">
             </div>
             <div class="pet-info">
-              <p class="pet-meta">Vira-lata · Médio porte · In memoriam 🌿</p>
+              <p class="pet-meta">Vira-lata · In memoriam 🌿</p>
               <h4>Max</h4>
-              <p>Me acompanhou durante meu intercâmbio e nos momentos mais difíceis. A sua partida foi o que me deu coragem de transformar a dor em ação e criar o PatasDF.</p>
+              <p>Me acompanhou durante meu intercâmbio e nos momentos mais difíceis. Sua partida foi o que me deu coragem de criar o PatasDF.</p>
             </div>
           </div>
         </div>
 
         <div>
-          <p class="body-text">
-            Ter vivido com o Bolt e a Max me mostrou de perto o quanto um animal resgatado transforma uma casa em lar. São dois vira-latas sem pedigree — que foram tudo.
-          </p>
-          <p class="body-text" style="margin-top:1rem;">
-            Quando o Bolt partiu, eu estava fora do Brasil — e foi a Max quem sentiu minha dor. Com a partida dela, surgiu uma vontade grande de fazer algo. Não deixar que a dor ficasse parada.
-          </p>
-          <p class="body-text" style="margin-top:1rem;">
-            O PatasDF começou como uma forma de honrá-los. E o Give&amp;Grow cresceu como a visão maior: usar tecnologia para conectar pessoas e causas que importam — animais, idosos, educação, comunidade.
-          </p>
-          <div style="margin-top:2rem;padding:1.5rem;background:var(--gold-warm);border-radius:var(--r-lg);border:1px solid rgba(200,150,60,.2);">
-            <p style="font-size:14px;color:var(--bark-mid);font-weight:600;margin-bottom:.5rem;">🌿 Em memória do Bolt &amp; da Max</p>
-            <p style="font-size:13px;color:var(--bark-soft);font-weight:300;line-height:1.7;">
-              "Obrigada por me ensinar que amor de cachorro é incondicional. Vocês viraram um projeto que pode ajudar muitos animais — e muito mais."
-            </p>
+          <p class="body-text reveal">Ter vivido com o Bolt e a Max me mostrou de perto o quanto um animal resgatado transforma uma casa em lar. São dois vira-latas sem pedigree — que foram tudo.</p>
+          <p class="body-text reveal" style="margin-top:1rem;">Quando o Bolt partiu, eu estava fora do Brasil — e foi a Max quem sentiu minha dor. Com a partida dela, surgiu uma vontade grande de fazer algo. Não deixar que a dor ficasse parada.</p>
+          <p class="body-text reveal" style="margin-top:1rem;">O PatasDF começou como uma forma de honrá-los. E o Give&Grow cresceu como a visão maior: usar tecnologia para conectar pessoas e causas que importam.</p>
+          <div class="reveal" style="margin-top:2rem;padding:1.5rem;background:var(--gold-pale);border-radius:var(--r-lg);border:1.5px solid rgba(196,146,42,0.2);">
+            <p style="font-size:13px;color:var(--ink-soft);font-weight:600;margin-bottom:.5rem;">🌿 Em memória do Bolt &amp; da Max</p>
+            <p style="font-size:13px;color:var(--ink-soft);font-weight:300;line-height:1.75;font-style:italic;">"Obrigada por me ensinar que amor de cachorro é incondicional. Vocês viraram um projeto que pode ajudar muitos animais — e muito mais."</p>
           </div>
         </div>
       </div>
@@ -214,37 +178,33 @@
   </section>
 
   <!-- SOBRE O PROJETO -->
-  <section class="content-section">
+  <section class="content-section" style="padding:80px 2rem;">
     <div class="container">
       <div class="two-col reverse">
         <div>
           <span class="section-eyebrow reveal">Projeto pessoal</span>
           <h2 class="section-heading reveal">Tecnologia a serviço da comunidade</h2>
-          <p class="body-text reveal">
-            O Give&amp;Grow e o PatasDF são desenvolvidos como projetos pessoais durante o meu curso de <strong>Engenharia de Software no CEUB</strong>, conectando o aprendizado técnico da faculdade com problemas reais da comunidade do Distrito Federal.
-          </p>
-          <p class="body-text reveal" style="margin-top:1rem;">
-            A proposta é usar ferramentas gratuitas e acessíveis para criar plataformas que qualquer pessoa possa usar sem custo — sem precisar criar conta, sem burocracia.
-          </p>
-          <div style="display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;" class="reveal">
-            <div style="text-align:center;">
-              <div style="font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:var(--sage);letter-spacing:-1px;">100%</div>
-              <div style="font-size:12px;color:var(--bark-soft);">Gratuito</div>
+          <p class="body-text reveal">O Give&Grow e o PatasDF são desenvolvidos como projetos pessoais durante o meu curso de <strong>Engenharia de Software</strong>, conectando o aprendizado técnico da faculdade com problemas reais da comunidade do Distrito Federal.</p>
+          <p class="body-text reveal" style="margin-top:1rem;">A proposta é usar ferramentas gratuitas e acessíveis para criar plataformas que qualquer pessoa possa usar sem custo — sem precisar criar conta, sem burocracia.</p>
+          <div class="stats-mini reveal" style="margin-top:2rem;">
+            <div>
+              <div class="stat-mini-num">100%</div>
+              <div class="stat-mini-label">Gratuito</div>
             </div>
-            <div style="text-align:center;">
-              <div style="font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:var(--sage);letter-spacing:-1px;">DF</div>
-              <div style="font-size:12px;color:var(--bark-soft);">Foco local</div>
+            <div>
+              <div class="stat-mini-num">DF</div>
+              <div class="stat-mini-label">Foco local</div>
             </div>
-            <div style="text-align:center;">
-              <div style="font-family:'Fraunces',serif;font-size:2.5rem;font-weight:700;color:var(--sage);letter-spacing:-1px;">∞</div>
-              <div style="font-size:12px;color:var(--bark-soft);">Escalável</div>
+            <div>
+              <div class="stat-mini-num">∞</div>
+              <div class="stat-mini-label">Escalável</div>
             </div>
           </div>
         </div>
 
         <div>
           <span class="section-eyebrow reveal">Tecnologias</span>
-          <h2 class="section-heading reveal" style="font-size:1.6rem;">O que aprendi construindo esses projetos</h2>
+          <h2 class="section-heading reveal" style="font-size:1.8rem;">O que aprendi construindo esses projetos</h2>
           <div class="skills-grid reveal">
             <div class="skill-chip">HTML &amp; CSS</div>
             <div class="skill-chip">JavaScript</div>
@@ -257,23 +217,21 @@
             <div class="skill-chip">Acessibilidade</div>
             <div class="skill-chip">Git</div>
           </div>
-          <p class="body-text reveal" style="margin-top:1.5rem;">
-            Cada peça foi uma oportunidade de aprender algo novo — desde automações no Google Apps Script até pensar na experiência de quem usa o site pelo celular, na rua, cadastrando um animal que acabou de encontrar.
-          </p>
+          <p class="body-text reveal" style="margin-top:1.5rem;">Cada peça foi uma oportunidade de aprender algo novo — desde automações no Google Apps Script até pensar na experiência de quem usa o site pelo celular.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA CONTATO -->
+  <!-- CONTACT CTA -->
   <div class="contact-cta">
     <h2>Vamos conversar?</h2>
-    <p>Tem alguma sugestão, quer colaborar com o Give&amp;Grow ou simplesmente quer dizer oi? Entra em contato!</p>
+    <p>Tem alguma sugestão, quer colaborar com o Give&Grow ou simplesmente quer dizer oi? Entra em contato!</p>
     <div class="contact-cta-links">
       <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">📸 Instagram</a>
       <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="btn-contact primary">💼 LinkedIn</a>
       <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="btn-contact ghost">🐙 GitHub</a>
-      <a href="index.html#participar" class="btn-contact ghost">🌱 Participar do Give&amp;Grow</a>
+      <a href="index.html#participar" class="btn-contact ghost">🌱 Participar do Give&Grow</a>
     </div>
   </div>
 
@@ -281,7 +239,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><h3>Give&amp;Grow</h3></a>
+        <a href="index.html" class="footer-logo">Give<em>&</em>Grow</a>
         <p>Comunidade gratuita de troca, aprendizado e voluntariado no Distrito Federal.</p>
       </div>
       <div class="footer-col">
@@ -304,26 +262,21 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Give&amp;Grow · Engenharia de Software · CEUB · Brasília</span>
-      <span>Feito com 🌱 por <a href="sobre.html">Clarice Nunes</a></span>
+      <span>© 2025 Give&Grow · Brasília</span>
+      <span>Feito com 🌱 por <a href="sobre.html">Clarice Nunes · Engenharia de Software</a></span>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 55);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.querySelectorAll('#navLinks a').forEach(l =>
-      l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
-    );
+    document.querySelectorAll('#navLinks a').forEach(l => l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((e,i) => { if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);ro.unobserve(e.target);} });
+    }, {threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   </script>
 </body>
 </html>

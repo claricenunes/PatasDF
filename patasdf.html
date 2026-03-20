@@ -4,148 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PatasDF — Animais Perdidos no Distrito Federal</title>
-  <meta name="description" content="Plataforma gratuita para ajudar a reencontrar animais perdidos no DF. Cadastre um animal perdido ou informe que encontrou um." />
+  <meta name="description" content="Plataforma gratuita para ajudar a reencontrar animais perdidos no DF." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-
   <style>
-    /* ── Polish ── */
-    html { -webkit-font-smoothing: antialiased; }
-    ::selection { background: rgba(61,107,79,0.2); color: var(--bark); }
-
-    /* ── Logo h3 ── */
-    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; }
-    .logo h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; color: var(--bark); }
-    footer .logo h3 { color: white; }
-
-    /* ── Variáveis locais não cobertas pelo styles.css ── */
-    :root {
-      --cream2: #F5F0E8;
-      --border-sm: rgba(44,31,20,0.08);
-      --border-md: rgba(44,31,20,0.14);
+    .nav-back-gg {
+      background: var(--sage-pale) !important;
+      color: var(--sage) !important;
+      padding: 6px 14px !important;
+      border-radius: 100px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      border: 1.5px solid rgba(74,124,89,0.22) !important;
     }
-
-    /* ── Back link ── */
-    .back-link-wrap { background: var(--sage-pale); border-bottom: 1px solid var(--sage-light); padding: 0.7rem 2rem; }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--sage); text-decoration: none; transition: gap 0.2s; }
-    .back-link:hover { gap: 10px; }
-
-    /* ── Hero blobs (verde para PatasDF) ── */
-    .hero-blob-1 { background: rgba(61,107,79,0.13); }
-    .hero-blob-2 { background: rgba(200,150,60,0.10); }
-    .hero-blob-3 { background: rgba(61,107,79,0.08); }
-
-    /* ── Hero badge (verde) ── */
-    .hero-badge { background: var(--sage-pale); border: 1.5px solid var(--sage-light); color: var(--sage); font-weight: 700; animation: badgePulse 3s ease-in-out infinite; }
-    @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(61,107,79,0.15)} 50%{box-shadow:0 0 0 8px rgba(61,107,79,0)} }
-
-    /* ── Underline verde ── */
-    .underline-word::after { background: var(--sage); }
-
-    /* ── Nav CTA verde ── */
-    .nav-cta { background: var(--sage) !important; color: #fff !important; }
-    .nav-cta:hover { background: #2d5238 !important; }
-
-    /* ── Stats bar verde ── */
-    .stats-bar { background: var(--sage); display: grid; grid-template-columns: repeat(4,1fr); }
-    .stat-item { padding: 2.25rem 2rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 900; color: white; line-height: 1; letter-spacing: -1.5px; }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 5px; font-weight: 500; }
-
-    /* ── Badges perdido / encontrado ── */
-    .badge-perdido   { background: var(--rust-light) !important; color: var(--rust) !important; }
-    .badge-encontrado { background: var(--gold-warm) !important; color: var(--gold) !important; }
-    .animal-status-badge { background: rgba(253,250,244,0.95); border: 1px solid var(--border); color: var(--bark); }
-
-    /* ── Botão contato animal ── */
-    .btn-contato-main { width: 100%; padding: 11px 20px; border-radius: 50px; font-family: 'Cabinet Grotesk', sans-serif; font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: all 0.25s; background: var(--sage); color: white; }
-    .btn-contato-main:hover { background: #2d5238; transform: translateY(-2px); }
-    .btn-contato-encontrado { background: var(--gold) !important; color: var(--bark) !important; }
-    .btn-contato-encontrado:hover { background: #b5832a !important; }
-
-    /* ── ONGs section ── */
-    .ongs-section { background: var(--cream); }
-    .ongs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 2.5rem; }
-    .ong-card { background: #fff; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 1.75rem; transition: transform 0.3s cubic-bezier(0.34,1.56,.64,1), box-shadow 0.3s; position: relative; overflow: hidden; }
-    .ong-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
-    .ong-card.verde::before  { background: var(--sage); }
-    .ong-card.amarelo::before { background: var(--gold); }
-    .ong-card.laranja::before { background: var(--rust); }
-    .ong-card.azul::before   { background: #2E7D82; }
-    .ong-card:hover { transform: translateY(-7px); box-shadow: 0 20px 60px rgba(44,31,20,0.14); }
-    .ong-card:hover::before { transform: scaleX(1); }
-    .ong-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .ong-name { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
-    .ong-tipo { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 30px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .tipo-verde   { background: var(--sage-pale);  color: var(--sage); }
-    .tipo-amarelo { background: var(--gold-warm);  color: var(--gold); }
-    .tipo-laranja { background: var(--rust-light); color: var(--rust); }
-    .tipo-azul    { background: #E3F4F4; color: #2E7D82; }
-    .ong-desc { font-size: 13px; color: var(--bark-soft); line-height: 1.7; margin-bottom: 1.25rem; }
-    .ong-links { display: flex; gap: 8px; flex-wrap: wrap; }
-    .ong-link { font-size: 12px; font-weight: 400; padding: 5px 14px; border-radius: 30px; border: 1.5px solid var(--border-md); color: var(--bark-soft); text-decoration: none; transition: all 0.2s; }
-    .ong-link:hover { border-color: var(--sage); color: var(--sage); }
-    .ong-link.primary { background: var(--sage); color: white; border-color: var(--sage); }
-    .ong-link.primary:hover { background: #2d5238; }
-
-    /* ── Action card accents: gradient ── */
-    .action-card-accent.accent-sage { background: linear-gradient(90deg, var(--sage), #8ab88c); }
-    .action-card-accent.accent-gold { background: linear-gradient(90deg, var(--gold), #e0b870); }
-
-    /* ── CTA section (verde para PatasDF) ── */
-    .cta-section { background: var(--sage); }
-    .cta-section h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 300; color: white; margin-bottom: 1rem; line-height: 1.2; }
-    .cta-section h2 em { font-style: italic; }
-    .cta-section p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
-
-    /* ── Criadora (verde para PatasDF) ── */
-    .criadora-section { background: var(--warm-white); }
-    .criadora-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: center; }
-    .criadora-text h2 em { color: var(--sage); }
-    .criadora-quote { border-left: 3px solid var(--sage); background: var(--sage-pale); }
-    .criadora-social a:hover { border-color: var(--sage); color: var(--sage); }
-
-    /* ── Community section ── */
-    .community-section { background: var(--cream); }
-
-    /* ── Footer ── */
-    footer { background: #1a3323; }
-
-    /* ── Filtros (verde) ── */
-    .filter-pill { font-weight: 400; }
-    .filter-pill:hover, .filter-pill.active { background: var(--sage); color: #fff; border-color: var(--sage); }
-
-    /* ── Map dots ── */
-    .map-dot.d1 { background: var(--rust); }
-    .map-dot.d2 { background: var(--gold); }
-    .map-dot.d3 { background: var(--sage); }
-    .map-dot.d4 { background: var(--rust); }
-
-    /* ── Responsivo extra ── */
-    @media (max-width: 640px) {
-      .ongs-grid { grid-template-columns: 1fr; }
-      .criadora-layout { grid-template-columns: 1fr; }
+    .nav-back-gg:hover {
+      background: var(--sage) !important;
+      color: white !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- BACK TO GIVE&GROW -->
+  <!-- BACK LINK -->
   <div class="back-link-wrap">
-    <a href="index.html" class="back-link">← Voltar para o Give&amp;Grow</a>
+    <a href="index.html" class="back-link">← Voltar para o Give&Grow</a>
   </div>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#" class="logo"><h3>PatasDF</h3></a>
+      <a href="#" class="logo">
+        <div class="logo-paw">🐾</div>
+        Patas<em>DF</em>
+      </a>
       <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-back-gg">← Give&amp;Grow</a></li>
         <li><a href="#animais">Animais</a></li>
         <li><a href="#mapa">Mapa</a></li>
         <li><a href="#ongs">ONGs</a></li>
@@ -156,102 +54,106 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
-    <span class="hero-deco" style="top:12%;left:4%;--r:-15deg">🐾</span>
-    <span class="hero-deco" style="top:72%;left:6%;--r:20deg;font-size:1.4rem">🐾</span>
-    <span class="hero-deco" style="top:18%;right:5%;--r:35deg;font-size:1.8rem">🐾</span>
-    <span class="hero-deco" style="top:65%;right:4%;--r:-8deg;font-size:1.2rem">🐾</span>
-    <span class="hero-deco" style="top:85%;left:35%;--r:10deg;font-size:1rem">🐾</span>
-    <div class="hero-inner">
-      <div class="hero-badge">🐾 Projeto comunitário — Distrito Federal</div>
-      <h1>
-        Cada animal perdido<br>
-        merece ser <span class="underline-word"><em>encontrado</em></span>
-      </h1>
-      <p class="hero-sub">Plataforma gratuita para ajudar a reencontrar animais perdidos no DF. Cadastre seu pet desaparecido ou informe que encontrou um animal.</p>
-      <div class="hero-ctas">
-        <a href="LINK_FORMS_PERDI_ANIMAL" target="_blank" rel="noopener" class="btn btn-sage">😢 Perdi meu animal</a>
-        <a href="LINK_FORMS_ENCONTREI_ANIMAL" target="_blank" rel="noopener" class="btn btn-outline">🐾 Encontrei um animal</a>
+  <section style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 2rem 80px;background:var(--cream);">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);opacity:0.4;z-index:0;"></div>
+    <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,89,0.14) 0%,transparent 70%);top:-100px;right:-80px;z-index:0;animation:orbFloat 12s ease-in-out infinite;"></div>
+    <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(196,146,42,0.09) 0%,transparent 70%);bottom:-50px;left:-50px;z-index:0;animation:orbFloat 16s ease-in-out infinite reverse;"></div>
+
+    <div style="max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid var(--border-dark);border-radius:100px;padding:6px 16px 6px 8px;font-size:12px;font-weight:600;color:var(--sage);margin-bottom:2rem;box-shadow:var(--shadow);animation:fadeUp 0.6s ease both;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--sage);animation:dotPulse 2s ease-in-out infinite;"></div>
+          Projeto comunitário · Distrito Federal
+        </div>
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;line-height:1.0;letter-spacing:-2px;color:var(--ink);animation:fadeUp 0.6s 0.1s ease both;">
+          Cada animal perdido<br>merece ser <em style="color:var(--sage);font-style:italic;position:relative;">encontrado</em>
+        </h1>
+        <p style="font-size:17px;font-weight:300;line-height:1.75;color:var(--ink-soft);max-width:440px;margin:1.5rem 0 2.5rem;animation:fadeUp 0.6s 0.2s ease both;">Plataforma gratuita para reencontrar animais perdidos no DF. Cadastre seu pet desaparecido ou informe que encontrou um animal.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 0.6s 0.3s ease both;">
+          <a href="#ajudar" class="btn-sage">😢 Perdi meu animal</a>
+          <a href="#ajudar" class="btn-secondary">🐾 Encontrei um animal</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>rolar</span>
-      <div class="scroll-track"></div>
+      <div style="position:relative;height:420px;">
+        <div style="position:absolute;top:0;left:10%;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 8s ease-in-out infinite;">
+          <span style="font-size:1.8rem;display:block;margin-bottom:0.6rem;">🐶</span>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Bolinha — Perdido</div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Asa Sul · desde 18/03</div>
+          <span style="display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:var(--rust-pale);color:var(--rust);text-transform:uppercase;letter-spacing:0.07em;">Perdido</span>
+        </div>
+        <div style="position:absolute;top:35%;right:0;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 10s 2s ease-in-out infinite;">
+          <span style="font-size:1.8rem;display:block;margin-bottom:0.6rem;">🐱</span>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Mimi — Encontrada</div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Taguatinga · aguardando dono</div>
+          <span style="display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:var(--gold-pale);color:var(--gold);text-transform:uppercase;letter-spacing:0.07em;">Encontrado</span>
+        </div>
+        <div style="position:absolute;bottom:5%;left:5%;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 9s 1s ease-in-out infinite;">
+          <span style="font-size:1.8rem;display:block;margin-bottom:0.6rem;">🏥</span>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">6 ONGs mapeadas</div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Organizações no DF</div>
+          <span style="display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:var(--sage-pale);color:var(--sage);text-transform:uppercase;letter-spacing:0.07em;">Ver lista</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="strip-inner" id="stripInner">
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Perdido · Asa Sul</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Encontrado · Taguatinga</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Perdido · Ceilândia</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Encontrado · Guará</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Pipoca</div><div class="si-info">Perdido · Sobradinho</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Nala</div><div class="si-info">Encontrado · Samambaia</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Ajude a reencontrar</div><div class="si-info">Cadastre um animal →</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Bolinha</div><div class="si-info">Perdido · Asa Sul</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mimi</div><div class="si-info">Encontrado · Taguatinga</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐶</span><div><div class="si-name">Thor</div><div class="si-info">Perdido · Ceilândia</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐱</span><div><div class="si-name">Mingau</div><div class="si-info">Encontrado · Guará</div></div></div>
-      <div class="strip-sep">·</div>
-      <div class="strip-item"><span class="si-emoji">🐾</span><div><div class="si-name">Ajude a reencontrar</div><div class="si-info">Cadastre um animal →</div></div></div>
-      <div class="strip-sep">·</div>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">🐶 Bolinha · Perdido · Asa Sul</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐱 Mimi · Encontrada · Taguatinga</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐶 Thor · Perdido · Ceilândia</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐱 Mingau · Encontrado · Guará</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐶 Pipoca · Perdida · Sobradinho</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐱 Nala · Encontrada · Samambaia</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 Ajude a reencontrar · Cadastre um animal →</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐶 Bolinha · Perdido · Asa Sul</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐱 Mimi · Encontrada · Taguatinga</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐶 Thor · Perdido · Ceilândia</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐱 Mingau · Encontrado · Guará</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 Ajude a reencontrar · Cadastre um animal →</span><span class="ticker-sep">·</span>
     </div>
   </div>
 
   <!-- STATS -->
-  <div class="stats-bar">
+  <div class="stats-strip">
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
     <div class="stat-item"><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div>
     <div class="stat-item"><div class="stat-num">24h</div><div class="stat-label">Sempre disponível</div></div>
-    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite de cadastros</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite</div></div>
   </div>
 
   <!-- AÇÃO PRINCIPAL -->
-  <section class="section-pad action-section" id="ajudar">
+  <section class="section action-section" id="ajudar">
     <div class="container">
       <span class="label reveal">O que você precisa?</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;">Como posso<br><em style="color:var(--sage)">ajudar?</em></h2>
-      <p class="lead reveal" style="max-width:520px;">Escolha uma das opções abaixo. Você será direcionado ao formulário do Google — leva menos de 2 minutos.</p>
+      <p class="lead reveal" style="max-width:520px;">Escolha uma das opções abaixo. Você será direcionado ao formulário — leva menos de 2 minutos.</p>
       <div class="action-grid">
         <div class="action-card reveal">
           <div class="action-card-accent accent-sage"></div>
-          <div class="action-card-icon-wrap icon-sage">😢</div>
+          <div class="action-card-icon icon-sage">😢</div>
           <div class="action-card-title">Perdi meu animal</div>
-          <p class="action-card-desc">Seu pet desapareceu? Cadastre aqui com foto, descrição e localização. O animal aparece no mapa e na listagem para que qualquer pessoa do DF possa ajudar a encontrá-lo.</p>
+          <p class="action-card-desc">Seu pet desapareceu? Cadastre aqui com foto, descrição e localização. O animal aparece no mapa e na listagem para que qualquer pessoa do DF possa ajudar.</p>
           <ul class="action-checklist">
             <li><div class="check-dot sage">✓</div> Animal aparece no mapa do DF</li>
             <li><div class="check-dot sage">✓</div> Visível para toda a comunidade</li>
             <li><div class="check-dot sage">✓</div> Contato direto com quem avistar</li>
           </ul>
-          <a href="LINK_FORMS_PERDI_ANIMAL" target="_blank" rel="noopener" class="btn-card-sage">😢 Cadastrar animal perdido →</a>
+          <a href="#" class="btn-card btn-card-sage">😢 Cadastrar animal perdido →</a>
           <p class="action-note">Você será levado ao Google Forms</p>
         </div>
         <div class="action-card reveal">
           <div class="action-card-accent accent-gold"></div>
-          <div class="action-card-icon-wrap icon-gold">🐾</div>
+          <div class="action-card-icon icon-gold">🐾</div>
           <div class="action-card-title">Encontrei um animal</div>
-          <p class="action-card-desc">Encontrou um animal perdido na rua? Cadastre aqui com foto e localização. O dono pode estar procurando — e você ajuda o reencontro acontecer mais rápido.</p>
+          <p class="action-card-desc">Encontrou um animal perdido? Cadastre com foto e localização. O dono pode estar procurando — e você ajuda o reencontro acontecer mais rápido.</p>
           <ul class="action-checklist">
             <li><div class="check-dot gold">✓</div> Foto e localização do achado</li>
             <li><div class="check-dot gold">✓</div> Aparece na listagem de encontrados</li>
             <li><div class="check-dot gold">✓</div> Dono entra em contato direto</li>
           </ul>
-          <a href="LINK_FORMS_ENCONTREI_ANIMAL" target="_blank" rel="noopener" class="btn-card-gold">🐾 Cadastrar animal encontrado →</a>
+          <a href="#" class="btn-card btn-card-gold">🐾 Cadastrar animal encontrado →</a>
           <p class="action-note">Você será levado ao Google Forms</p>
         </div>
       </div>
@@ -259,19 +161,19 @@
         <div class="data-note-icon">🔒</div>
         <div>
           <strong>Seus dados ficam protegidos</strong>
-          <p>Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente — os dados ficam na infraestrutura segura do Google. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+          <p>Os formulários são hospedados no Google Forms. O PatasDF não armazena suas informações diretamente. Nenhum dado é vendido ou compartilhado com terceiros.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ANIMALS -->
-  <section class="section-pad animals-section" id="animais">
+  <section class="section" id="animais" style="background:var(--white);padding-top:60px;">
     <div class="container">
-      <div class="animals-header">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;">
         <div>
           <span class="label reveal">Animais cadastrados</span>
-          <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);">Perdidos e encontrados<br>no DF</h2>
+          <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);">Perdidos e encontrados<br><em style="color:var(--sage)">no DF</em></h2>
         </div>
         <div class="filter-pills reveal">
           <button class="filter-pill active" onclick="filterAnimals('todos', this)">Todos</button>
@@ -279,35 +181,37 @@
           <button class="filter-pill" onclick="filterAnimals('encontrado', this)">🐾 Encontrados</button>
         </div>
       </div>
-      <div id="animaisLoading"><div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div><p>Carregando animais...</p></div>
+      <div id="animaisLoading" style="text-align:center;padding:4rem;color:var(--ink-soft);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🐾</div>
+        <p style="font-weight:300;">Carregando animais...</p>
+      </div>
       <div class="animals-grid" id="animalsGrid" style="display:none;"></div>
-      <div class="empty-state" id="emptyState"><p style="font-size:2rem;margin-bottom:.5rem;">🔍</p><p>Nenhum animal encontrado com esse filtro.</p></div>
-      <div id="animaisErro" style="display:none;">
-        <p style="font-size:2rem;margin-bottom:.5rem;">😔</p>
-        <p style="color:var(--bark-soft);">Não foi possível carregar os animais agora.</p>
-        <button onclick="carregarAnimais()" style="margin-top:1rem;border:1.5px solid var(--border-md);background:transparent;border-radius:24px;padding:8px 20px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;">Tentar novamente</button>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <span class="empty-icon">🔍</span>
+        <h3>Nenhum animal encontrado</h3>
+        <p>Tente outro filtro.</p>
       </div>
     </div>
   </section>
 
   <!-- MAPA -->
-  <section class="section-pad map-section" id="mapa">
+  <section class="section map-section" id="mapa">
     <div class="container">
       <span class="label reveal">Mapa</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br>os animais</h2>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br><em style="color:var(--sage)">os animais</em></h2>
       <p class="lead reveal" style="max-width:480px;">Cada marcador é um animal perdido ou encontrado no DF. Integrado com Google My Maps — atualizado em tempo real.</p>
       <div class="map-wrapper reveal">
         <div class="map-placeholder">
           <div class="map-grid"></div>
-          <div class="map-dot d1">🐶</div>
-          <div class="map-dot d2">🐱</div>
-          <div class="map-dot d3">🐶</div>
-          <div class="map-dot d4">🐱</div>
+          <div class="map-dot d1"><span>🐶</span></div>
+          <div class="map-dot d2"><span>🐱</span></div>
+          <div class="map-dot d3"><span>🐶</span></div>
+          <div class="map-dot d4"><span>🐱</span></div>
           <div class="map-placeholder-content">
             <div style="font-size:3.5rem;margin-bottom:1rem;">🗺️</div>
             <h3>Mapa do Distrito Federal</h3>
             <p>Aqui será exibido o Google My Maps com todos os animais perdidos e encontrados em tempo real.</p>
-            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn btn-rust" style="margin-top:1.5rem;">Criar mapa no Google My Maps →</a>
+            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn-sage" style="margin-top:1.5rem;display:inline-flex;">Criar mapa no Google My Maps →</a>
           </div>
         </div>
       </div>
@@ -315,71 +219,53 @@
   </section>
 
   <!-- ONGs -->
-  <section class="section-pad ongs-section" id="ongs">
+  <section class="section ongs-section" id="ongs">
     <div class="container">
       <span class="label reveal">Conheça e apoie</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">ONGs que fazem<br><em style="color:var(--sage)">a diferença</em></h2>
-      <p class="lead reveal" style="max-width:520px;">Organizações do DF e do Brasil que cuidam dos animais. Conheça, apoie e compartilhe — qualquer ajuda faz diferença.</p>
+      <p class="lead reveal" style="max-width:520px;">Organizações do DF que cuidam dos animais. Conheça, apoie e compartilhe.</p>
       <div class="ongs-grid">
         <div class="ong-card verde reveal">
-          <div class="ong-icon">🐾</div>
+          <span class="ong-icon">🐾</span>
           <div class="ong-name">SOS Animais DF</div>
           <span class="ong-tipo tipo-verde">Resgate</span>
           <p class="ong-desc">Organização voluntária que resgata animais em situação de risco no Distrito Federal, oferece cuidados veterinários e busca lares responsáveis.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">Instagram</a>
-          </div>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">Instagram</a></div>
         </div>
         <div class="ong-card amarelo reveal">
-          <div class="ong-icon">🏥</div>
+          <span class="ong-icon">🏥</span>
           <div class="ong-name">Vet Solidário DF</div>
           <span class="ong-tipo tipo-amarelo">Saúde animal</span>
           <p class="ong-desc">Clínica veterinária popular com atendimento a preços acessíveis para tutores de baixa renda no DF. Castrações, vacinas e consultas com desconto.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">Site</a>
-          </div>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">Site</a></div>
         </div>
         <div class="ong-card laranja reveal">
-          <div class="ong-icon">🏠</div>
+          <span class="ong-icon">🏠</span>
           <div class="ong-name">Patinhas Felizes</div>
           <span class="ong-tipo tipo-laranja">Abrigo</span>
-          <p class="ong-desc">Abrigo comunitário no Gama que cuida de mais de 80 animais resgatados. Sempre precisam de voluntários, ração, medicamentos e itens de limpeza.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">Doações</a>
-          </div>
+          <p class="ong-desc">Abrigo comunitário no Gama que cuida de mais de 80 animais resgatados. Precisam de voluntários, ração, medicamentos e itens de limpeza.</p>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">Doações</a></div>
         </div>
         <div class="ong-card azul reveal">
-          <div class="ong-icon">🌿</div>
+          <span class="ong-icon">🌿</span>
           <div class="ong-name">Fauna Livre DF</div>
           <span class="ong-tipo tipo-azul">Silvestre</span>
           <p class="ong-desc">Grupo dedicado à proteção e reabilitação de animais silvestres no DF. Recebem animais feridos e realizam soltura quando recuperados.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">WhatsApp</a>
-          </div>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">WhatsApp</a></div>
         </div>
         <div class="ong-card verde reveal">
-          <div class="ong-icon">🐕</div>
+          <span class="ong-icon">🐕</span>
           <div class="ong-name">Adote DF</div>
           <span class="ong-tipo tipo-verde">Adoção</span>
-          <p class="ong-desc">Plataforma que organiza feiras de adoção mensais em diferentes regiões do DF. Conecta animais resgatados por protetores independentes a famílias responsáveis.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">Próxima feira</a>
-          </div>
+          <p class="ong-desc">Organiza feiras de adoção mensais em diferentes regiões do DF. Conecta animais resgatados por protetores independentes a famílias responsáveis.</p>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">Próxima feira</a></div>
         </div>
         <div class="ong-card amarelo reveal">
-          <div class="ong-icon">💛</div>
+          <span class="ong-icon">💛</span>
           <div class="ong-name">Protetores do Cerrado</div>
           <span class="ong-tipo tipo-amarelo">Proteção</span>
           <p class="ong-desc">Rede de protetores independentes do DF que se unem para castrar, vacinar e cuidar de colônias de animais de rua nas comunidades.</p>
-          <div class="ong-links">
-            <a href="#" class="ong-link primary">Conhecer →</a>
-            <a href="#" class="ong-link">Voluntariar</a>
-          </div>
+          <div class="ong-links"><a href="#" class="ong-link primary">Conhecer →</a><a href="#" class="ong-link">Voluntariar</a></div>
         </div>
       </div>
       <div class="data-note reveal" style="margin-top:2rem;">
@@ -393,93 +279,94 @@
   </section>
 
   <!-- CRIADORA -->
-  <section class="criadora-section section-pad" id="sobre-criadora">
+  <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
-      <div class="criadora-layout">
-        <div class="criadora-frame reveal">
+      <div class="criadora-inner">
+        <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
-            <img src="fotos/clarice.jpg" alt="Clarice Nunes"
-                 style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"
-                 onerror="this.style.display='none';document.getElementById('patas-ph').style.display='flex';">
-            <div id="patas-ph" class="criadora-ph" style="display:none;">
-              <span class="ph-icon">👩‍💻</span><p>Foto da Clarice</p>
-            </div>
+            <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
           </div>
-          <div class="criadora-badge b2"><span>🎓</span><div><strong>CEUB · Eng. de Software</strong><span class="bl">2º semestre</span></div></div>
-          <div class="criadora-badge b1"><span>🐾</span><div><strong>Criadora do PatasDF</strong><span class="bl">em memória do Bolt &amp; Max</span></div></div>
+          <div class="criadora-badge cb1">
+            <span class="cb-emoji">🐾</span>
+            <div class="cb-text"><strong>Criadora do PatasDF</strong><span>em memória do Bolt &amp; Max</span></div>
+          </div>
+          <div class="criadora-badge cb2">
+            <span class="cb-emoji">🎓</span>
+            <div class="cb-text"><strong>CEUB · Eng. de Software</strong><span>2º semestre</span></div>
+          </div>
         </div>
         <div class="criadora-text">
           <span class="label reveal">Quem está por trás</span>
-          <h2 class="reveal">Olá, eu sou a<br><em>Clarice Nunes</em></h2>
+          <h2 class="reveal">Olá, eu sou<br><em>Clarice Nunes</em></h2>
           <div class="criadora-chips reveal">
-            <span class="chip sage">🏫 CEUB · Brasília</span>
-            <span class="chip sage">💻 Engenharia de Software</span>
-            <span class="chip">🤝 Voluntariado</span>
+            <span class="chip chip-sage">🏫 CEUB · Brasília</span>
+            <span class="chip chip-sage">💻 Engenharia de Software</span>
+            <span class="chip">🐾 Causa animal</span>
           </div>
-          <div class="criadora-quote reveal">
-            <p>"Queria usar a tecnologia para gerar algum impacto social. Perder um animal é uma das dores mais difíceis — então pensei: e se houvesse um lugar simples para ajudar as famílias a reencontrar seus pets no DF?"</p>
+          <div class="quote-block reveal">
+            <p>"Perder um animal é uma das dores mais difíceis — então pensei: e se houvesse um lugar simples para ajudar famílias a reencontrar seus pets no DF?"</p>
           </div>
-          <p class="bio reveal">Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante o meu intercâmbio. A partida recente da Max me tocou e me deu coragem de transformar a dor em ação.</p>
-          <p class="bio reveal">O PatasDF nasceu da vontade de contribuir com a comunidade mesmo com a rotina corrida — juntando tecnologia com uma causa que me move de verdade.</p>
+          <p class="bio-text reveal">Sempre gostei muito de animais. Tive o Bolt, um vira-lata adotado cheio de energia, e a Max, que me acompanhou durante meu intercâmbio. A partida da Max me deu coragem de transformar a dor em ação.</p>
+          <p class="bio-text reveal">O PatasDF nasceu da vontade de contribuir com a comunidade unindo tecnologia com uma causa que me move de verdade.</p>
           <div class="criadora-social reveal">
-            <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener">📸 Instagram</a>
-            <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener">💼 LinkedIn</a>
-            <a href="https://github.com/claricenunes" target="_blank" rel="noopener">🐙 GitHub</a>
+            <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>
+            <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
+            <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn btn-sage reveal" style="margin-top:1.5rem;display:inline-flex;">✨ Conheça mais sobre a minha história →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;"> Conheça mais →</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- COMMUNITY -->
-  <section class="section-pad community-section" id="parte-projeto">
+  <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte</span>
-      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Como posso<br><em style="color:var(--sage)">ajudar?</em></h2>
-      <p class="lead reveal" style="max-width:480px;">Formas de colaborar com o projeto sem custo. Qualquer pessoa pode ajudar um animal a ser encontrado!</p>
-      <div class="community-grid">
-        <div class="community-card reveal">
-          <div class="community-card-num">🌐</div>
-          <h3>Compartilhe nas redes</h3>
-          <p>Quanto mais gente conhecer o PatasDF, mais animais encontram seus donos. Compartilhe o link e ajude a espalhar!</p>
-          <button class="btn-card-sage" onclick="copiarLink()">🔗 Copiar link do site</button>
+      <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Como posso<br><em style="color:var(--sage)">colaborar?</em></h2>
+      <p class="lead reveal" style="max-width:480px;">Formas de colaborar sem custo. Qualquer pessoa pode ajudar um animal a ser encontrado!</p>
+      <div class="comunidade-grid">
+        <div class="comunidade-card reveal">
+          <span class="cc-icon">🌐</span>
+          <div class="cc-title">Compartilhe nas redes</div>
+          <p class="cc-desc">Quanto mais gente conhecer o PatasDF, mais animais encontram seus donos. Compartilhe o link!</p>
+          <button class="cc-btn" onclick="copiarLink()">🔗 Copiar link do site</button>
         </div>
-        <div class="community-card reveal">
-          <div class="community-card-num">💡</div>
-          <h3>Tem uma ideia?</h3>
-          <p>Quer sugerir uma melhoria, uma ONG para adicionar ou uma nova funcionalidade? A criadora está sempre aberta para ouvir.</p>
-          <button class="btn-card-sage" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button>
+        <div class="comunidade-card reveal">
+          <span class="cc-icon">💡</span>
+          <div class="cc-title">Tem uma ideia?</div>
+          <p class="cc-desc">Quer sugerir uma melhoria, uma ONG para adicionar ou nova funcionalidade? A criadora está sempre aberta para ouvir.</p>
+          <button class="cc-btn" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button>
         </div>
-        <div class="community-card reveal">
-          <div class="community-card-num">🤝</div>
-          <h3>Parcerias com ONGs</h3>
-          <p>Representa uma ONG animal que quer ter visibilidade aqui? Entre em contato por email e a gente conversa.</p>
-          <button class="btn-card-sage" onclick="window.location.href='mailto:euclaricenunes@gmail.com'">✉️ Enviar email</button>
+        <div class="comunidade-card reveal">
+          <span class="cc-icon">🤝</span>
+          <div class="cc-title">Parcerias com ONGs</div>
+          <p class="cc-desc">Representa uma ONG animal que quer ter visibilidade aqui? Entre em contato por email.</p>
+          <a class="cc-btn" href="/cdn-cgi/l/email-protection#4b2e3e28272a3922282e253e252e380b2c262a222765282426">✉️ Enviar email</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-section">
-    <div class="cta-blob cta-blob-1"></div>
-    <div class="cta-blob cta-blob-2"></div>
+  <section class="cta-section">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
     <div class="cta-inner">
       <h2>Um clique pode<br><em>reencontrar uma família</em></h2>
       <p>Leva menos de 2 minutos. Cadastre o animal e a comunidade do DF ajuda.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-        <a href="LINK_FORMS_PERDI_ANIMAL" target="_blank" rel="noopener" class="btn btn-sage">😢 Perdi meu animal</a>
-        <a href="LINK_FORMS_ENCONTREI_ANIMAL" target="_blank" rel="noopener" class="btn btn-gold">🐾 Encontrei um animal</a>
+      <div class="cta-btns">
+        <a href="#ajudar" class="btn-white">😢 Perdi meu animal</a>
+        <a href="#ajudar" class="btn-white-outline">🐾 Encontrei um animal →</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo"><h3>PatasDF</h3></a>
+        <a href="#" class="footer-logo">Patas<em>DF</em></a>
         <p>Plataforma gratuita e comunitária para ajudar a reencontrar animais perdidos no Distrito Federal.</p>
       </div>
       <div class="footer-col">
@@ -494,109 +381,97 @@
       <div class="footer-col">
         <h4>Projeto</h4>
         <ul>
-          <li><a href="index.html">Give&amp;Grow</a></li>
+          <li><a href="index.html">Give&Grow</a></li>
           <li><a href="#sobre-criadora">Sobre a Clarice</a></li>
           <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#3c59495f505d4e555f59524952594f7c5b515d5550125f5351">Contato</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2025 PatasDF · Engenharia de Software · CEUB · Brasília</span>
-      <span>Feito com 🐾 por <a href="#sobre-criadora">Clarice Nunes</a></span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
-  <script>
-    const ANIMALS_URL = 'https://raw.githubusercontent.com/SEU_USUARIO/patasdf/main/animais.json';
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const ANIMAIS_EMBUTIDOS = [
+      { id:'ex1', nome:'Bolinha', status:'perdido', tipo:'cachorro', idade:'~2 anos', porte:'Médio', cidade:'Asa Sul', descricao:'Vira-lata caramelo com mancha branca no peito. Desapareceu perto da quadra 308 Sul no dia 18/03.', contato:'(61) 98888-1111' },
+      { id:'ex2', nome:'Mimi', status:'encontrado', tipo:'gato', idade:'~1 ano', porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha listrada, muito dócil. Encontrada na QNF 14. Está sendo cuidada — dono entrar em contato.', contato:'(61) 97777-2222' },
+      { id:'ex3', nome:'Thor', status:'perdido', tipo:'cachorro', idade:'~4 anos', porte:'Grande', cidade:'Ceilândia', descricao:'Pastor alemão preto e dourado. Coleira azul. Fugiu durante fogos de artifício na QNN 28.', contato:'(61) 96666-3333' },
+      { id:'ex4', nome:'Mingau', status:'encontrado', tipo:'gato', idade:'~3 anos', porte:'Médio', cidade:'Guará', descricao:'Gato cinza, castrado. Encontrado no Guará II. Muito tranquilo. Aguardando dono.', contato:'(61) 95555-4444' },
+      { id:'ex5', nome:'Pipoca', status:'perdido', tipo:'cachorro', idade:'~1 ano', porte:'Pequeno', cidade:'Sobradinho', descricao:'Lhasa apso branca. Usava roupa rosa quando desapareceu. Sumiu há 3 dias no centro de Sobradinho.', contato:'(61) 94444-5555' },
+      { id:'ex6', nome:'Nala', status:'encontrado', tipo:'gato', idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia', descricao:'Filhote de gato preto com patinhas brancas. Encontrado na QR 416. Precisando de lar temporário.', contato:'(61) 93333-6666' },
+    ];
     let ANIMALS = [], filtroAtual = 'todos';
 
-    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-    });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 70); revealObserver.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    async function carregarAnimais() {
+      try {
+        const resp = await fetch('animais.json?t=' + Date.now());
+        if (resp.ok) { const d = await resp.json(); if (d.length > 0) ANIMALS = d; else ANIMALS = ANIMAIS_EMBUTIDOS; }
+        else ANIMALS = ANIMAIS_EMBUTIDOS;
+      } catch(e) { ANIMALS = ANIMAIS_EMBUTIDOS; }
+      document.getElementById('animaisLoading').style.display = 'none';
+      document.getElementById('animalsGrid').style.display = '';
+      renderizarCards(filtroAtual);
+    }
 
     function filterAnimals(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      filtroAtual = tipo;
-      renderizarCards(tipo);
-    }
-
-    function copiarLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado!'));
-    }
-
-    const ANIMAIS_EMBUTIDOS = [
-      { id:'ex1', nome:'Bolinha',  status:'perdido',    tipo:'cachorro', idade:'~2 anos',  porte:'Médio',   cidade:'Asa Sul',    descricao:'Vira-lata caramelo com mancha branca no peito. Desapareceu perto da quadra 308 Sul no dia 18/03.',  contato:'(61) 98888-1111' },
-      { id:'ex2', nome:'Mimi',     status:'encontrado', tipo:'gato',     idade:'~1 ano',   porte:'Pequeno', cidade:'Taguatinga', descricao:'Gatinha listrada, muito dócil. Encontrada na QNF 14. Está sendo cuidada — dono entrar em contato.',     contato:'(61) 97777-2222' },
-      { id:'ex3', nome:'Thor',     status:'perdido',    tipo:'cachorro', idade:'~4 anos',  porte:'Grande',  cidade:'Ceilândia',  descricao:'Pastor alemão preto e dourado. Coleira azul. Fugiu durante fogos de artifício na QNN 28.',            contato:'(61) 96666-3333' },
-      { id:'ex4', nome:'Mingau',   status:'encontrado', tipo:'gato',     idade:'~3 anos',  porte:'Médio',   cidade:'Guará',      descricao:'Gato cinza, castrado. Encontrado no Guará II. Muito tranquilo. Aguardando dono.',                     contato:'(61) 95555-4444' },
-      { id:'ex5', nome:'Pipoca',   status:'perdido',    tipo:'cachorro', idade:'~1 ano',   porte:'Pequeno', cidade:'Sobradinho', descricao:'Lhasa apso branca. Usava roupa rosa quando desapareceu. Sumiu há 3 dias no centro de Sobradinho.',    contato:'(61) 94444-5555' },
-      { id:'ex6', nome:'Nala',     status:'encontrado', tipo:'gato',     idade:'~6 meses', porte:'Pequeno', cidade:'Samambaia',  descricao:'Filhote de gato preto com patinhas brancas. Encontrado na QR 416. Precisando de lar temporário.',     contato:'(61) 93333-6666' },
-    ];
-
-    async function carregarAnimais() {
-      const loading = document.getElementById('animaisLoading');
-      const grid    = document.getElementById('animalsGrid');
-      const erro    = document.getElementById('animaisErro');
-      loading.style.display = 'block'; grid.style.display = 'none'; erro.style.display = 'none';
-      let ok = false;
-      try {
-        const resp = await fetch(ANIMALS_URL + '?t=' + Date.now());
-        if (resp.ok) { const dados = await resp.json(); if (dados.length > 0) { ANIMALS = dados; ok = true; } }
-      } catch(e) {}
-      if (!ok) ANIMALS = ANIMAIS_EMBUTIDOS;
-      loading.style.display = 'none'; grid.style.display = '';
-      renderizarCards(filtroAtual);
+      btn.classList.add('active'); filtroAtual = tipo; renderizarCards(tipo);
     }
 
     function renderizarCards(filtro) {
       const grid = document.getElementById('animalsGrid');
-      const emptyState = document.getElementById('emptyState');
+      const empty = document.getElementById('emptyState');
       const lista = filtro === 'todos' ? ANIMALS : ANIMALS.filter(a => a.status === filtro);
-      if (lista.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; }
-      emptyState.style.display = 'none';
-      const bgMap    = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
-      const emojiMap = { cachorro:'🐶', gato:'🐱' };
-      grid.innerHTML = lista.map(a => {
-        const bg    = bgMap[a.tipo]    || '#F5F3EE';
-        const emoji = emojiMap[a.tipo] || '🐾';
+      if (lista.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      const bg = { cachorro:'#FFF3E8', gato:'#F0ECF9' };
+      const em = { cachorro:'🐶', gato:'🐱' };
+      grid.innerHTML = lista.map((a, i) => {
         const isPerdido = a.status === 'perdido';
-        const badgeClass = isPerdido ? 'badge-perdido' : 'badge-encontrado';
-        const badgeLabel = isPerdido ? 'Perdido' : 'Encontrado';
-        const btnClass = isPerdido ? '' : 'btn-contato-encontrado';
-        const btnLabel = isPerdido ? '📞 Avisei que vi este animal' : '🏠 Este é meu animal';
-        const idS = (a.id || '').replace(/'/g,"\\'");
-        return `
-        <div class="animal-card" data-status="${a.status||''}">
-          <div class="animal-img" style="background:${bg};">
-            <div class="animal-img-bg">${emoji}</div>
-            <div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${emoji}</div>
-            <div class="animal-badge ${badgeClass}">${badgeLabel}</div>
-            <div class="animal-status-badge">${a.cidade || ''}</div>
+        const badgeCls = isPerdido ? 'badge-perdido' : 'badge-encontrado';
+        const badgeLbl = isPerdido ? 'Perdido' : 'Encontrado';
+        const btnCls = isPerdido ? '' : 'btn-contato-encontrado';
+        const btnLbl = isPerdido ? '📞 Avisei que vi este animal' : '🏠 Este é meu animal';
+        const ctt = (a.contato || 'Não informado').replace(/'/g, "\\'");
+        return `<div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
+          <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
+            <div class="animal-img-bg">${em[a.tipo]||'🐾'}</div>
+            <div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${em[a.tipo]||'🐾'}</div>
+            <div class="animal-badge ${badgeCls}">${badgeLbl}</div>
+            <div class="animal-status-badge">📍 ${a.cidade||''}</div>
           </div>
           <div class="animal-body">
-            <div class="animal-name">${a.nome || 'Sem nome'}</div>
+            <div class="animal-name">${a.nome||'Sem nome'}</div>
             <div class="animal-meta">
-              ${a.idade  ? `<span class="pill">${a.idade}</span>`  : ''}
-              ${a.porte  ? `<span class="pill">${a.porte}</span>`  : ''}
-              ${a.tipo   ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
+              ${a.idade?`<span class="pill">${a.idade}</span>`:''}
+              ${a.porte?`<span class="pill">${a.porte}</span>`:''}
+              ${a.tipo?`<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>`:''}
             </div>
-            <p class="animal-desc">${a.descricao || ''}</p>
-            <button class="btn-contato-main ${btnClass}" onclick="alert('Entre em contato: ${a.contato || 'Não informado'}')">${btnLabel}</button>
+            <p class="animal-desc">${a.descricao||''}</p>
+            <button class="btn-contato-main ${btnCls}" onclick="alert('Entre em contato: ${ctt}')">${btnLbl}</button>
           </div>
         </div>`;
       }).join('');
     }
 
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('#navLinks a').forEach(l => l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+    function copiarLink() { navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado! 🐾')); }
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     carregarAnimais();
   </script>
 </body>
