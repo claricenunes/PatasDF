@@ -201,7 +201,7 @@
     const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
     if (resp.ok) {
       const d = await resp.json();
-      TODOS = d;
+      if (d.length > 0) TODOS = d;
     }
   } catch(e) {
     console.log('Erro ao carregar animais:', e);
@@ -301,6 +301,7 @@
         const badgeCls = st === 'perdido' ? 'badge-perdido' : st === 'encontrado' ? 'badge-encontrado' : 'badge-encontrado';
         const badgeLbl = st === 'perdido' ? 'Perdido' : 'Encontrado';
         const btnBg    = st === 'perdido' ? 'var(--ink)' : 'var(--gold)';
+        const btnCls   = st === 'perdido' ? '' : 'btn-contato-encontrado';
         const btnLbl   = st === 'perdido'
           ? '📞 Vi este animal — avisar o dono'
           : '🏠 Este é meu animal';
@@ -315,20 +316,28 @@
             <div class="animal-status-badge">📍 ${a.cidade||''}</div>
           </div>
           <div class="animal-body">
-            <div class="animal-name">${a.nome||'Sem nome'}</div>
-            <div class="animal-meta">
-              ${a.idade ? `<span class="pill">${a.idade}</span>` : ''}
-              ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
-              ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
-            </div>
-            <p class="animal-desc">${a.descricao||''}</p>
-            <a class="btn-contato-main"
-   href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}" 
-   target="_blank" 
-   rel="noopener">
-   ${btnLbl}
-</a>
-          </div>
+  <div class="animal-name">${a.nome||'Sem nome'}</div>
+  <div class="animal-meta">
+    ${a.idade ? `<span class="pill">${a.idade}</span>` : ''}
+    ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
+    ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
+    ${a.cor   ? `<span class="pill">${a.cor}</span>` : ''}
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:13px;color:var(--ink-soft);">
+    ${a.castrado ? `<div><strong>Castrado(a):</strong> ${a.castrado}</div>` : ''}
+    ${a.coleira  ? `<div><strong>Coleira:</strong> ${a.coleira}</div>` : ''}
+    ${a.caracteristicas ? `<div><strong>Características:</strong> ${a.caracteristicas}</div>` : ''}
+    ${a.dataDesaparecimento ? `<div><strong>Desapareceu em:</strong> ${new Date(a.dataDesaparecimento).toLocaleDateString('pt-BR')}</div>` : ''}
+    ${a.referencia ? `<div><strong>Referência:</strong> ${a.referencia}</div>` : ''}
+    ${a.circunstancias ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
+  </div>
+  <a class="btn-contato-main ${btnCls}" 
+     href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}" 
+     target="_blank" 
+     rel="noopener">
+     ${btnLbl}
+  </a>
+</div>
         </div>`;
       }).join('');
     }
