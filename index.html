@@ -154,7 +154,7 @@
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center;
     }
-    
+    .hero-left {}
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: white; border: 1px solid var(--border-dark);
@@ -858,23 +858,60 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-card hero-card-1">
-          <span class="hc-emoji">💬</span>
-          <div class="hc-title">Conversação em inglês</div>
-          <div class="hc-sub">Todo sábado · 10h · Online</div>
-          <span class="hc-tag hc-tag-sage">🟢 Aberto</span>
-        </div>
-        <div class="hero-card hero-card-2">
-          <span class="hc-emoji">🐾</span>
-          <div class="hc-title">Feira de adoção</div>
-          <div class="hc-sub">12 Abr · Sudowest · 30 voluntários</div>
-          <span class="hc-tag hc-tag-rust">Parceria ONG</span>
-        </div>
-        <div class="hero-card hero-card-3">
-          <span class="hc-emoji">👴</span>
-          <div class="hc-title">Cyber para idosos</div>
-          <div class="hc-sub">Lar São Vicente · Asa Sul</div>
-          <span class="hc-tag hc-tag-gold">Presencial</span>
+        <div style="display:flex;flex-direction:column;gap:16px;animation:fadeUp 0.8s 0.2s ease both;">
+
+          <!-- Card impacto -->
+          <div style="background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-xl);padding:1.75rem 2rem;box-shadow:var(--shadow-lg);animation:cardFloat 9s ease-in-out infinite;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;">Comunidade ativa · DF</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:40px;height:40px;background:var(--sage-pale);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📚</div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Aprender algo novo</div>
+                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Inglês, tecnologia, artesanato e mais</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:40px;height:40px;background:rgba(196,146,42,0.12);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🙌</div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Compartilhar o que sabe</div>
+                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Qualquer habilidade tem valor aqui</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:40px;height:40px;background:rgba(184,92,56,0.1);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🤝</div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Fazer voluntariado</div>
+                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Ações mensais com ONGs do DF</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card social proof -->
+          <div style="background:var(--ink);border-radius:var(--r-xl);padding:1.5rem 2rem;box-shadow:var(--shadow-lg);animation:cardFloat 11s 1.5s ease-in-out infinite;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;animation:dotPulse 2s ease-in-out infinite;"></div>
+              <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Comunidade aberta · Gratuito</span>
+            </div>
+            <div style="display:flex;gap:1.5rem;">
+              <div style="text-align:center;">
+                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">100%</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Gratuito</div>
+              </div>
+              <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+              <div style="text-align:center;">
+                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">12+</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Áreas</div>
+              </div>
+              <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
+              <div style="text-align:center;">
+                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">DF</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Brasília</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1268,7 +1305,7 @@
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">✨ Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">Conheça mais →</a>
         </div>
       </div>
     </div>
@@ -1297,7 +1334,7 @@
           <span class="cc-icon">🤝</span>
           <div class="cc-title">Parcerias com ONGs</div>
           <p class="cc-desc">Representa uma ONG que quer se conectar com voluntários do DF? Entre em contato.</p>
-          <a class="cc-btn" href="/cdn-cgi/l/email-protection#600515030c01120903050e150e051320070d01090c4e030f0d">✉️ Enviar email</a>
+          <a class="cc-btn" href="mailto:euclaricenunes@gmail.com">✉️ Enviar email</a>
         </div>
       </div>
     </div>
@@ -1318,7 +1355,7 @@
             <span>O Give&Grow é gratuito?</span>
             <span class="gg-faq-arrow">↓</span>
           </button>
-          <div class="gg-faq-body">Sim, 100% gratuito. O Give&Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF.</div>
+          <div class="gg-faq-body">Sim, 100% gratuito. Sempre foi e sempre será. O Give&Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF.</div>
         </div>
 
         <div class="gg-faq-item">
@@ -1350,7 +1387,7 @@
             <span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span>
             <span class="gg-faq-arrow">↓</span>
           </button>
-          <div class="gg-faq-body">Claro! Você pode fazer os dois. Basta preencher os dois formulários — um de quem quer aprender e um de quem quer ensinar. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo.</div>
+          <div class="gg-faq-body">Claro! Muitas pessoas da comunidade fazem os dois. Basta preencher os dois formulários — um de quem quer aprender e um de quem quer ensinar. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo.</div>
         </div>
 
         <div class="gg-faq-item">
@@ -1390,7 +1427,7 @@
             <span>Como posso fazer parceria com o Give&Grow?</span>
             <span class="gg-faq-arrow">↓</span>
           </button>
-          <div class="gg-faq-body">Se você representa uma ONG, escola, empresa ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20Give%26Grow" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de impactar o DF — seja com eventos, espaços para encontros presenciais ou ações conjuntas.</div>
+          <div class="gg-faq-body">Se você representa uma ONG, escola, empresa ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20de%20voluntariado%20%E2%80%94%20Give%26Grow" style="color:var(--sage);font-weight:600;"><span class="__cf_email__" data-cfemail="731606101f12011a10161d061d160033141e121a1f5d101c1e">[email&#160;protected]</span></a>. Adoramos conversar sobre novas formas de impactar o DF — seja com eventos, espaços para encontros presenciais ou ações conjuntas.</div>
         </div>
 
       </div>
@@ -1428,10 +1465,9 @@
           </div>
         </div>
         <div class="ong-cta-wrap">
-          <a href="/cdn-cgi/l/email-protection#dcb9a9bfb0bdaeb5bfb9b2a9b2b9af9cbbb1bdb5b0f2bfb3b1e3afa9beb6b9bfa8e18cbdaebfb9aeb5bdf9eeecb8b9f9eeecaab3b0a9b2a8bdaeb5bdb8b3f9eeecf999eef9e4ecf9e5e8f9eeec9bb5aab9f9eeea9baeb3ab" class="btn-email">
+          <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20de%20voluntariado%20%E2%80%94%20Give%26Grow" class="btn-email">
             ✉️ Entrar em contato
           </a>
-          <p class="ong-note"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="264353454a47544f4543485348435566414b474f4a0845494b">[email&#160;protected]</a></p>
         </div>
       </div>
     </div>
@@ -1472,7 +1508,7 @@
           <li><a href="patasdf.html">PatasDF</a></li>
           <li><a href="#sobre-criadora">Sobre a Clarice</a></li>
           <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#f89d8d9b94998a919b9d968d969d8bb89f95999194d69b9795">Contato</a></li>
+          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
         </ul>
       </div>
     </div>
@@ -1482,7 +1518,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navbar scroll
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
@@ -1623,5 +1659,4 @@
           <span style="flex-shrink:0;">🔒</span>
           <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos e atividades que combinam com você. Nenhum dado é vendido ou compartilhado com terceiros.</p>
         </div>
-        <div style="display:flex;gap:10px;">
-          <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;">Voltar</button>
+        <div style="display:flex;gap:10p
