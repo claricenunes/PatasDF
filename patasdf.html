@@ -11,11 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
 
-    @media (max-width: 768px) {
-  [style*="height:420px"] {
-    display: none !important;
-  }
-}
+    /* Modal scroll lock — iOS fix */
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
     .nav-back-gg {
       background: var(--sage-pale) !important;
@@ -34,12 +30,12 @@
 </head>
 <body>
 
-
+  <!-- BACK LINK -->
   <div class="back-link-wrap">
     <a href="index.html" class="back-link">← Voltar para o Give&Grow</a>
   </div>
 
-
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="logo">
@@ -60,7 +56,7 @@
     </div>
   </nav>
 
-
+  <!-- HERO -->
   <section style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 2rem 80px;background:var(--cream);">
     <div style="position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);opacity:0.4;z-index:0;"></div>
     <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,124,89,0.14) 0%,transparent 70%);top:-100px;right:-80px;z-index:0;animation:orbFloat 12s ease-in-out infinite;"></div>
@@ -84,14 +80,14 @@
       <div style="position:relative;height:420px;">
         <div style="position:absolute;top:0;left:10%;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 8s ease-in-out infinite;">
           <span style="font-size:1.8rem;display:block;margin-bottom:0.6rem;">🐶</span>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Bolinha — Perdido</div>
-          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Asa Sul · desde 18/03</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Animal perdido no DF</div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Cadastre e a comunidade ajuda</div>
           <span style="display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:var(--rust-pale);color:var(--rust);text-transform:uppercase;letter-spacing:0.07em;">Perdido</span>
         </div>
         <div style="position:absolute;top:35%;right:0;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 10s 2s ease-in-out infinite;">
           <span style="font-size:1.8rem;display:block;margin-bottom:0.6rem;">🐱</span>
-          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Mimi — Encontrada</div>
-          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Taguatinga · aguardando dono</div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;">Animal encontrado no DF</div>
+          <div style="font-size:12px;color:var(--ink-soft);font-weight:300;">Aguardando o dono</div>
           <span style="display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:var(--gold-pale);color:var(--gold);text-transform:uppercase;letter-spacing:0.07em;">Encontrado</span>
         </div>
         <div style="position:absolute;bottom:5%;left:5%;width:230px;background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-lg);padding:1.25rem 1.5rem;box-shadow:var(--shadow-lg);animation:cardFloat 9s 1s ease-in-out infinite;">
@@ -104,25 +100,21 @@
     </div>
   </section>
 
-
+  <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner">
-      <span class="ticker-item">🐶 Bolinha · Perdido · Asa Sul</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐱 Mimi · Encontrada · Taguatinga</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐶 Thor · Perdido · Ceilândia</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐱 Mingau · Encontrado · Guará</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐶 Pipoca · Perdida · Sobradinho</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐱 Nala · Encontrada · Samambaia</span><span class="ticker-sep">·</span>
       <span class="ticker-item">🐾 Ajude a reencontrar · Cadastre um animal →</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐶 Bolinha · Perdido · Asa Sul</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐱 Mimi · Encontrada · Taguatinga</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐶 Thor · Perdido · Ceilândia</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐱 Mingau · Encontrado · Guará</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">😢 Perdeu seu pet? · Cadastre agora no PatasDF</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 Encontrou um animal? · Avise a comunidade</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🏥 6 ONGs parceiras no DF · Conheça e apoie</span><span class="ticker-sep">·</span>
       <span class="ticker-item">🐾 Ajude a reencontrar · Cadastre um animal →</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">😢 Perdeu seu pet? · Cadastre agora no PatasDF</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 Encontrou um animal? · Avise a comunidade</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🏥 6 ONGs parceiras no DF · Conheça e apoie</span><span class="ticker-sep">·</span>
     </div>
   </div>
 
-
+  <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
     <div class="stat-item"><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div>
@@ -130,7 +122,7 @@
     <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Sem limite</div></div>
   </div>
 
-
+  <!-- AÇÃO PRINCIPAL -->
   <section class="section action-section" id="ajudar">
     <div class="container">
       <span class="label reveal">O que você precisa?</span>
@@ -141,8 +133,9 @@
           <div class="action-card-accent accent-sage"></div>
           <div class="action-card-icon icon-sage">😢</div>
           <div class="action-card-title">Perdi meu animal</div>
-          <p class="action-card-desc">Seu pet desapareceu? Cadastre aqui com foto, descrição e localização. O animal aparece na listagem para que qualquer pessoa do DF possa ajudar.</p>
+          <p class="action-card-desc">Seu pet desapareceu? Cadastre aqui com foto, descrição e localização. O animal aparece no mapa e na listagem para que qualquer pessoa do DF possa ajudar.</p>
           <ul class="action-checklist">
+            <li><div class="check-dot sage">✓</div> Animal aparece no mapa do DF</li>
             <li><div class="check-dot sage">✓</div> Visível para toda a comunidade</li>
             <li><div class="check-dot sage">✓</div> Contato direto com quem avistar</li>
           </ul>
@@ -173,7 +166,7 @@
     </div>
   </section>
 
-
+  <!-- ANIMALS -->
   <section class="section" id="animais" style="background:var(--white);padding-top:60px;">
     <div class="container">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;">
@@ -197,7 +190,7 @@
         <h3>Nenhum animal encontrado</h3>
         <p>Tente outro filtro.</p>
       </div>
-
+      <!-- VER MAIS -->
       <div id="verMaisWrap" style="text-align:center;margin-top:2.5rem;display:none;">
         <div style="width:1px;height:40px;background:var(--border);margin:0 auto 1.5rem;"></div>
         <a href="animais.html" style="
@@ -216,24 +209,31 @@
     </div>
   </section>
 
+  <!-- MAPA -->
   <section class="section map-section" id="mapa">
     <div class="container">
       <span class="label reveal">Mapa</span>
       <h2 class="display reveal" style="font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Onde estão<br><em style="color:var(--sage)">os animais</em></h2>
       <p class="lead reveal" style="max-width:480px;">Cada marcador é um animal perdido ou encontrado no DF. Integrado com Google My Maps — atualizado em tempo real.</p>
       <div class="map-wrapper reveal">
-  <iframe 
-    src="https://www.google.com/maps/d/u/0/embed?mid=1g0zaDgEq_cy3mNh0Rp6Hok7MtOGCDtU&ehbc=2E312F"
-    width="100%"
-    height="500"
-    style="border:0; border-radius:16px;"
-    loading="lazy">
-  </iframe>
-</div>
+        <div class="map-placeholder">
+          <div class="map-grid"></div>
+          <div class="map-dot d1"><span>🐶</span></div>
+          <div class="map-dot d2"><span>🐱</span></div>
+          <div class="map-dot d3"><span>🐶</span></div>
+          <div class="map-dot d4"><span>🐱</span></div>
+          <div class="map-placeholder-content">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">🗺️</div>
+            <h3>Mapa do Distrito Federal</h3>
+            <p>Aqui será exibido o Google My Maps com todos os animais perdidos e encontrados em tempo real.</p>
+            <a href="https://mymaps.google.com" target="_blank" rel="noopener" class="btn-sage" style="margin-top:1.5rem;display:inline-flex;">Criar mapa no Google My Maps →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-
+  <!-- ONGs -->
   <section class="section ongs-section" id="ongs">
     <div class="container">
       <span class="label reveal">Conheça e apoie</span>
@@ -293,13 +293,14 @@
     </div>
   </section>
 
-
+  <!-- CRIADORA -->
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
-            <img src="fotos/clarice.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+            <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+            👩‍💻
           </div>
           <div class="criadora-badge cb1">
             <span class="cb-emoji">🐾</span>
@@ -328,13 +329,13 @@
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;"> Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">✨ Conheça mais →</a>
         </div>
       </div>
     </div>
   </section>
 
-
+  <!-- COMMUNITY -->
   <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte</span>
@@ -363,7 +364,7 @@
     </div>
   </section>
 
-
+  <!-- CTA -->
   <section class="cta-section">
     <div class="cta-orb cta-orb-1"></div>
     <div class="cta-orb cta-orb-2"></div>
@@ -377,7 +378,7 @@
     </div>
   </section>
 
-
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -404,8 +405,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Todos os direitos reservados - Give&Grow</span>
-      <span>Feito por <a href="sobre.html">Clarice Nunes · Engenharia de Software · Brasília</a></span>
+      <span>© 2025 PatasDF · Engenharia de Software · CEUB · Brasília</span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
@@ -418,7 +419,7 @@
         const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
         if (resp.ok) {
           const d = await resp.json();
-          if (d.length > 0) ANIMALS = d;
+          ANIMALS = d;
         }
       } catch(e) {
         console.log('Erro ao carregar animais:', e);
@@ -426,7 +427,7 @@
       document.getElementById('animaisLoading').style.display = 'none';
       document.getElementById('animalsGrid').style.display = '';
       renderizarCards(filtroAtual);
-}
+    }
 
     function filterAnimals(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
@@ -455,36 +456,36 @@
         const ctt = (a.contato || 'Não informado').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
-            ${a.foto
-              ? `<img src="${a.foto}" alt="${a.nome||'Animal'}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">`
-              : `<div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${em[a.tipo]||'🐾'}</div>`
-            }
+            ${a.foto ? `<img src="${a.foto}" alt="${a.nome||'Animal'}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">` : `<div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${em[a.tipo]||'🐾'}</div>`}
             <div class="animal-badge ${badgeCls}">${badgeLbl}</div>
             <div class="animal-status-badge">📍 ${a.cidade||''}</div>
           </div>
           <div class="animal-body">
-  <div class="animal-name">${a.nome||'Sem nome'}</div>
-  <div class="animal-meta">
-    ${a.idade ? `<span class="pill">${a.idade}</span>` : ''}
-    ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
-    ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
-    ${a.cor   ? `<span class="pill">${a.cor}</span>` : ''}
-  </div>
-  <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:13px;color:var(--ink-soft);">
-    ${a.castrado ? `<div><strong>Castrado(a):</strong> ${a.castrado}</div>` : ''}
-    ${a.coleira  ? `<div><strong>Coleira:</strong> ${a.coleira}</div>` : ''}
-    ${a.caracteristicas ? `<div><strong>Características:</strong> ${a.caracteristicas}</div>` : ''}
-    ${a.dataDesaparecimento ? `<div><strong>Desapareceu em:</strong> ${new Date(a.dataDesaparecimento).toLocaleDateString('pt-BR')}</div>` : ''}
-    ${a.referencia ? `<div><strong>Referência:</strong> ${a.referencia}</div>` : ''}
-    ${a.circunstancias ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
-  </div>
-  <a class="btn-contato-main ${btnCls}" 
-     href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}" 
-     target="_blank" 
-     rel="noopener">
-     ${btnLbl}
-  </a>
-</div>
+            <div class="animal-name">${a.nome||'Sem nome'}</div>
+            <div class="animal-meta">
+              ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
+              ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
+              ${a.cor   ? `<span class="pill">${a.cor}</span>` : ''}
+              ${a.raca  ? `<span class="pill">${a.raca}</span>` : ''}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:13px;color:var(--ink-soft);">
+              ${a.idade           ? `<div><strong>Idade:</strong> ${a.idade}</div>` : ''}
+              ${a.castrado        ? `<div><strong>Castrado(a):</strong> ${a.castrado}</div>` : ''}
+              ${a.coleira         ? `<div><strong>Coleira:</strong> ${a.coleira}</div>` : ''}
+              ${a.caracteristicas ? `<div><strong>Características:</strong> ${a.caracteristicas}</div>` : ''}
+              ${a.condicao        ? `<div><strong>Condição:</strong> ${a.condicao}</div>` : ''}
+              ${a.comVoce         ? `<div><strong>Está com você?</strong> ${a.comVoce}</div>` : ''}
+              ${a.dataDesaparecimento ? `<div><strong>Desapareceu em:</strong> ${new Date(a.dataDesaparecimento).toLocaleDateString('pt-BR')}</div>` : ''}
+              ${a.dataEncontrado  ? `<div><strong>Encontrado em:</strong> ${a.dataEncontrado}</div>` : ''}
+              ${a.referencia      ? `<div><strong>Referência:</strong> ${a.referencia}</div>` : ''}
+              ${a.circunstancias  ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
+            </div>
+            <a class="btn-contato-main ${btnCls}"
+              href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}"
+              target="_blank" rel="noopener">
+              ${btnLbl}
+            </a>
+          </div>
         </div>`;
       }).join('');
       // Botão ver mais
@@ -595,10 +596,10 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModalPatas(); });
   </script>
 
-
+  <!-- MODAL PATAS -->
   <div id="pm-overlay" onclick="if(event.target===this)fecharModalPatas()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
     <div id="pm-box" style="background:var(--white);border-radius:var(--r-xl);max-width:560px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.25);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
-
+      <!-- Header -->
       <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;border-radius:var(--r-xl) var(--r-xl) 0 0;">
         <div style="display:flex;align-items:center;gap:12px;">
           <div id="pm-icon" style="width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
@@ -609,26 +610,26 @@
         </div>
         <button onclick="fecharModalPatas()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);transition:all 0.2s;flex-shrink:0;">✕</button>
       </div>
-
+      <!-- Body -->
       <div style="padding:1.75rem 2rem;">
-
+        <!-- Intro -->
         <p id="pm-intro" style="font-size:14px;font-weight:400;color:var(--ink-soft);line-height:1.75;margin-bottom:1.5rem;"></p>
-
+        <!-- Termos -->
         <div style="background:var(--cream);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;">
           <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:1rem;">Termos e condições de uso</div>
           <div id="pm-termos" style="display:flex;flex-direction:column;gap:14px;"></div>
         </div>
-
+        <!-- Privacidade -->
         <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.5rem;">
           <span style="font-size:1rem;flex-shrink:0;">🔒</span>
           <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong>. O PatasDF não armazena informações diretamente. Os dados são usados exclusivamente para facilitar o reencontro de animais perdidos.</p>
         </div>
-
+        <!-- Checkbox aceite -->
         <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin-bottom:1.75rem;padding:1rem 1.25rem;background:var(--white);border:1.5px solid var(--border-dark);border-radius:var(--r-md);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border-dark)'">
           <input type="checkbox" id="pm-checkbox" onchange="atualizarBtnPatas()" style="width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--sage);cursor:pointer;">
           <span style="font-size:13px;font-weight:500;color:var(--ink);line-height:1.6;">Li e estou de acordo com os termos acima, confirmo que as informações são verídicas e autorizo o contato por membros da comunidade PatasDF.</span>
         </label>
-
+        <!-- Botões -->
         <div style="display:flex;gap:10px;">
           <button onclick="fecharModalPatas()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;">Voltar</button>
           <button id="pm-btn" onclick="abrirFormularioPatas()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;opacity:0.45;pointer-events:none;"></button>

@@ -44,11 +44,12 @@
 </head>
 <body>
 
+  <!-- BACK LINK -->
   <div class="back-link-wrap">
     <a href="patasdf.html" class="back-link">← Voltar para o PatasDF</a>
   </div>
 
-
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="patasdf.html" class="logo">
@@ -68,7 +69,7 @@
     </div>
   </nav>
 
-
+  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="container">
       <div class="breadcrumb">
@@ -87,7 +88,7 @@
     </div>
   </div>
 
-
+  <!-- TOOLBAR -->
   <div class="toolbar">
     <div class="container">
       <div class="filter-pills">
@@ -105,11 +106,11 @@
     </div>
   </div>
 
-
+  <!-- ANIMALS -->
   <section class="animals-section">
     <div class="container">
 
-
+      <!-- STATUS TABS -->
       <div class="status-tabs">
         <button class="status-tab st-todos" onclick="filtrarStatus('todos', this)">
           Todos <span class="tab-count" id="tabTodos">—</span>
@@ -122,10 +123,10 @@
         </button>
       </div>
 
-
+      <!-- BANNER CONTEXTUAL -->
       <div id="ctxBanner"></div>
 
-
+      <!-- GRID -->
       <div class="animals-grid" id="animalsGrid">
         <div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--ink-soft);">
           <div style="font-size:2.5rem;margin-bottom:.75rem;">🐾</div>
@@ -133,6 +134,7 @@
         </div>
       </div>
 
+      <!-- EMPTY STATE -->
       <div class="empty-state" id="emptyState" style="display:none;">
         <span class="empty-icon">🔍</span>
         <h3>Nenhum animal encontrado</h3>
@@ -142,7 +144,7 @@
     </div>
   </section>
 
-
+  <!-- CTA -->
   <section class="cta-section">
     <div class="cta-orb cta-orb-1"></div>
     <div class="cta-orb cta-orb-2"></div>
@@ -156,7 +158,7 @@
     </div>
   </section>
 
-
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -183,8 +185,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Todos os direitos reservados - Give&Grow</span>
-      <span>Feito por <a href="sobre.html">Clarice Nunes · Engenharia de Software · Brasília</a></span>
+      <span>© 2025 PatasDF · Engenharia de Software · CEUB · Brasília</span>
+      <span>Feito com 🐾 por <a href="sobre.html">Clarice Nunes</a></span>
     </div>
   </footer>
 
@@ -197,18 +199,18 @@
     let TODOS = [], statusAtual = 'todos', tipoAtual = 'todos', buscaAtual = '';
 
     async function carregar() {
-  try {
-    const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
-    if (resp.ok) {
-      const d = await resp.json();
-      if (d.length > 0) TODOS = d;
+      try {
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        if (resp.ok) {
+          const d = await resp.json();
+          TODOS = d;
+        }
+      } catch(e) {
+        console.log('Erro ao carregar animais:', e);
+      }
+      atualizarContadores();
+      renderizar();
     }
-  } catch(e) {
-    console.log('Erro ao carregar animais:', e);
-  }
-  atualizarContadores();
-  renderizar();
-}
 
     function atualizarContadores() {
       const p = TODOS.filter(a => a.status === 'perdido').length;
@@ -298,46 +300,47 @@
 
       grid.innerHTML = lista.map((a, i) => {
         const st = a.status || 'encontrado';
-        const badgeCls = st === 'perdido' ? 'badge-perdido' : st === 'encontrado' ? 'badge-encontrado' : 'badge-encontrado';
+        const badgeCls = st === 'perdido' ? 'badge-perdido' : 'badge-encontrado';
         const badgeLbl = st === 'perdido' ? 'Perdido' : 'Encontrado';
-        const btnBg    = st === 'perdido' ? 'var(--ink)' : 'var(--gold)';
         const btnCls   = st === 'perdido' ? '' : 'btn-contato-encontrado';
         const btnLbl   = st === 'perdido'
           ? '📞 Vi este animal — avisar o dono'
           : '🏠 Este é meu animal';
-        const ctt = (a.contato || 'Não informado').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*50}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
             ${a.foto
               ? `<img src="${a.foto}" alt="${a.nome||'Animal'}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">`
               : `<div class="animal-emoji" style="font-size:5.5rem;position:relative;z-index:1;">${em[a.tipo]||'🐾'}</div>`
-            } 
+            }
             <div class="animal-badge ${badgeCls}">${badgeLbl}</div>
             <div class="animal-status-badge">📍 ${a.cidade||''}</div>
           </div>
           <div class="animal-body">
-  <div class="animal-name">${a.nome||'Sem nome'}</div>
-  <div class="animal-meta">
-    ${a.idade ? `<span class="pill">${a.idade}</span>` : ''}
-    ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
-    ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
-    ${a.cor   ? `<span class="pill">${a.cor}</span>` : ''}
-  </div>
-  <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:13px;color:var(--ink-soft);">
-    ${a.castrado ? `<div><strong>Castrado(a):</strong> ${a.castrado}</div>` : ''}
-    ${a.coleira  ? `<div><strong>Coleira:</strong> ${a.coleira}</div>` : ''}
-    ${a.caracteristicas ? `<div><strong>Características:</strong> ${a.caracteristicas}</div>` : ''}
-    ${a.dataDesaparecimento ? `<div><strong>Desapareceu em:</strong> ${new Date(a.dataDesaparecimento).toLocaleDateString('pt-BR')}</div>` : ''}
-    ${a.referencia ? `<div><strong>Referência:</strong> ${a.referencia}</div>` : ''}
-    ${a.circunstancias ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
-  </div>
-  <a class="btn-contato-main ${btnCls}" 
-     href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}" 
-     target="_blank" 
-     rel="noopener">
-     ${btnLbl}
-  </a>
-</div>
+            <div class="animal-name">${a.nome || (st === 'encontrado' ? 'Animal encontrado' : 'Sem nome')}</div>
+            <div class="animal-meta">
+              ${a.porte ? `<span class="pill">${a.porte}</span>` : ''}
+              ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
+              ${a.cor   ? `<span class="pill">${a.cor}</span>` : ''}
+              ${a.raca  ? `<span class="pill">${a.raca}</span>` : ''}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0;font-size:13px;color:var(--ink-soft);">
+              ${a.idade           ? `<div><strong>Idade:</strong> ${a.idade}</div>` : ''}
+              ${a.castrado        ? `<div><strong>Castrado(a):</strong> ${a.castrado}</div>` : ''}
+              ${a.coleira         ? `<div><strong>Coleira:</strong> ${a.coleira}</div>` : ''}
+              ${a.caracteristicas ? `<div><strong>Características:</strong> ${a.caracteristicas}</div>` : ''}
+              ${a.condicao        ? `<div><strong>Condição:</strong> ${a.condicao}</div>` : ''}
+              ${a.comVoce         ? `<div><strong>Está com você?</strong> ${a.comVoce}</div>` : ''}
+              ${a.dataDesaparecimento ? `<div><strong>Desapareceu em:</strong> ${new Date(a.dataDesaparecimento).toLocaleDateString('pt-BR')}</div>` : ''}
+              ${a.dataEncontrado  ? `<div><strong>Encontrado em:</strong> ${a.dataEncontrado}</div>` : ''}
+              ${a.referencia      ? `<div><strong>Referência:</strong> ${a.referencia}</div>` : ''}
+              ${a.circunstancias  ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
+            </div>
+            <a class="btn-contato-main ${btnCls}"
+              href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}"
+              target="_blank" rel="noopener">
+              ${btnLbl}
+            </a>
+          </div>
         </div>`;
       }).join('');
     }

@@ -37,6 +37,26 @@
 
     /* Modal scroll lock — iOS fix */
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
+
+    /* ── ONG SECTION ── */
+    .ong-section { padding: 0 2rem 100px; }
+    .ong-inner { max-width: 1200px; margin: 0 auto; }
+    .ong-card {
+      background: var(--ink); border-radius: var(--r-xl);
+      padding: 3.5rem; display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: center; position: relative; overflow: hidden;
+    }
+    .ong-card::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
+    .ong-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1.25rem; }
+    .ong-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
+    .ong-title em { font-style: italic; color: var(--gold-light); }
+    .ong-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
+    .ong-cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
+    .btn-email { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: white; padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; box-shadow: 0 4px 20px rgba(196,146,42,0.3); }
+    .btn-email:hover { background: #a87824; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,146,42,0.4); }
+    .ong-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+    @media (max-width: 900px) { .ong-card { grid-template-columns: 1fr; gap: 2rem; } .ong-cta-wrap { width: 100%; } .btn-email { width: 100%; justify-content: center; } }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -134,7 +154,7 @@
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center;
     }
-    
+    .hero-left {}
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: white; border: 1px solid var(--border-dark);
@@ -778,8 +798,7 @@
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px;transition: top 0.3s; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; }
-      .navbar.scrolled .nav-links {top: 58px;}
+      .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; }
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
       .steps-row { flex-direction: column; gap: 2rem; }
@@ -790,9 +809,7 @@
       .stat-item { padding: 0 1.5rem; }
       .stat-item:nth-child(3), .stat-item:nth-child(4) { display: none; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .nav-links li:last-child {margin-top: 8px;}
     }
-
     @media (max-width: 600px) {
       .causas-grid { grid-template-columns: 1fr; }
       .section { padding: 70px 1.5rem; }
@@ -801,7 +818,7 @@
 </head>
 <body>
 
-
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="#" class="logo">Give<em>&</em>Grow</a>
@@ -819,7 +836,7 @@
     </div>
   </nav>
 
-
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid-bg"></div>
     <div class="hero-orb-1"></div>
@@ -843,13 +860,13 @@
         <div class="hero-card hero-card-1">
           <span class="hc-emoji">💬</span>
           <div class="hc-title">Conversação em inglês</div>
-          <div class="hc-sub">Fins de semana · 10h · Online</div>
+          <div class="hc-sub">Todo sábado · 10h · Online</div>
           <span class="hc-tag hc-tag-sage">🟢 Aberto</span>
         </div>
         <div class="hero-card hero-card-2">
           <span class="hc-emoji">🐾</span>
           <div class="hc-title">Feira de adoção</div>
-          <div class="hc-sub">12 Abr · 30 voluntários</div>
+          <div class="hc-sub">12 Abr · Sudowest · 30 voluntários</div>
           <span class="hc-tag hc-tag-rust">Parceria ONG</span>
         </div>
         <div class="hero-card hero-card-3">
@@ -862,7 +879,7 @@
     </div>
   </section>
 
-
+  <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner" id="tickerInner">
       <span class="ticker-item">💬 Inglês online · Todo sábado · 10h</span>
@@ -896,7 +913,7 @@
     </div>
   </div>
 
-
+  <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-item">
       <div>
@@ -924,6 +941,7 @@
     </div>
   </div>
 
+  <!-- COMO FUNCIONA -->
   <section class="section how-section" id="como-funciona">
     <div class="container">
       <span class="label reveal">Como funciona</span>
@@ -959,7 +977,7 @@
     </div>
   </section>
 
-
+  <!-- CAUSAS -->
   <section class="section causas-section" id="causas">
     <div class="container">
       <div class="causas-header">
@@ -974,54 +992,54 @@
         </div>
       </div>
       <div class="causas-grid" id="causasGrid">
-        <!-- <div class="causa-card reveal" data-tipo="voluntariado">
+        <div class="causa-card reveal" data-tipo="voluntariado">
           <div class="causa-tag">8 pessoas</div>
           <div class="causa-icon">🐾</div>
           <div class="causa-name">Causa animal</div>
           <div class="causa-desc">Ajude a reencontrar animais perdidos no DF e apoie ONGs da causa animal</div>
-        </div> -->
-        <!-- <div class="causa-card reveal" data-tipo="voluntariado">
+        </div>
+        <div class="causa-card reveal" data-tipo="voluntariado">
           <div class="causa-tag">14 pessoas</div>
           <div class="causa-icon">👴</div>
           <div class="causa-name">Idosos</div>
           <div class="causa-desc">Visitas, oficinas e inclusão digital em lares de idosos</div>
-        </div> -->
-        <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-tag">Online</div>
-          <div class="causa-icon">💬</div>
-          <div class="causa-name">Inglês</div>
-          <div class="causa-desc">Conversação, todos os níveis, 100% prática, sem custo</div>
         </div>
         <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-tag">Online</div>
+          <div class="causa-tag">21 pessoas</div>
+          <div class="causa-icon">💬</div>
+          <div class="causa-name">Inglês</div>
+          <div class="causa-desc">Conversação online, todos os níveis, toda semana, sem custo</div>
+        </div>
+        <div class="causa-card reveal" data-tipo="aprender">
+          <div class="causa-tag">11 pessoas</div>
           <div class="causa-icon">💻</div>
           <div class="causa-name">Tecnologia</div>
           <div class="causa-desc">Cybersegurança, programação e inclusão digital básica</div>
         </div>
         <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-tag">Online</div>
+          <div class="causa-tag">9 pessoas</div>
           <div class="causa-icon">🪡</div>
           <div class="causa-name">Artesanato</div>
           <div class="causa-desc">Crochê, bordado e costura — presencial e online, toda semana</div>
         </div>
         <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-tag">Híbrido</div>
+          <div class="causa-tag">6 pessoas</div>
           <div class="causa-icon">🎓</div>
           <div class="causa-name">Educação</div>
           <div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira</div>
         </div>
-        <!-- <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-tag">Presencial</div>
+        <div class="causa-card reveal" data-tipo="voluntariado">
+          <div class="causa-tag">7 pessoas</div>
           <div class="causa-icon">🌿</div>
           <div class="causa-name">Meio ambiente</div>
           <div class="causa-desc">Limpeza de áreas, hortas urbanas e conscientização ambiental</div>
-        </div> -->
-        <!-- <div class="causa-card reveal" data-tipo="aprender">
+        </div>
+        <div class="causa-card reveal" data-tipo="aprender">
           <div class="causa-tag">5 pessoas</div>
           <div class="causa-icon">🍳</div>
           <div class="causa-name">Culinária</div>
           <div class="causa-desc">Oficinas de cozinha, receitas saudáveis e troca de técnicas</div>
-        </div> -->
+        </div>
       </div>
       <div style="text-align:center;margin-top:2.5rem;" class="reveal">
         <a href="causas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(14,26,15,0.16);" onmouseover="this.style.background='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)'">
@@ -1031,7 +1049,7 @@
     </div>
   </section>
 
-
+  <!-- EVENTOS -->
   <section class="section eventos-section" id="eventos">
     <div class="container">
       <span class="label reveal">Agenda</span>
@@ -1039,17 +1057,17 @@
       <p class="lead reveal">Online toda semana · Presencial uma vez por mês · Parcerias mensais com ONGs do DF</p>
       <div class="eventos-grid">
         <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">15</div><div class="ev-month">Abr</div></div>
+          <div class="ev-date"><div class="ev-day">22</div><div class="ev-month">Mar</div></div>
           <div class="ev-content">
             <span class="ev-tag ev-online">Online</span>
             <div class="ev-name">Conversação em inglês — nível iniciante</div>
-            <div class="ev-info">Sáb · 10h · Google Meet · 15 vagas</div>
+            <div class="ev-info">Sáb · 10h · Google Meet · 12 vagas</div>
           </div>
         </div>
         <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">00</div><div class="ev-month">Abr</div></div>
+          <div class="ev-date"><div class="ev-day">29</div><div class="ev-month">Mar</div></div>
           <div class="ev-content">
-            <span class="ev-tag ev-parceria">Parceria ONG - Evento Ilustrativo</span>
+            <span class="ev-tag ev-parceria">Parceria ONG</span>
             <div class="ev-name">Cyber para idosos — workshop especial</div>
             <div class="ev-info">Sáb · 14h · Lar São Vicente · Asa Sul</div>
           </div>
@@ -1057,7 +1075,7 @@
         <div class="evento-card reveal">
           <div class="ev-date"><div class="ev-day">05</div><div class="ev-month">Abr</div></div>
           <div class="ev-content">
-            <span class="ev-tag ev-presencial">Presencial - Evento Ilustrativo</span>
+            <span class="ev-tag ev-presencial">Presencial</span>
             <div class="ev-name">Oficina de crochê para iniciantes</div>
             <div class="ev-info">Dom · 15h · Parque da Cidade · 20 vagas</div>
           </div>
@@ -1065,7 +1083,7 @@
         <div class="evento-card reveal">
           <div class="ev-date"><div class="ev-day">12</div><div class="ev-month">Abr</div></div>
           <div class="ev-content">
-            <span class="ev-tag ev-parceria">Parceria ONG - Evento Ilustrativo</span>
+            <span class="ev-tag ev-parceria">Parceria ONG</span>
             <div class="ev-name">Feira de adoção — ONG Patinhas do DF</div>
             <div class="ev-info">Sáb · 9h às 13h · Sudoeste · 30 voluntários</div>
           </div>
@@ -1098,7 +1116,7 @@
     </div>
   </section>
 
-
+  <!-- PARTICIPAR -->
   <section class="section participar-section" id="participar">
     <div class="container">
       <span class="label reveal">Quero participar</span>
@@ -1172,7 +1190,7 @@
     </div>
   </section>
 
-
+  <!-- PATAS DF -->
   <section class="section patas-section" id="patasdf">
     <div class="container">
       <div class="patas-inner">
@@ -1214,13 +1232,14 @@
     </div>
   </section>
 
-
+  <!-- CRIADORA -->
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
             <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+            👩‍💻
           </div>
           <div class="criadora-badge cb1">
             <span class="cb-emoji">🌱</span>
@@ -1228,14 +1247,14 @@
           </div>
           <div class="criadora-badge cb2">
             <span class="cb-emoji">🎓</span>
-            <div class="cb-text"><strong>Eng. de Software</strong><span>2º semestre</span></div>
+            <div class="cb-text"><strong>CEUB · Eng. de Software</strong><span>2º semestre</span></div>
           </div>
         </div>
         <div class="criadora-text">
           <span class="label reveal">Quem está por trás</span>
           <h2 class="reveal">Olá, eu sou<br><em>Clarice Nunes</em></h2>
           <div class="criadora-chips reveal">
-            <span class="chip chip-sage">🏫 Brasília</span>
+            <span class="chip chip-sage">🏫 CEUB · Brasília</span>
             <span class="chip chip-sage">💻 Engenharia de Software</span>
             <span class="chip">🤝 Voluntariado</span>
           </div>
@@ -1249,13 +1268,13 @@
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">✨ Conheça mais →</a>
         </div>
       </div>
     </div>
   </section>
 
-
+  <!-- COMUNIDADE -->
   <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte do projeto</span>
@@ -1278,15 +1297,40 @@
           <span class="cc-icon">🤝</span>
           <div class="cc-title">Parcerias com ONGs</div>
           <p class="cc-desc">Representa uma ONG que quer se conectar com voluntários do DF? Entre em contato.</p>
-          <a class="cc-btn" 
-          href="mailto:contato@patasdf.com?subject=Parceria com ONG&body=Olá, represento uma ONG e gostaria de conversar sobre parceria.">
-          ✉️ Enviar email
-          </a>
+          <a class="cc-btn" href="/cdn-cgi/l/email-protection#600515030c01120903050e150e051320070d01090c4e030f0d">✉️ Enviar email</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
+
+  <section class="ong-section">
+    <div class="ong-inner">
+      <div class="ong-card reveal">
+        <div>
+          <span class="ong-tag">Para organizações</span>
+          <h2 class="ong-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
+          <p class="ong-desc">
+            Estamos construindo uma rede de parcerias com organizações do Distrito Federal para conectar voluntários dispostos a agir com causas reais que precisam de ajuda. Se a sua ONG está buscando voluntários, entra em contato — adoraria conversar e incluir vocês na nossa rede.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.75rem;">
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🐾 Causa animal</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">👴 Idosos</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🌿 Meio ambiente</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🎓 Educação</span>
+            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">+ outras</span>
+          </div>
+        </div>
+        <div class="ong-cta-wrap">
+          <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20de%20voluntariado%20%E2%80%94%20Give%26Grow" class="btn-email">
+            ✉️ Entrar em contato
+          </a>
+          <p class="ong-note">euclaricenunes@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="cta-section">
     <div class="cta-orb cta-orb-1"></div>
@@ -1301,7 +1345,7 @@
     </div>
   </section>
 
-
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1328,8 +1372,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 PatasDF · Todos os direitos reservados - Give&Grow</span>
-      <span>Feito por <a href="sobre.html">Clarice Nunes · Engenharia de Software · Brasília</a></span>
+      <span>© 2025 Give&Grow · Engenharia de Software · CEUB · Brasília</span>
+      <span>Feito com 🌱 por <a href="#sobre-criadora">Clarice Nunes</a></span>
     </div>
   </footer>
 
@@ -1388,7 +1432,7 @@
         title: 'Quero aprender',
         sub: 'Antes de ir para o Google Forms',
         infoText: 'Estamos te redirecionando para o nosso Google Forms. Lá você vai nos contar seus interesses e como prefere aprender. Com essas informações conseguimos criar atividades novas e te enviar os eventos que podem te agradar.',
-        items: ['Quais áreas te interessam', 'Sua disponibilidade de horário', 'Se prefere online, presencial ou os dois', 'Seu nível atual na área escolhida'],
+        items: ['Quais áreas te interessam (inglês, tecnologia, artesanato...)', 'Sua disponibilidade de horário', 'Se prefere online, presencial ou os dois', 'Seu nível atual na área escolhida'],
         btnBg: 'var(--sage)', btnText: 'Entendi — ir para o formulário',
         url: 'https://docs.google.com/forms/d/e/1FAIpQLSc_5X0QIUh-diP-k2UU1pkSYPdibsTU57rNAbl13HDA7Sdw0g/viewform'
       },
