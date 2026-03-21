@@ -332,7 +332,12 @@
               ${a.tipo  ? `<span class="pill">${a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1)}</span>` : ''}
             </div>
             <p class="animal-desc">${a.descricao||''}</p>
-            <button class="btn-contato-main" style="background:${btnBg};" onclick="alert('Entre em contato:\\n${ctt}')">${btnLbl}</button>
+            <a class="btn-contato-main ${btnCls}" 
+   href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}" 
+   target="_blank" 
+   rel="noopener">
+   ${btnLbl}
+</a>
           </div>
         </div>`;
       }).join('');
