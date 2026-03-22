@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -270,6 +271,10 @@
       .filter-pill { padding: 7px 14px; font-size: 12px; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
+
+   
+      body.modal-open { overflow: hidden; position: fixed; width: 100%; }
+
   </style>
 </head>
 <body>
@@ -782,7 +787,7 @@
           <span class="suggest-icon">🙌</span>
           <div class="suggest-title">Quer ensinar algo?</div>
           <p class="suggest-desc">Se você tem uma habilidade — seja ela técnica, criativa ou humana — e quer compartilhar com a comunidade, preencha o formulário e vamos organizar juntos!</p>
-          <a href="index.html#participar" class="btn-outline">🙌 Quero ensinar →</a>
+          <button onclick="abrirModal('ensinar')" class="btn-outline">🙌 Quero ensinar →</button>
         </div>
       </div>
     </div>
@@ -888,5 +893,98 @@
       }
     }
   </script>
+  <!-- MODAL -->
+<div id="m-overlay" onclick="if(event.target===this)fecharModal()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
+  <div id="m-box" style="background:#fdfcf8;border-radius:24px;max-width:520px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.22);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+    <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid rgba(14,26,15,0.1);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:#fdfcf8;z-index:1;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div id="m-icon" style="width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
+        <div>
+          <div id="m-title" style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#0e1a0f;letter-spacing:-0.5px;"></div>
+          <div id="m-sub" style="font-size:12px;font-weight:300;color:#2d3d2e;margin-top:3px;"></div>
+        </div>
+      </div>
+      <button onclick="fecharModal()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(14,26,15,0.18);background:transparent;cursor:pointer;font-size:15px;color:#2d3d2e;flex-shrink:0;">✕</button>
+    </div>
+    <div style="padding:1.75rem 2rem;">
+      <div style="background:#e8f2e8;border:1.5px solid rgba(74,124,89,0.2);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+        <p id="m-infotext" style="font-size:14px;font-weight:400;line-height:1.75;color:#2d3d2e;"></p>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2d3d2e;opacity:0.6;margin-bottom:10px;">O que você vai preencher</div>
+        <div id="m-items" style="display:flex;flex-direction:column;gap:9px;"></div>
+      </div>
+      <div style="background:#f5f0e8;border:1px solid rgba(14,26,15,0.1);border-radius:16px;padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.75rem;">
+        <span style="flex-shrink:0;">🔒</span>
+        <p style="font-size:12px;font-weight:300;color:#2d3d2e;line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos e atividades que combinam com você. Nenhum dado é vendido ou compartilhado com terceiros.</p>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid rgba(14,26,15,0.18);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#2d3d2e;cursor:pointer;">Voltar</button>
+        <button id="m-btn" onclick="abrirFormulario()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MODAL_CONFIG = {
+    ensinar: {
+      icon: '🙌', iconBg: '#e8f2e8',
+      title: 'Quero ensinar',
+      sub: 'Antes de ir para o Google Forms',
+      infoText: 'Estamos te redirecionando para o nosso Google Forms. Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos, criar atividades e conectar você com as pessoas certas na comunidade.',
+      items: [
+        'Qual habilidade ou conhecimento você quer compartilhar',
+        'Quantas horas por semana pode dedicar',
+        'Se prefere ensinar online, presencial ou os dois',
+        'Para qual público se sente mais a vontade'
+      ],
+      btnBg: '#0e1a0f', btnText: 'Entendi — ir para o formulário',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLSf_x-AdrUnIZfHyYguuTkxmYN26RNbFep6NNLK1z_ENc1kouA/viewform'
+    }
+  };
+
+  function abrirModal(tipo) {
+    const c = MODAL_CONFIG[tipo];
+    document.getElementById('m-icon').style.background = c.iconBg;
+    document.getElementById('m-icon').textContent = c.icon;
+    document.getElementById('m-title').textContent = c.title;
+    document.getElementById('m-sub').textContent = c.sub;
+    document.getElementById('m-infotext').textContent = c.infoText;
+    document.getElementById('m-items').innerHTML = c.items.map(it =>
+      '<div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#2d3d2e;font-weight:400;"><div style="width:20px;height:20px;border-radius:50%;background:#e8f2e8;display:flex;align-items:center;justify-content:center;font-size:10px;color:#4a7c59;flex-shrink:0;font-weight:700;margin-top:1px;">✓</div>' + it + '</div>'
+    ).join('');
+    const btn = document.getElementById('m-btn');
+    btn.style.background = c.btnBg;
+    btn.textContent = c.btnText;
+    btn.dataset.url = c.url;
+    const ov = document.getElementById('m-overlay');
+    const bx = document.getElementById('m-box');
+    ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
+    bx.style.transform = 'translateY(0) scale(1)';
+    document.body.classList.add('modal-open');
+    document.body.dataset.scrollY = window.scrollY;
+  }
+
+  function fecharModal() {
+    const ov = document.getElementById('m-overlay');
+    const bx = document.getElementById('m-box');
+    ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
+    bx.style.transform = 'translateY(24px) scale(0.97)';
+    const sy = document.body.dataset.scrollY || 0;
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, parseInt(sy));
+  }
+
+  function abrirFormulario() {
+    const url = document.getElementById('m-btn').dataset.url;
+    if (url) {
+      fecharModal();
+      setTimeout(() => { window.open(url, '_blank', 'noopener,noreferrer'); }, 150);
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+</script>
 </body>
 </html>

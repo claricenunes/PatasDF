@@ -707,9 +707,24 @@ footer { background: var(--ink); padding: 60px 2rem 0; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
   .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   .two-col.reverse { direction: ltr; }
+
+  /* iPad: hamburger menu */
+  .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 199; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
+  .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
+
+  /* iPad: badges da criadora mais próximas da foto */
+  .cb1 { bottom: 10px; right: 0; }
+  .cb2 { top: 10px; right: 0; }
+
+  /* iPad: esconder cards flutuantes do patasdf */
+  [style*="height:420px"] { display: none !important; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 199; }
+  .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 199; }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
   .steps-row { flex-direction: column; gap: 2rem; }
