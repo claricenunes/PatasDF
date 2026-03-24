@@ -311,7 +311,7 @@
             <span>Meus dados ficam seguros?</span>
             <span class="faq-arrow">↓</span>
           </button>
-          <div class="faq-body">Sim. Seu e-mail e nome completo ficam apenas na nossa planilha privada — nenhum dado pessoal sensível é exibido no site. O site mostra apenas as informações do animal, que é necessário para que alguém possa te avisar.</div>
+          <div class="faq-body">Sim. Seu e-mail e nome completo ficam apenas na nossa planilha privada — nenhum dado pessoal sensível é exibido no site. O site mostra apenas as informações do animal e o número de WhatsApp para contato, que é necessário para que alguém possa te avisar.</div>
         </div>
 
         <div class="faq-item">
@@ -418,6 +418,8 @@
           <p>Manda um email para a Clarice e a gente adiciona na lista. O objetivo é mapear todas as organizações sérias que cuidam de animais no DF.</p>
         </div>
       </div> -->
+
+      
       <div class="data-note reveal" style="margin-top:2rem;">
         <div class="reveal" style="margin-top:2rem;background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.18);border-radius:var(--r-xl);padding:3rem 2.5rem;text-align:center;">
           <div style="font-size:3rem;margin-bottom:1rem;">🤝</div>
@@ -427,6 +429,7 @@
         </div>
     </div>
   </section>
+  
 
 
   <section class="section criadora-section" id="sobre-criadora">
@@ -586,7 +589,7 @@
         const badgeCls = isPerdido ? 'badge-perdido' : 'badge-encontrado';
         const badgeLbl = isPerdido ? 'Perdido' : 'Encontrado';
         const btnCls = isPerdido ? '' : 'btn-contato-encontrado';
-        const btnLbl = isPerdido ? '📞 Vi este animal' : '🏠 Este é meu animal';
+        const btnLbl = isPerdido ? '📞 Avisei que vi este animal' : '🏠 Este é meu animal';
         const ctt = (a.contato || 'Não informado').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
@@ -618,7 +621,7 @@
               href="${a.linkContato || '#'}"
               target="_blank" rel="noopener">
               ${btnLbl}
-            </a>
+          </a>
           </div>
         </div>`;
       }).join('');
