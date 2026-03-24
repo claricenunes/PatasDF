@@ -311,7 +311,7 @@
             <span>Meus dados ficam seguros?</span>
             <span class="faq-arrow">↓</span>
           </button>
-          <div class="faq-body">Sim. Seu e-mail e nome completo ficam apenas na nossa planilha privada — nenhum dado pessoal sensível é exibido no site. O site mostra apenas as informações do animal e o número de WhatsApp para contato, que é necessário para que alguém possa te avisar.</div>
+          <div class="faq-body">Sim. Seu e-mail e nome completo ficam apenas na nossa planilha privada — nenhum dado pessoal sensível é exibido no site. O site mostra apenas as informações do animal, que é necessário para que alguém possa te avisar.</div>
         </div>
 
         <div class="faq-item">
@@ -586,7 +586,7 @@
         const badgeCls = isPerdido ? 'badge-perdido' : 'badge-encontrado';
         const badgeLbl = isPerdido ? 'Perdido' : 'Encontrado';
         const btnCls = isPerdido ? '' : 'btn-contato-encontrado';
-        const btnLbl = isPerdido ? '📞 Avisei que vi este animal' : '🏠 Este é meu animal';
+        const btnLbl = isPerdido ? '📞 Vi este animal' : '🏠 Este é meu animal';
         const ctt = (a.contato || 'Não informado').replace(/'/g, "\\'");
         return `<div class="animal-card" style="animation:fadeUp .4s ${i*60}ms ease both;">
           <div class="animal-img" style="background:${bg[a.tipo]||'#f5f0e8'};">
