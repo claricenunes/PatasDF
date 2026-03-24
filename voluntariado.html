@@ -25,7 +25,6 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; }
 
-    
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       height: 68px; display: flex; align-items: center;
@@ -40,7 +39,6 @@
     .nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); color: var(--ink-soft); transition: all 0.2s; }
     .nav-back:hover { border-color: var(--sage); color: var(--sage); }
 
- 
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       padding: 120px 2rem 80px; position: relative; overflow: hidden;
@@ -62,7 +60,6 @@
     @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
 
     .hero-inner { position: relative; z-index: 1; max-width: 720px; text-align: center; }
-
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: white; border: 1px solid var(--border-dark);
@@ -72,72 +69,85 @@
       animation: fadeUp 0.5s ease both;
     }
     .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); animation: dotPulse 2s ease-in-out infinite; }
-
-    .hero-emoji {
-      font-size: 5rem; display: block; margin-bottom: 1.5rem;
-      animation: fadeUp 0.5s 0.05s ease both, heartbeat 3s ease-in-out infinite;
-      line-height: 1;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 900; line-height: 1.0; letter-spacing: -2px;
-      color: var(--ink); margin-bottom: 1.5rem;
-      animation: fadeUp 0.5s 0.1s ease both;
-    }
+    .hero-emoji { font-size: 5rem; display: block; margin-bottom: 1.5rem; animation: fadeUp 0.5s 0.05s ease both, heartbeat 3s ease-in-out infinite; line-height: 1; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; line-height: 1.0; letter-spacing: -2px; color: var(--ink); margin-bottom: 1.5rem; animation: fadeUp 0.5s 0.1s ease both; }
     h1 em { font-style: italic; color: var(--sage); }
-
-    .hero-desc {
-      font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-soft);
-      max-width: 560px; margin: 0 auto 1rem;
-      animation: fadeUp 0.5s 0.15s ease both;
-    }
-    .hero-desc-2 {
-      font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--ink-soft);
-      max-width: 500px; margin: 0 auto 3rem;
-      animation: fadeUp 0.5s 0.2s ease both;
-    }
-    .hero-ctas {
-      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-      animation: fadeUp 0.5s 0.25s ease both;
-    }
-
- 
-    .status-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--gold-pale); border: 1.5px solid rgba(196,146,42,0.25);
-      border-radius: var(--r-lg); padding: 14px 20px;
-      margin-bottom: 2.5rem;
-      animation: fadeUp 0.5s 0.08s ease both;
-    }
+    .hero-desc { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-soft); max-width: 560px; margin: 0 auto 1rem; animation: fadeUp 0.5s 0.15s ease both; }
+    .hero-desc-2 { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--ink-soft); max-width: 500px; margin: 0 auto 3rem; animation: fadeUp 0.5s 0.2s ease both; }
+    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.5s 0.25s ease both; }
+    .status-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--gold-pale); border: 1.5px solid rgba(196,146,42,0.25); border-radius: var(--r-lg); padding: 14px 20px; margin-bottom: 2.5rem; animation: fadeUp 0.5s 0.08s ease both; }
     .status-badge-icon { font-size: 1.4rem; }
     .status-badge-text strong { font-size: 14px; font-weight: 600; color: var(--ink); display: block; }
     .status-badge-text span { font-size: 12px; font-weight: 300; color: var(--ink-soft); }
 
-  
     .btn-primary { background: var(--ink); color: var(--white); padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; box-shadow: 0 4px 20px rgba(14,26,15,0.18); display: inline-flex; align-items: center; gap: 8px; }
     .btn-primary:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,124,89,0.28); }
     .btn-secondary { background: var(--white); color: var(--ink); padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-secondary:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
-    .btn-sage { background: var(--sage); color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(74,124,89,0.22); }
-    .btn-sage:hover { background: #3a6647; transform: translateY(-2px); }
 
-    
-    .cards-section { padding: 80px 2rem; background: var(--white); }
-    .cards-inner { max-width: 1100px; margin: 0 auto; }
+    /* ── ONG SECTION ─────────────────────────────────── */
+    .ongs-section { padding: 80px 2rem; background: var(--white); }
+    .ongs-inner { max-width: 1100px; margin: 0 auto; }
+
     .section-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); background: var(--sage-pale); padding: 4px 12px; border-radius: 100px; margin-bottom: 1.25rem; }
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; letter-spacing: -1px; line-height: 1.05; margin-bottom: 1rem; }
     .section-title em { font-style: italic; color: var(--sage); }
     .section-desc { font-size: 16px; font-weight: 300; color: var(--ink-soft); line-height: 1.8; max-width: 520px; margin-bottom: 3rem; }
 
+    /* category header */
+    .cat-header {
+      display: flex; align-items: center; gap: 14px;
+      margin: 3rem 0 1.5rem;
+    }
+    .cat-header:first-of-type { margin-top: 0; }
+    .cat-emoji { font-size: 1.6rem; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: var(--cream); border: 1.5px solid var(--border-dark); border-radius: var(--r-md); flex-shrink: 0; }
+    .cat-label { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); }
+    .cat-line { flex: 1; height: 1px; background: var(--border-dark); }
+
+    /* ONG grid */
+    .ong-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 1rem; }
+
+    .ong-card {
+      background: var(--cream); border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+    }
+    .ong-card.visible { opacity: 1; transform: translateY(0); }
+    .ong-card:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
+
+    .ong-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+    .ong-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; flex: 1; margin-bottom: 1.5rem; }
+
+    .ong-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-ig {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; color: var(--ink-soft);
+      border: 1.5px solid var(--border-dark);
+      padding: 9px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      text-decoration: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ig:hover { border-color: #e1306c; color: #e1306c; background: #fff0f5; }
+    .btn-contact {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--ink); color: white;
+      border: none; padding: 9px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+      text-decoration: none; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-contact:hover { background: var(--sage); transform: translateY(-1px); }
+
+    /* ── CARDS SECTION (como ajudar agora) ──────────── */
+    .cards-section { padding: 80px 2rem; background: var(--cream); }
+    .cards-inner { max-width: 1100px; margin: 0 auto; }
     .three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .card {
-      background: var(--cream); border: 1.5px solid var(--border);
+      background: var(--white); border: 1.5px solid var(--border);
       border-radius: var(--r-xl); padding: 2rem 1.75rem;
-      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s;
       opacity: 0; transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
     }
     .card.visible { opacity: 1; transform: translateY(0); }
     .card:hover { transform: translateY(-5px) !important; box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
@@ -147,47 +157,36 @@
     .card-btn { background: var(--ink); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
     .card-btn:hover { background: var(--sage); transform: translateY(-1px); }
     .card-btn.outline { background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border-dark); }
-    .card-btn.outline:hover { border-color: var(--sage); color: var(--sage); background: transparent; transform: translateY(-1px); }
+    .card-btn.outline:hover { border-color: var(--sage); color: var(--sage); background: transparent; }
 
-  
-    .ong-section { padding: 0 2rem 80px; }
-    .ong-inner { max-width: 1100px; margin: 0 auto; }
-    .ong-card {
+    /* ── DARK ONG CTA ───────────────────────────────── */
+    .cta-section { padding: 0 2rem 80px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; }
+    .dark-card {
       background: var(--ink); border-radius: var(--r-xl);
       padding: 3.5rem; display: grid; grid-template-columns: 1fr auto;
       gap: 3rem; align-items: center; position: relative; overflow: hidden;
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .ong-card.visible { opacity: 1; transform: translateY(0); }
-    .ong-card::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
+    .dark-card.visible { opacity: 1; transform: translateY(0); }
+    .dark-card::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
     .ong-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1.25rem; }
-    .ong-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
-    .ong-title em { font-style: italic; color: var(--gold-light); }
-    .ong-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
-    .ong-cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
-    .btn-email {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--gold); color: white;
-      padding: 15px 28px; border-radius: 100px;
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      transition: all 0.2s; white-space: nowrap;
-      box-shadow: 0 4px 20px rgba(196,146,42,0.3);
-    }
-    .btn-email:hover { background: #a87824; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,146,42,0.4); }
-    .ong-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+    .dark-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
+    .dark-title em { font-style: italic; color: var(--gold-light); }
+    .dark-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
+    .dark-ctas { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
+    .btn-email { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: white; padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; box-shadow: 0 4px 20px rgba(196,146,42,0.3); }
+    .btn-email:hover { background: #a87824; transform: translateY(-2px); }
+    .dark-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+    .pill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.75rem; }
+    .pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.65); font-size: 12px; padding: 5px 14px; border-radius: 100px; }
 
-    .toast {
-  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(200px);
-  background: var(--ink); color: white; padding: 12px 24px; border-radius: 100px;
-  font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg);
-  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  z-index: 9999; display: flex; align-items: center; gap: 8px; pointer-events: none;
-  opacity: 0; 
-}
-  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    /* ── TOAST ──────────────────────────────────────── */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(200px); background: var(--ink); color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); z-index: 9999; display: flex; align-items: center; gap: 8px; pointer-events: none; opacity: 0; }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-
+    /* ── FOOTER ─────────────────────────────────────── */
     footer { background: var(--ink); padding: 50px 2rem 0; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
@@ -201,15 +200,16 @@
     .footer-bottom a { color: rgba(255,255,255,0.38); text-decoration: none; }
     .footer-bottom a:hover { color: var(--sage-light); }
 
-
-   @media (max-width: 900px) {
-  .three-cards { grid-template-columns: 1fr; }
-  .ong-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; } 
-  .ong-card::before { font-size: 8rem; right: -0.5rem; bottom: -1rem; } 
-  .ong-cta-wrap { width: 100%; align-items: stretch; } 
-  .btn-email { width: 100%; justify-content: center; }
-  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-}
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .ong-grid { grid-template-columns: 1fr; }
+      .three-cards { grid-template-columns: 1fr; }
+      .dark-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+      .dark-card::before { font-size: 8rem; }
+      .dark-ctas { width: 100%; align-items: stretch; }
+      .btn-email { width: 100%; justify-content: center; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
     @media (max-width: 600px) {
       .hero-ctas { flex-direction: column; align-items: center; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -218,9 +218,7 @@
 </head>
 <body>
 
-
   <div class="toast" id="toast">✅ Link copiado! Compartilhe com seus amigos</div>
-
 
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
@@ -229,22 +227,18 @@
     </div>
   </nav>
 
-
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-grid"></div>
     <div class="orb-1"></div>
     <div class="orb-2"></div>
     <div class="hero-inner">
-
       <div class="hero-badge">
         <div class="badge-dot"></div>
         Give&Grow · Voluntariado
       </div>
-
       <span class="hero-emoji">🤝</span>
-
       <h1>Que alegria ter<br>você por <em>aqui!</em></h1>
-
       <div class="status-badge">
         <span class="status-badge-icon">🌱</span>
         <div class="status-badge-text">
@@ -252,29 +246,148 @@
           <span>Parcerias com ONGs e ações presenciais em construção</span>
         </div>
       </div>
-
       <p class="hero-desc">
         Ficamos muito felizes com o seu interesse em fazer voluntariado! A comunidade Give&Grow ainda está dando seus primeiros passos — precisamos de mais pessoas e mais parcerias com ONGs para organizar ações presenciais no DF.
       </p>
       <p class="hero-desc-2">
         Mas sua vontade de ajudar já é o começo. Cadastre seu interesse agora e você será um dos primeiros a saber quando tiver ações disponíveis.
       </p>
-
       <div class="hero-ctas">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYjuH1pjNxa3Kz3DmTGVwdbvenTP58aY0ElK-6TE9YBkfNnw/viewform" target="_blank" rel="noopener" class="btn-primary">🤝 Cadastrar meu interesse</a>
-        <button class="btn-secondary" onclick="compartilhar()">🔗 Compartilhar o site</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONGs PARCEIRAS -->
+  <section class="ongs-section" id="ongs">
+    <div class="ongs-inner">
+
+      <span class="section-label">ONGs parceiras</span>
+      <h2 class="section-title">Conheça algumas<br><em>ONGs do DF</em></h2>
+      <p class="section-desc">
+        Essas organizações realizam trabalhos incríveis na comunidade. O Give&Grow busca aproximar voluntários de projetos que já fazem a diferença.
+      </p>
+
+      <!-- ANIMAIS -->
+      <div class="cat-header">
+        <div class="cat-emoji">🐾</div>
+        <span class="cat-label">Animais</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="ong-grid">
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Lar dos Anjos</div>
+          <p class="ong-desc">Exemplo de descrição : ONG dedicada ao resgate, reabilitação e adoção responsável de animais abandonados no Distrito Federal. Realiza feiras de adoção mensais em diferentes regiões do DF.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@patinhasdocerrado.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Ficticia</div>
+          <p class="ong-desc">Grupo de voluntários que atua no resgate e cuidado de animais em situação de rua, com foco em castração comunitária e educação sobre posse responsável.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@amigosdosbichos.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Lar Animal Brasília</div>
+          <p class="ong-desc">Abrigo comunitário que cuida de animais resgatados enquanto aguardam adoção. Recebe doações de ração, medicamentos e busca famílias adotantes responsáveis.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@laranimal.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- IDOSOS -->
+      <div class="cat-header">
+        <div class="cat-emoji">👴</div>
+        <span class="cat-label">Idosos</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="ong-grid">
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Abraço Gentil</div>
+          <p class="ong-desc">Organização que promove visitas, atividades recreativas e suporte emocional para idosos em instituições de longa permanência no DF. Busca combater o isolamento social.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@abracogentil.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Viver Bem DF</div>
+          <p class="ong-desc">Promove oficinas de arte, tecnologia e convivência para idosos em situação de vulnerabilidade social, estimulando autonomia, inclusão digital e bem-estar.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@vivembemdf.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Projeto Memória Viva</div>
+          <p class="ong-desc">Resgata histórias e saberes de idosos por meio de rodas de conversa, registros audiovisuais e integração com jovens voluntários — gerando troca e pertencimento.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@memoriaviva.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CRIANÇAS -->
+      <div class="cat-header">
+        <div class="cat-emoji">🧒</div>
+        <span class="cat-label">Crianças</span>
+        <div class="cat-line"></div>
+      </div>
+      <div class="ong-grid">
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Sementinha DF</div>
+          <p class="ong-desc">Projeto social que oferece reforço escolar, atividades lúdicas e apoio psicossocial para crianças em situação de vulnerabilidade nas periferias do Distrito Federal.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@sementinhadf.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Arte & Futuro</div>
+          <p class="ong-desc">Usa a arte, música e esporte como ferramentas de transformação social para crianças e adolescentes, oferecendo oficinas gratuitas em regiões administrativas do DF.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@artefuturo.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
+        <div class="ong-card reveal-card">
+          <div class="ong-name">Casa do Pequeno Cidadão</div>
+          <p class="ong-desc">Acompanha crianças em situação de risco social com atividades educativas, culturais e acompanhamento familiar, promovendo cidadania desde a infância.</p>
+          <div class="ong-actions">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig">📸 Instagram</a>
+            <a href="mailto:contato@casapequeno.org" class="btn-contact">✉️ Contato</a>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-
+  <!-- COMO AJUDAR AGORA -->
   <section class="cards-section">
     <div class="cards-inner">
       <span class="section-label reveal-card">Enquanto isso...</span>
       <h2 class="section-title reveal-card">Como você pode<br><em>ajudar agora</em></h2>
       <p class="section-desc reveal-card">Mesmo sem ações presenciais ainda, tem muitas formas de contribuir com a comunidade Give&Grow hoje.</p>
-
       <div class="three-cards">
         <div class="card reveal-card">
           <span class="card-icon">📋</span>
@@ -298,34 +411,33 @@
     </div>
   </section>
 
-
-  <section class="ong-section">
-    <div class="ong-inner">
-      <div class="ong-card reveal-card">
+  <!-- CTA DARK - PARA ONGs -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="dark-card reveal-card">
         <div>
           <span class="ong-tag">Para organizações</span>
-          <h2 class="ong-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
-          <p class="ong-desc">
+          <h2 class="dark-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
+          <p class="dark-desc">
             Estamos construindo uma rede de parcerias com organizações do Distrito Federal para conectar voluntários dispostos a agir com causas reais que precisam de ajuda. Se a sua ONG está buscando voluntários, entra em contato — adoraria conversar e incluir vocês na nossa rede.
           </p>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.75rem;">
-            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🐾 Causa animal</span>
-            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">👴 Idosos</span>
-            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🌿 Meio ambiente</span>
-            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🎓 Educação</span>
-            <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">+ outras</span>
+          <div class="pill-tags">
+            <span class="pill">🐾 Causa animal</span>
+            <span class="pill">👴 Idosos</span>
+            <span class="pill">🌿 Meio ambiente</span>
+            <span class="pill">🎓 Educação</span>
+            <span class="pill">+ outras</span>
           </div>
         </div>
-        <div class="ong-cta-wrap">
+        <div class="dark-ctas">
           <a href="mailto:euclaricenunes@gmail.com?subject=Parceria%20de%20voluntariado%20%E2%80%94%20Give%26Grow" class="btn-email">
             ✉️ Entrar em contato
           </a>
-          <p class="ong-note">euclaricenunes@gmail.com</p>
+          <p class="dark-note">euclaricenunes@gmail.com</p>
         </div>
       </div>
     </div>
   </section>
-
 
   <footer>
     <div class="footer-inner">
@@ -353,7 +465,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Give&Grow · Todos os direitos reservados </span>
+      <span>© 2026 Give&Grow · Todos os direitos reservados</span>
       <span>Feito por <a href="sobre.html">Clarice Nunes · Engenharia de Software · Brasília</a></span>
     </div>
   </footer>
@@ -363,7 +475,6 @@
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
     });
 
-  
     const ro = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -372,9 +483,8 @@
         }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal-card').forEach(el => ro.observe(el));
+    document.querySelectorAll('.reveal-card, .ong-card, .dark-card').forEach(el => ro.observe(el));
 
-    
     function compartilhar() {
       const url = window.location.origin + '/index.html';
       if (navigator.share) {
@@ -393,9 +503,7 @@
         const toast = document.getElementById('toast');
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 3200);
-      }).catch(() => {
-        alert('Link: ' + url);
-      });
+      }).catch(() => { alert('Link: ' + url); });
     }
   </script>
 </body>

@@ -825,6 +825,77 @@
       .causas-grid { grid-template-columns: 1fr; }
       .section { padding: 70px 1.5rem; }
     }
+
+    .ongs-apoiadoras { padding: 80px 2rem; background: var(--cream); }
+.ongs-apoiadoras-inner { max-width: 1100px; margin: 0 auto; }
+ 
+.apoiadoras-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem;
+}
+
+.apoiadoras-header .section-label { margin-bottom: 0.75rem; }
+.apoiadoras-header .section-title { margin-bottom: 0.5rem; }
+.apoiadoras-header .section-desc { margin-bottom: 0; }
+ 
+.btn-ver-mais {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--white);
+  padding: 13px 26px; border-radius: 100px;
+  font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+  text-decoration: none; white-space: nowrap;
+  transition: all 0.2s; box-shadow: 0 4px 20px rgba(14,26,15,0.14);
+  flex-shrink: 0;
+}
+.btn-ver-mais:hover { background: var(--sage); transform: translateY(-2px); }
+ 
+.apoiadoras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+ 
+.apoiadora-card {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--r-xl); padding: 1.75rem;
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+}
+.apoiadora-card.visible { opacity: 1; transform: translateY(0); }
+.apoiadora-card:hover { transform: translateY(-5px) !important; box-shadow: 0 12px 60px rgba(14,26,15,0.14); border-color: var(--sage-light); }
+ 
+.apoiadora-cat {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--sage); background: var(--sage-pale);
+  padding: 3px 10px; border-radius: 100px;
+  margin-bottom: 1rem; width: fit-content;
+}
+.apoiadora-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.apoiadora-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; flex: 1; margin-bottom: 1.5rem; }
+.apoiadora-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+ 
+.btn-ig-sm {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: transparent; color: var(--ink-soft);
+  border: 1.5px solid var(--border-dark);
+  padding: 8px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-ig-sm:hover { border-color: #e1306c; color: #e1306c; background: #fff0f5; }
+ 
+.btn-contact-sm {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--ink); color: white;
+  border: none; padding: 8px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-contact-sm:hover { background: var(--sage); transform: translateY(-1px); }
+ 
+@media (max-width: 900px) {
+  .apoiadoras-grid { grid-template-columns: 1fr; }
+  .apoiadoras-header { flex-direction: column; align-items: flex-start; }
+}
+
   </style>
 </head>
 <body>
@@ -841,6 +912,7 @@
         <li><a href="#causas">Causas</a></li>
         <li><a href="#eventos">Eventos</a></li>
         <li><a href="#patasdf">PatasDF</a></li>
+        <li><a href="#ongs">ONGs</a></li>
         <li><a href="#sobre-criadora">Sobre</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li style="margin-top:8px;"><a href="#participar" class="nav-cta">Quero participar</a></li>
@@ -1265,6 +1337,58 @@
     </div>
   </section>
 
+  <section class="ongs-apoiadoras" id="ongs">
+  <div class="ongs-apoiadoras-inner">
+ 
+    <div class="apoiadoras-header">
+      <div class="apoiadoras-header-left">
+        <span class="section-label">ONGs apoiadoras</span>
+        <h2 class="section-title">Organizações que<br><em>fazem a diferença</em></h2>
+        <p class="section-desc">
+          Conheça algumas ONGs do DF com quem o Give&Grow busca trabalhar — e saiba como você pode ajudar.
+        </p>
+      </div>
+      <a href="voluntariado.html#ongs" class="btn-ver-mais">Ver todas as ONGs →</a>
+    </div>
+ 
+    <div class="apoiadoras-grid">
+ 
+    
+      <div class="apoiadora-card reveal-card">
+        <span class="apoiadora-cat">🐾 Animais</span>
+        <div class="apoiadora-name">Patinhas do Cerrado</div>
+        <p class="apoiadora-desc">Resgate, reabilitação e adoção responsável de animais abandonados no DF. Realiza feiras de adoção mensais em diferentes regiões.</p>
+        <div class="apoiadora-actions">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig-sm">📸 Instagram</a>
+          <a href="mailto:contato@patinhasdocerrado.org" class="btn-contact-sm">✉️ Contato</a>
+        </div>
+      </div>
+ 
+   
+      <div class="apoiadora-card reveal-card">
+        <span class="apoiadora-cat">👴 Idosos</span>
+        <div class="apoiadora-name">Abraço Gentil</div>
+        <p class="apoiadora-desc">Visitas, atividades recreativas e suporte emocional para idosos em instituições de longa permanência no DF. Combate o isolamento social.</p>
+        <div class="apoiadora-actions">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig-sm">📸 Instagram</a>
+          <a href="mailto:contato@abracogentil.org" class="btn-contact-sm">✉️ Contato</a>
+        </div>
+      </div>
+ 
+      
+      <div class="apoiadora-card reveal-card">
+        <span class="apoiadora-cat">🧒 Crianças</span>
+        <div class="apoiadora-name">Sementinha DF</div>
+        <p class="apoiadora-desc">Reforço escolar, atividades lúdicas e apoio psicossocial para crianças em situação de vulnerabilidade nas periferias do DF.</p>
+        <div class="apoiadora-actions">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig-sm">📸 Instagram</a>
+          <a href="mailto:contato@sementinhadf.org" class="btn-contact-sm">✉️ Contato</a>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
   
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
