@@ -334,7 +334,7 @@
               ${a.circunstancias  ? `<div><strong>Circunstâncias:</strong> ${a.circunstancias}</div>` : ''}
             </div>
             <a class="btn-contato-main ${btnCls}"
-              href="https://wa.me/55${(a.whatsapp||'').replace(/\D/g,'')}"
+              href="${a.linkContato || '#'}"
               target="_blank" rel="noopener">
               ${btnLbl}
             </a>
