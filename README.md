@@ -310,32 +310,6 @@ Todos os links de ação (confirmar, cancelar, aprovar, reprovar, status) são p
 
 ---
 
-## Design
-
-- **Tipografia:** Playfair Display (títulos) + DM Sans (corpo)
-- **Paleta:**
-  - `#0e1a0f` — Ink (fundo escuro, textos)
-  - `#4a7c59` — Sage (cor principal, animais perdidos)
-  - `#c4922a` — Gold (destaque, animais encontrados)
-  - `#f5f0e8` — Cream (fundo claro)
-- **Animações:** CSS puro — fadeUp, orbFloat, cardFloat, ticker
-- **Layout:** CSS Grid + Flexbox, responsivo sem frameworks
-
----
-
-## Deploy no GitHub Pages
-
-1. Faça push de todos os arquivos para a branch `main`
-2. Acesse **Settings → Pages** no repositório
-3. Em **Source**, selecione `Deploy from a branch → main → / (root)`
-4. Aguarde alguns minutos e acesse `https://claricenunes.github.io/Give-and-Grow`
-
-> Use sempre caminhos relativos nos arquivos HTML (ex: `fotos/clarice2.jpg` e não `/fotos/clarice2.jpg`).
-
-> Após qualquer alteração no Apps Script, faça um novo **Deploy** (`Implantar → Gerenciar implantações → Editar → Nova versão`) para que as mudanças entrem em vigor nos links públicos.
-
----
-
 ## Como testar o Apps Script
 
 ### Testar cadastros (onFormSubmit)
@@ -411,16 +385,6 @@ function testeResumoDiario() {
   resumoDiario();
 }
 ```
-
----
-
-## Próximos passos
-
-- [ ] Página de perfil individual de cada animal com galeria de fotos
-- [ ] Notificação automática quando um animal é cadastrado na mesma região de outro
-- [ ] Mapa interativo integrado ao Google My Maps
-- [ ] Expansão do voluntariado com parcerias com ONGs do DF
-- [ ] Sistema de avaliação de instrutores após os eventos
 
 ---
 
