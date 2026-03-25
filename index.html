@@ -34,857 +34,468 @@
       --r-xl: 32px;
     }
 
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); overflow-x: hidden; font-weight: 400; }
     body.modal-open { overflow: hidden; position: fixed; width: 100%; }
 
-    .ong-section { padding: 0 2rem 100px; }
-    .ong-inner { max-width: 1200px; margin: 0 auto; }
-    .ong-card {
-      background: var(--ink); border-radius: var(--r-xl);
-      padding: 3.5rem; display: grid; grid-template-columns: 1fr auto;
-      gap: 3rem; align-items: center; position: relative; overflow: hidden;
-    }
-    .ong-card::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
-    .ong-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1.25rem; }
-    .ong-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
-    .ong-title em { font-style: italic; color: var(--gold-light); }
-    .ong-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
-    .ong-cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
-    .btn-email { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: white; padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; box-shadow: 0 4px 20px rgba(196,146,42,0.3); }
-    .btn-email:hover { background: #a87824; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,146,42,0.4); }
-    .ong-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
-    @media (max-width: 900px) { .ong-card { grid-template-columns: 1fr; gap: 2rem; } .ong-cta-wrap { width: 100%; } .btn-email { width: 100%; justify-content: center; } }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--ink);
-      overflow-x: hidden;
-      font-weight: 400;
-    }
-
+    /* ── NAVBAR ── */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 2rem;
-      height: 68px;
+      padding: 0 2rem; height: 68px;
       display: flex; align-items: center;
-      background: rgba(253,252,248,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s;
+      background: rgba(253,252,248,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); transition: all 0.3s;
     }
-    .navbar.scrolled {
-      height: 58px;
-      box-shadow: 0 2px 24px rgba(14,26,15,0.08);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 700;
-      color: var(--ink); text-decoration: none;
-      letter-spacing: -0.5px;
-    }
+    .navbar.scrolled { height: 58px; box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
     .logo em { color: var(--sage); font-style: italic; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--ink-soft); text-decoration: none;
-      font-size: 14px; font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--sage); }
-    .nav-cta {
-      background: var(--ink) !important;
-      color: var(--white) !important;
-      padding: 9px 22px !important;
-      border-radius: 100px !important;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.15s !important;
-    }
+    .nav-cta { background: var(--ink) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
     .nav-cta:hover { background: var(--sage) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+
 
     .hero {
       min-height: 100vh;
       display: flex; align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 2rem 60px;
+      padding: 120px 2rem 80px;
       background: var(--cream);
+      position: relative; overflow: hidden;
     }
-    .hero-grid-bg {
+
+    .hero::before {
+      content: '';
       position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4; pointer-events: none;
     }
-    .hero-orb-1 {
-      position: absolute; width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(74,124,89,0.15) 0%, transparent 70%);
-      top: -100px; right: -100px; z-index: 0;
-      animation: orbFloat 12s ease-in-out infinite;
+
+    /* Large decorative background letter */
+    .hero-bg-letter {
+      position: absolute; right: -2rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28rem, 40vw, 52rem);
+      font-weight: 900; font-style: italic;
+      color: var(--sage); opacity: 0.04;
+      line-height: 1; pointer-events: none;
+      user-select: none; z-index: 0;
+      animation: bgLetterDrift 20s ease-in-out infinite alternate;
     }
-    .hero-orb-2 {
-      position: absolute; width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(196,146,42,0.1) 0%, transparent 70%);
-      bottom: -50px; left: -50px; z-index: 0;
-      animation: orbFloat 16s ease-in-out infinite reverse;
+    @keyframes bgLetterDrift {
+      from { transform: translateY(-50%) translateX(0); }
+      to   { transform: translateY(-52%) translateX(-20px); }
     }
-    @keyframes orbFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, -30px) scale(1.05); }
-    }
+
     .hero-inner {
       max-width: 1200px; margin: 0 auto; width: 100%;
       position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 6rem; align-items: center;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: white; border: 1px solid var(--border-dark);
-      border-radius: 100px; padding: 6px 16px 6px 8px;
-      font-size: 12px; font-weight: 600;
-      color: var(--sage); margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-      animation: fadeUp 0.6s ease both;
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s ease both;
     }
-    .badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--sage);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    .eyebrow-line { width: 32px; height: 1.5px; background: var(--sage); }
+    .eyebrow-text { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
       font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -2px;
+      line-height: 0.95;
+      letter-spacing: -3px;
       color: var(--ink);
-      animation: fadeUp 0.6s 0.1s ease both;
+      animation: fadeUp 0.7s 0.08s ease both;
+      margin-bottom: 0.15em;
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--sage);
-      position: relative;
+    .hero h1 .word-give { display: block; }
+    .hero h1 .word-and  { display: block; color: var(--sage); font-style: italic; padding-left: 0.08em; }
+    .hero h1 .word-grow { display: block; -webkit-text-stroke: 2px var(--ink); color: transparent; }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      font-weight: 300; line-height: 1.75; color: var(--ink-soft);
+      max-width: 480px; margin: 2.5rem 0 3rem;
+      animation: fadeUp 0.7s 0.16s ease both;
     }
-    .hero h1 em::after {
-      content: '';
-      position: absolute; bottom: 2px; left: 0; right: 0;
-      height: 3px;
-      background: var(--sage-light);
-      border-radius: 2px;
-    }
-    .hero-sub {
-      font-size: 17px; font-weight: 300; line-height: 1.75;
-      color: var(--ink-soft);
-      max-width: 440px;
-      margin: 1.5rem 0 2.5rem;
-      animation: fadeUp 0.6s 0.2s ease both;
-    }
+    .hero-tagline strong { font-weight: 600; color: var(--ink); }
+
     .hero-ctas {
       display: flex; gap: 12px; flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.3s ease both;
+      animation: fadeUp 0.7s 0.24s ease both;
     }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+
+    /* Hero right — info cards vertical stack */
+    .hero-right {
+      display: flex; flex-direction: column; gap: 12px;
+      animation: fadeUp 0.9s 0.2s ease both;
     }
+
+    .info-pill {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--white); border: 1.5px solid var(--border-dark);
+      border-radius: 100px;
+      padding: 14px 20px;
+      transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+      text-decoration: none;
+    }
+    .info-pill:hover { border-color: var(--sage); transform: translateX(6px); box-shadow: var(--shadow); }
+    .info-pill-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .info-pill-icon.sage  { background: var(--sage-pale); }
+    .info-pill-icon.gold  { background: rgba(196,146,42,0.12); }
+    .info-pill-icon.rust  { background: rgba(184,92,56,0.1); }
+    .info-pill-label { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .info-pill-sub   { font-size: 12px; font-weight: 300; color: var(--ink-soft); }
+    .info-pill-arrow { margin-left: auto; font-size: 14px; color: var(--sage); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+    .info-pill:hover .info-pill-arrow { opacity: 1; transform: translateX(4px); }
+
+    .hero-stat-row {
+      display: flex; gap: 0;
+      border: 1.5px solid var(--border-dark); border-radius: var(--r-lg);
+      overflow: hidden; background: var(--cream);
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+    .hero-stat {
+      flex: 1; text-align: center; padding: 18px 12px;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--ink); line-height: 1;
+    }
+    .hero-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); margin-top: 4px; font-weight: 500; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── BUTTONS ── */
     .btn-primary {
       background: var(--ink); color: var(--white);
       padding: 14px 28px; border-radius: 100px;
-      font-size: 15px; font-weight: 600;
-      text-decoration: none;
+      font-size: 15px; font-weight: 600; text-decoration: none;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
       box-shadow: 0 4px 20px rgba(14,26,15,0.2);
       display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-primary:hover {
-      background: var(--sage);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(74,124,89,0.3);
-    }
+    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,124,89,0.3); }
     .btn-secondary {
-      background: white; color: var(--ink);
+      background: transparent; color: var(--ink);
       padding: 14px 28px; border-radius: 100px;
       font-size: 15px; font-weight: 500;
       text-decoration: none; border: 1.5px solid var(--border-dark);
-      transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-secondary:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
-    .btn-gold {
-      background: var(--gold); color: white;
-      padding: 14px 28px; border-radius: 100px;
-      font-size: 15px; font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 20px rgba(196,146,42,0.25);
-    }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,146,42,0.35); }
 
-    .hero-right {
-      position: relative; height: 480px;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-    .hero-card {
-      position: absolute;
-      background: white;
-      border: 1px solid var(--border-dark);
-      border-radius: var(--r-lg);
-      padding: 1.25rem 1.5rem;
-      box-shadow: var(--shadow-lg);
-      width: 240px;
-    }
-    .hero-card-1 { top: 0; left: 10%; animation: cardFloat 8s ease-in-out infinite; }
-    .hero-card-2 { top: 30%; right: 0; animation: cardFloat 10s 2s ease-in-out infinite; }
-    .hero-card-3 { bottom: 5%; left: 5%; animation: cardFloat 9s 1s ease-in-out infinite; }
-    @keyframes cardFloat {
-      0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}
-    }
-    .hc-emoji { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
-    .hc-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-    .hc-sub { font-size: 12px; color: var(--ink-soft); font-weight: 300; }
-    .hc-tag {
-      display: inline-block; margin-top: 10px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-      padding: 3px 10px; border-radius: 100px;
-      text-transform: uppercase;
-    }
-    .hc-tag-sage { background: var(--sage-pale); color: var(--sage); }
-    .hc-tag-gold { background: rgba(196,146,42,0.12); color: var(--gold); }
-    .hc-tag-rust { background: rgba(184,92,56,0.1); color: var(--rust); }
-
-    .stats-strip {
-      background: var(--ink);
-      padding: 1.25rem 2rem;
-      display: flex; align-items: center; justify-content: center;
-      gap: 0;
-      overflow: hidden;
-    }
-    .stat-item {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 0 3rem;
-      border-right: 1px solid rgba(255,255,255,0.1);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700;
-      color: white; line-height: 1;
-    }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 300; }
-
-    .ticker {
-      background: var(--sage); padding: 12px 0; overflow: hidden;
-    }
-    .ticker-inner {
-      display: flex; gap: 0;
-      animation: ticker 25s linear infinite;
-      width: max-content;
-    }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .ticker-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 0 2rem; white-space: nowrap;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9);
-    }
+    /* ── TICKER ── */
+    .ticker { background: var(--sage); padding: 12px 0; overflow: hidden; }
+    .ticker-inner { display: flex; gap: 0; animation: ticker 25s linear infinite; width: max-content; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item { display: flex; align-items: center; gap: 10px; padding: 0 2rem; white-space: nowrap; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
     .ticker-sep { color: rgba(255,255,255,0.4); font-size: 1.2rem; margin: 0 0.5rem; }
 
+    /* ── STATS STRIP ── */
+    .stats-strip { background: var(--ink); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: center; }
+    .stat-item { display: flex; align-items: center; gap: 1rem; padding: 0 3rem; border-right: 1px solid rgba(255,255,255,0.1); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: white; line-height: 1; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+    /* ── SECTIONS ── */
     .section { padding: 100px 2rem; }
     .container { max-width: 1200px; margin: 0 auto; }
-    .label {
-      display: inline-block;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--sage);
-      background: var(--sage-pale);
-      padding: 4px 12px; border-radius: 100px;
-      margin-bottom: 1.25rem;
-    }
-    .display {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.6rem);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -1.5px;
-      color: var(--ink);
-    }
+    .label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); background: var(--sage-pale); padding: 4px 12px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .display { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; color: var(--ink); }
     .display em { font-style: italic; color: var(--sage); }
-    .lead {
-      font-size: 17px; font-weight: 300; line-height: 1.75;
-      color: var(--ink-soft);
-      max-width: 520px;
-      margin-top: 1rem;
-    }
-
+    .lead { font-size: 17px; font-weight: 300; line-height: 1.75; color: var(--ink-soft); max-width: 520px; margin-top: 1rem; }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .how-section { background: var(--white); }
-    .steps-row {
-      display: flex; gap: 0;
-      margin-top: 4rem;
-      position: relative;
-    }
-    .steps-row::before {
-      content: ''; position: absolute;
-      top: 32px; left: 32px; right: 32px; height: 1px;
-      background: var(--border);
-      z-index: 0;
-    }
-    .step {
-      flex: 1; padding: 0 1.5rem;
-      position: relative; z-index: 1;
-    }
-    .step-circle {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: var(--white); border: 1.5px solid var(--border-dark);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem; font-weight: 700;
-      color: var(--sage);
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: background 0.3s, color 0.3s;
-    }
+    /* ── HOW SECTION ── */
+    .how-section { background: var(--cream); }
+    .steps-row { display: flex; gap: 0; margin-top: 4rem; position: relative; }
+    .steps-row::before { content: ''; position: absolute; top: 32px; left: 32px; right: 32px; height: 1px; background: var(--border); z-index: 0; }
+    .step { flex: 1; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .step-circle { width: 64px; height: 64px; border-radius: 50%; background: var(--white); border: 1.5px solid var(--border-dark); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--sage); margin-bottom: 1.5rem; box-shadow: var(--shadow); transition: background 0.3s, color 0.3s; }
     .step:hover .step-circle { background: var(--sage); color: white; border-color: var(--sage); }
-    .step h3 {
-      font-size: 15px; font-weight: 600; margin-bottom: 0.5rem;
-    }
-    .step p {
-      font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7;
-    }
+    .step h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
+    .step p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
 
-    .causas-section { background: var(--cream); }
-    .causas-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;
-    }
+    /* ── CAUSAS ── */
+    .causas-section { background: var(--white); }
+    .causas-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
     .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-pill {
-      padding: 8px 18px; border-radius: 100px;
-      font-size: 13px; font-weight: 500;
-      border: 1.5px solid var(--border-dark);
-      background: transparent; color: var(--ink-soft);
-      cursor: pointer; font-family: inherit;
-      transition: all 0.2s;
-    }
-    .filter-pill.active, .filter-pill:hover {
-      background: var(--ink); color: white; border-color: var(--ink);
-    }
-    .causas-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-    }
-    .causa-card {
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 2rem 1.5rem;
-      cursor: pointer; position: relative; overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.3s;
-    }
-    .causa-card::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0; height: 3px;
-      background: var(--sage);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
+    .filter-pill { padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-dark); background: transparent; color: var(--ink-soft); cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .filter-pill.active, .filter-pill:hover { background: var(--ink); color: white; border-color: var(--ink); }
+    .causas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .causa-card { background: var(--cream); border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 2rem 1.5rem; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.3s; }
+    .causa-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
     .causa-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
     .causa-card:hover::after { transform: scaleX(1); }
-    .causa-icon {
-      font-size: 2rem; width: 56px; height: 56px;
-      background: var(--sage-pale); border-radius: var(--r-md);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-    }
-    .causa-tag {
-      position: absolute; top: 14px; right: 14px;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      color: var(--sage); background: var(--sage-pale);
-      padding: 3px 10px; border-radius: 100px; text-transform: uppercase;
-    }
+    .causa-icon { font-size: 2rem; width: 56px; height: 56px; background: white; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; border: 1px solid var(--border); }
     .causa-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .causa-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.65; }
 
-    .eventos-section { background: var(--white); }
-    .eventos-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-      margin-top: 3rem;
-    }
-    .evento-card {
-      background: var(--cream); border: 1.5px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 1.75rem;
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    }
+    /* ── EVENTOS ── */
+    .eventos-section { background: var(--cream); }
+    .eventos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 3rem; }
+    .evento-card { background: white; border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 1.75rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
     .evento-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
-    .ev-date {
-      min-width: 56px; text-align: center;
-      padding-right: 1.5rem;
-      border-right: 1px solid var(--border);
-    }
-    .ev-day {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem; font-weight: 400; line-height: 1;
-      color: var(--sage);
-    }
+    .ev-date { min-width: 56px; text-align: center; padding-right: 1.5rem; border-right: 1px solid var(--border); }
+    .ev-day { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 400; line-height: 1; color: var(--sage); }
     .ev-month { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); font-weight: 600; }
     .ev-content { flex: 1; }
-    .ev-tag {
-      display: inline-block;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
-      margin-bottom: 10px;
-    }
+    .ev-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
     .ev-online { background: var(--sage-pale); color: var(--sage); }
     .ev-presencial { background: rgba(196,146,42,0.12); color: var(--gold); }
     .ev-parceria { background: rgba(184,92,56,0.1); color: var(--rust); }
     .ev-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
     .ev-info { font-size: 13px; font-weight: 300; color: var(--ink-soft); }
-
-    .cal-block {
-      margin-top: 3rem; border: 1.5px solid var(--border);
-      border-radius: var(--r-xl); overflow: hidden;
-      background: white; box-shadow: var(--shadow);
-    }
-    .cal-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
-      flex-wrap: wrap; gap: 1rem;
-    }
+    .cal-block { margin-top: 3rem; border: 1.5px solid var(--border); border-radius: var(--r-xl); overflow: hidden; background: white; box-shadow: var(--shadow); }
+    .cal-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
     .cal-header-left { display: flex; align-items: center; gap: 14px; }
-    .cal-icon {
-      width: 44px; height: 44px; background: var(--sage-pale);
-      border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-    }
+    .cal-icon { width: 44px; height: 44px; background: var(--sage-pale); border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
     .cal-title { font-size: 15px; font-weight: 600; }
     .cal-sub { font-size: 12px; font-weight: 300; color: var(--ink-soft); }
     .cal-actions { display: flex; gap: 10px; }
-    .cal-btn {
-      padding: 9px 20px; border-radius: 100px; font-size: 13px; font-weight: 500;
-      cursor: pointer; font-family: inherit; transition: all 0.2s; border: 1.5px solid var(--border-dark);
-      background: var(--ink); color: white; border-color: transparent;
-    }
-    .cal-btn-outline {
-      background: transparent; color: var(--ink-soft);
-      text-decoration: none; padding: 9px 20px; border-radius: 100px;
-      font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-dark);
-      transition: all 0.2s; display: inline-flex; align-items: center;
-    }
+    .cal-btn { padding: 9px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.2s; border: none; background: var(--ink); color: white; }
+    .cal-btn-outline { background: transparent; color: var(--ink-soft); text-decoration: none; padding: 9px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1.5px solid var(--border-dark); transition: all 0.2s; display: inline-flex; align-items: center; }
     .cal-btn-outline:hover { border-color: var(--sage); color: var(--sage); }
 
-    .participar-section { background: var(--cream); }
-    .participar-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-      margin-top: 3rem;
-    }
-    .part-card {
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--r-xl); padding: 2.5rem;
-      position: relative; overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    /* ── PARTICIPAR ── */
+    .participar-section { background: var(--white); }
+    .participar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 3rem; }
+    .part-card { background: var(--cream); border: 1.5px solid var(--border); border-radius: var(--r-xl); padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .part-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
     .part-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; }
-    .part-icon {
-      width: 52px; height: 52px; background: var(--sage-pale);
-      border-radius: var(--r-md); display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; flex-shrink: 0;
-    }
+    .part-icon { width: 52px; height: 52px; background: white; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; border: 1px solid var(--border); }
     .part-title { font-size: 18px; font-weight: 700; }
     .part-desc { font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.5rem; }
     .part-checks { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 8px; }
-    .part-checks li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 400; color: var(--ink-soft);
-    }
-    .check-icon {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--sage-pale); display: flex; align-items: center; justify-content: center;
-      font-size: 10px; color: var(--sage); flex-shrink: 0; font-weight: 700;
-    }
-    .part-btn {
-      display: block; text-align: center; width: 100%;
-      background: var(--ink); color: white;
-      padding: 13px 20px; border-radius: 100px;
-      font-size: 14px; font-weight: 600;
-      text-decoration: none; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s, transform 0.15s;
-      box-sizing: border-box;
-    }
+    .part-checks li { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 400; color: var(--ink-soft); }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--sage); flex-shrink: 0; font-weight: 700; }
+    .part-btn { display: block; text-align: center; width: 100%; background: var(--ink); color: white; padding: 13px 20px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; box-sizing: border-box; }
     .part-btn:hover { background: var(--sage); transform: translateY(-1px); }
-    .part-note {
-      text-align: center; font-size: 11px; color: var(--ink-soft);
-      margin-top: 8px; font-weight: 300;
-    }
+    .part-note { text-align: center; font-size: 11px; color: var(--ink-soft); margin-top: 8px; font-weight: 300; }
 
+    /* ── PATAS SECTION ── */
     .patas-section { background: var(--ink); }
-    .patas-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-      align-items: center;
-    }
+    .patas-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .patas-label { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); }
-    .patas-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400; line-height: 1.1; letter-spacing: -1px;
-      color: white; margin: 1rem 0;
-    }
+    .patas-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.1; letter-spacing: -1px; color: white; margin: 1rem 0; }
     .patas-title em { font-style: italic; color: var(--gold-light); }
     .patas-desc { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
     .patas-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
-    .patas-pill {
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 400;
-      padding: 6px 14px; border-radius: 100px;
-    }
+    .patas-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); font-size: 12px; padding: 6px 14px; border-radius: 100px; }
     .patas-cards { display: flex; flex-direction: column; gap: 12px; }
-    .patas-mini {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--r-md); padding: 1rem 1.25rem;
-      display: flex; align-items: center; gap: 12px;
-      transition: background 0.2s;
-    }
+    .patas-mini { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-md); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; transition: background 0.2s; }
     .patas-mini:hover { background: rgba(255,255,255,0.09); }
-    .pm-icon {
-      width: 44px; height: 44px; background: rgba(255,255,255,0.08);
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; flex-shrink: 0;
-    }
+    .pm-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
     .pm-name { font-size: 14px; font-weight: 500; color: white; }
     .pm-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-    .pm-badge {
-      margin-left: auto; background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.6); font-size: 11px; padding: 3px 12px; border-radius: 100px;
-      white-space: nowrap;
-    }
-    .btn-gold-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold); color: white;
-      padding: 14px 28px; border-radius: 100px;
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 0 4px 24px rgba(196,146,42,0.3);
-    }
+    .pm-badge { margin-left: auto; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-size: 11px; padding: 3px 12px; border-radius: 100px; white-space: nowrap; }
+    .btn-gold-outline { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 24px rgba(196,146,42,0.3); margin-right: 10px; margin-bottom: 10px; }
     .btn-gold-outline:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,146,42,0.4); }
 
-    /* ═══════════════════════════════════════════════════
-       ONGs APOIADORAS — SEÇÃO REFORMULADA
-    ═══════════════════════════════════════════════════ */
+    /* ── ONGs APOIADORAS ── */
     .ongs-apoiadoras { padding: 100px 2rem; background: var(--cream); }
     .ongs-apoiadoras-inner { max-width: 1200px; margin: 0 auto; }
-
-    .apoiadoras-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem;
-    }
+    .apoiadoras-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem; }
     .apoiadoras-header-left { max-width: 520px; }
-
-    .apoiadoras-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      margin-bottom: 2.5rem;
-    }
+    .apoiadoras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 2.5rem; }
 
     .apoiadora-card {
       background: var(--white); border: 1.5px solid var(--border);
       border-radius: var(--r-xl); padding: 2rem;
       display: flex; flex-direction: column;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.3s;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s;
       opacity: 0; transform: translateY(28px);
     }
     .apoiadora-card.visible { opacity: 1; transform: translateY(0); }
     .apoiadora-card:hover { transform: translateY(-6px) !important; box-shadow: var(--shadow-lg); border-color: var(--sage-light); }
-
-    /* Circular photo header */
-    .apoiadora-top {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 1.25rem;
-    }
-    .apoiadora-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      border: 2.5px solid var(--border-dark);
-      background: var(--sage-pale);
-      overflow: hidden; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 2px 12px rgba(14,26,15,0.1);
-    }
+    .apoiadora-top { display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; }
+    .apoiadora-avatar { width: 64px; height: 64px; border-radius: 50%; border: 2.5px solid var(--border-dark); background: var(--sage-pale); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 2px 12px rgba(14,26,15,0.1); }
     .apoiadora-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
     .apoiadora-info { flex: 1; min-width: 0; }
     .apoiadora-name { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; line-height: 1.2; }
-    .apoiadora-cat {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--sage); background: var(--sage-pale);
-      padding: 3px 10px; border-radius: 100px;
-    }
-
+    .apoiadora-cat { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); background: var(--sage-pale); padding: 3px 10px; border-radius: 100px; }
     .apoiadora-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; flex: 1; margin-bottom: 1.5rem; }
-
     .apoiadora-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
-    /* Instagram button — GREEN hover */
-    .btn-ig-sm {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: transparent; color: var(--ink-soft);
-      border: 1.5px solid var(--border-dark);
-      padding: 8px 14px; border-radius: 100px;
-      font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif;
-      text-decoration: none; transition: all 0.2s;
-    }
+    .btn-ig-sm { display: inline-flex; align-items: center; gap: 5px; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border-dark); padding: 8px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.2s; }
     .btn-ig-sm:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-pale); }
-
-    .btn-contact-sm {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: var(--ink); color: white;
-      border: none; padding: 8px 14px; border-radius: 100px;
-      font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif;
-      text-decoration: none; transition: all 0.2s;
-    }
+    .btn-contact-sm { display: inline-flex; align-items: center; gap: 5px; background: var(--ink); color: white; border: none; padding: 8px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.2s; cursor: pointer; }
     .btn-contact-sm:hover { background: var(--sage); transform: translateY(-1px); }
 
-    /* Ver mais button centered below grid */
-    .apoiadoras-footer {
-      display: flex; justify-content: center;
-      margin-top: 1rem;
-    }
-    .btn-ver-mais {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ink); color: var(--white);
-      padding: 14px 32px; border-radius: 100px;
-      font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif;
-      text-decoration: none; white-space: nowrap;
-      transition: all 0.2s; box-shadow: 0 4px 20px rgba(14,26,15,0.14);
-    }
+    .apoiadoras-footer { display: flex; justify-content: center; margin-top: 1rem; }
+    .btn-ver-mais { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--white); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; text-decoration: none; white-space: nowrap; transition: all 0.2s; box-shadow: 0 4px 20px rgba(14,26,15,0.14); }
     .btn-ver-mais:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74,124,89,0.28); }
 
-    @media (max-width: 900px) {
-      .apoiadoras-grid { grid-template-columns: 1fr; }
-      .apoiadoras-header { flex-direction: column; align-items: flex-start; }
+    /* ── ONG MODAL ── */
+    .ong-modal-overlay {
+      position: fixed; inset: 0; z-index: 9500;
+      background: rgba(14,26,15,0.6); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
     }
-    /* ═══════════════════════════════════════════════════ */
+    .ong-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .ong-modal-box {
+      background: var(--white); border-radius: var(--r-xl);
+      max-width: 560px; width: 100%;
+      max-height: 90dvh; overflow-y: auto;
+      box-shadow: 0 32px 96px rgba(14,26,15,0.22);
+      transform: translateY(28px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .ong-modal-overlay.open .ong-modal-box { transform: translateY(0) scale(1); }
+    .ong-modal-header {
+      position: sticky; top: 0; background: var(--white); z-index: 1;
+      padding: 1.75rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+    }
+    .ong-modal-header-left { display: flex; align-items: center; gap: 14px; }
+    .ong-modal-avatar { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--border-dark); background: var(--sage-pale); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .ong-modal-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .ong-modal-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); letter-spacing: -0.5px; }
+    .ong-modal-cat { font-size: 12px; font-weight: 300; color: var(--ink-soft); margin-top: 3px; }
+    .ong-modal-close { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--border-dark); background: transparent; cursor: pointer; font-size: 15px; color: var(--ink-soft); transition: all 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ong-modal-close:hover { background: var(--cream); border-color: var(--ink); }
+    .ong-modal-body { padding: 1.75rem 2rem; }
+    .ong-modal-full-desc { font-size: 15px; font-weight: 300; color: var(--ink-soft); line-height: 1.85; margin-bottom: 2rem; }
+    .ong-modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-modal-ig { display: inline-flex; align-items: center; gap: 7px; background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border-dark); padding: 12px 20px; border-radius: 100px; font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.2s; }
+    .btn-modal-ig:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-pale); }
+    .btn-modal-vol { display: inline-flex; align-items: center; gap: 7px; background: var(--sage); color: white; border: none; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.2s; cursor: pointer; }
+    .btn-modal-vol:hover { background: var(--ink); transform: translateY(-1px); }
 
-    .criadora-section { background: var(--cream); }
-    .criadora-inner {
-      display: grid; grid-template-columns: 400px 1fr; gap: 4rem; align-items: start;
-    }
-    .criadora-img-wrap {
-      position: relative;
-      width: fit-content;
-    }
-    .criadora-circle {
-      width: 320px; height: 320px; border-radius: 50%;
-      background: var(--sage-pale); overflow: hidden;
-      border: 3px solid var(--border-dark);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
-    }
+    /* ── SOBRE CRIADORA ── */
+    .criadora-section { background: var(--white); }
+    .criadora-inner { display: grid; grid-template-columns: 400px 1fr; gap: 4rem; align-items: start; }
+    .criadora-img-wrap { position: relative; width: fit-content; }
+    .criadora-circle { width: 320px; height: 320px; border-radius: 50%; background: var(--sage-pale); overflow: hidden; border: 3px solid var(--border-dark); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
     .criadora-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .criadora-badge {
-      position: absolute;
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--r-md); padding: 10px 14px;
-      display: flex; align-items: center; gap: 10px;
-      box-shadow: var(--shadow-lg);
-    }
+    .criadora-badge { position: absolute; background: white; border: 1.5px solid var(--border); border-radius: var(--r-md); padding: 10px 14px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-lg); }
     .cb1 { bottom: 20px; right: -10px; }
     .cb2 { top: 20px; right: -10px; }
     .cb-emoji { font-size: 1.2rem; }
     .cb-text strong { font-size: 13px; font-weight: 600; display: block; }
     .cb-text span { font-size: 11px; color: var(--ink-soft); font-weight: 300; }
-    .criadora-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700; letter-spacing: -1px; line-height: 1.1;
-      margin: 1rem 0 1.5rem;
-    }
+    .criadora-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin: 1rem 0 1.5rem; }
     .criadora-text h2 em { color: var(--sage); font-style: italic; }
     .criadora-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
-    .chip {
-      padding: 6px 14px; border-radius: 100px;
-      font-size: 12px; font-weight: 500;
-      background: white; border: 1.5px solid var(--border);
-      color: var(--ink-soft);
-    }
+    .chip { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500; background: var(--cream); border: 1.5px solid var(--border); color: var(--ink-soft); }
     .chip-sage { background: var(--sage-pale); color: var(--sage); border-color: transparent; }
-    .quote-block {
-      border-left: 3px solid var(--sage);
-      padding: 1rem 0 1rem 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .quote-block p {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px; font-weight: 400; font-style: italic;
-      line-height: 1.7; color: var(--ink-soft);
-    }
+    .quote-block { border-left: 3px solid var(--sage); padding: 1rem 0 1rem 1.5rem; margin-bottom: 1.5rem; }
+    .quote-block p { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; font-style: italic; line-height: 1.7; color: var(--ink-soft); }
     .bio-text { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--ink-soft); margin-bottom: 1rem; }
     .criadora-social { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 2rem; }
-    .social-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px; border-radius: 100px;
-      font-size: 13px; font-weight: 500; text-decoration: none;
-      border: 1.5px solid var(--border-dark); color: var(--ink-soft);
-      transition: all 0.2s;
-    }
+    .social-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; text-decoration: none; border: 1.5px solid var(--border-dark); color: var(--ink-soft); transition: all 0.2s; }
     .social-link:hover { border-color: var(--sage); color: var(--sage); }
 
-    .comunidade-section { background: var(--white); }
-    .comunidade-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      margin-top: 3rem;
-    }
-    .comunidade-card {
-      border: 1.5px solid var(--border); border-radius: var(--r-xl);
-      padding: 2rem 1.75rem;
-      background: var(--cream);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
+    /* ── COMUNIDADE ── */
+    .comunidade-section { background: var(--cream); }
+    .comunidade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 3rem; }
+    .comunidade-card { border: 1.5px solid var(--border); border-radius: var(--r-xl); padding: 2rem 1.75rem; background: white; transition: transform 0.25s, box-shadow 0.25s; }
     .comunidade-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
     .cc-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
     .cc-title { font-size: 17px; font-weight: 600; margin-bottom: 0.5rem; }
     .cc-desc { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.5rem; }
-    .cc-btn {
-      background: var(--ink); color: white;
-      padding: 10px 20px; border-radius: 100px;
-      font-size: 13px; font-weight: 600;
-      border: none; cursor: pointer; font-family: inherit;
-      transition: background 0.2s; display: inline-block; text-decoration: none;
-    }
+    .cc-btn { background: var(--ink); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: background 0.2s; display: inline-block; text-decoration: none; }
     .cc-btn:hover { background: var(--sage); }
 
-    .cta-section {
-      background: var(--sage); padding: 100px 2rem;
-      position: relative; overflow: hidden;
-    }
-    .cta-orb {
-      position: absolute; border-radius: 50%; pointer-events: none;
-    }
-    .cta-orb-1 {
-      width: 500px; height: 500px; top: -200px; right: -100px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    }
-    .cta-orb-2 {
-      width: 300px; height: 300px; bottom: -100px; left: 5%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-    }
-    .cta-inner {
-      text-align: center; position: relative; z-index: 1;
-    }
-    .cta-inner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 900; letter-spacing: -2px; line-height: 1.0;
-      color: white; margin-bottom: 1rem;
-    }
+    /* ── ONG SECTION DARK ── */
+    .ong-section { padding: 0 2rem 100px; }
+    .ong-inner { max-width: 1200px; margin: 0 auto; }
+    .ong-card-dark { background: var(--ink); border-radius: var(--r-xl); padding: 3.5rem; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; position: relative; overflow: hidden; }
+    .ong-card-dark::before { content: '🏢'; position: absolute; font-size: 18rem; opacity: 0.04; right: -2rem; bottom: -3rem; pointer-events: none; line-height: 1; }
+    .ong-dark-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1.25rem; }
+    .ong-dark-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.5px; color: white; margin-bottom: 1rem; }
+    .ong-dark-title em { font-style: italic; color: var(--gold-light); }
+    .ong-dark-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; max-width: 500px; }
+    .ong-dark-cta-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex-shrink: 0; }
+    .btn-email { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: white; padding: 15px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; white-space: nowrap; box-shadow: 0 4px 20px rgba(196,146,42,0.3); }
+    .btn-email:hover { background: #a87824; transform: translateY(-2px); }
+    .ong-dark-note { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+
+    /* ── CTA SECTION ── */
+    .cta-section { background: var(--sage); padding: 100px 2rem; position: relative; overflow: hidden; }
+    .cta-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+    .cta-orb-1 { width: 500px; height: 500px; top: -200px; right: -100px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); }
+    .cta-orb-2 { width: 300px; height: 300px; bottom: -100px; left: 5%; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); }
+    .cta-inner { text-align: center; position: relative; z-index: 1; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -2px; line-height: 1.0; color: white; margin-bottom: 1rem; }
     .cta-inner h2 em { font-style: italic; color: var(--gold-light); }
     .cta-inner p { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; }
     .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-white {
-      background: white; color: var(--sage);
-      padding: 14px 32px; border-radius: 100px;
-      font-size: 15px; font-weight: 700; text-decoration: none;
-      transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-    }
+    .btn-white { background: white; color: var(--sage); padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.15); }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
-    .btn-white-outline {
-      background: transparent; color: white;
-      padding: 14px 28px; border-radius: 100px;
-      font-size: 15px; font-weight: 500; text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.4);
-      transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
-    }
+    .btn-white-outline { background: transparent; color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid rgba(255,255,255,0.4); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-    footer {
-      background: var(--ink); padding: 60px 2rem 0;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-brand p {
-      font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4);
-      line-height: 1.75; margin-top: 1rem; max-width: 300px;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; font-weight: 700;
-      color: white; text-decoration: none;
-    }
+    /* ── FAQ ── */
+    .gg-faq-item { border: 1.5px solid var(--border); border-radius: var(--r-lg); overflow: hidden; transition: border-color 0.2s; }
+    .gg-faq-item:hover { border-color: var(--sage-light); }
+    .gg-faq-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; background: white; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); text-align: left; gap: 1rem; transition: background 0.2s; }
+    .gg-faq-btn:hover { background: var(--sage-pale); }
+    .gg-faq-arrow { font-size: 1.1rem; color: var(--sage); transition: transform 0.3s; flex-shrink: 0; }
+    .gg-faq-btn.open .gg-faq-arrow { transform: rotate(180deg); }
+    .gg-faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; font-size: 14px; font-weight: 300; color: var(--ink-soft); line-height: 1.75; padding: 0 1.5rem; background: var(--sage-pale); }
+    .gg-faq-body.open { max-height: 600px; padding: 1.25rem 1.5rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 60px 2rem 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.75; margin-top: 1rem; max-width: 300px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
     .footer-logo em { color: var(--sage-light); font-style: italic; }
-    .footer-col h4 {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.3);
-      margin-bottom: 1rem;
-    }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a {
-      font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55);
-      text-decoration: none; transition: color 0.2s;
-    }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
     .footer-col a:hover { color: var(--sage-light); }
-    .footer-bottom {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.5rem 0;
-      font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300;
-      flex-wrap: wrap; gap: 0.5rem;
-    }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 300; flex-wrap: wrap; gap: 0.5rem; }
     .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
     .footer-bottom a:hover { color: var(--sage-light); }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+    /* ── DATA NOTE ── */
+    .data-note { margin-top: 2.5rem; background: white; border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 1.5rem 2rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .data-note-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .data-note strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 4px; }
+    .data-note p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
 
+    /* ── MODAL (formulários) ── */
+    #m-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(14,26,15,0.55); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; touch-action: none; }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 1200px) {
       .hamburger { display: flex; }
-      .nav-links {
-        display: none; flex-direction: column; gap: 0;
-        position: fixed; top: 68px; left: 0; right: 0;
-        background: var(--white); border-bottom: 1px solid var(--border);
-        padding: 1rem; z-index: 99;
-        transition: top 0.3s;
-      }
+      .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 99; }
       .nav-links.open { display: flex; }
       .nav-links li { width: 100%; }
       .nav-links li a { display: block; padding: 10px 12px; border-radius: 8px; }
       .nav-links .nav-cta { display: block; text-align: center; padding: 12px 22px !important; }
     }
-
-    .data-note {
-      margin-top: 2.5rem;
-      background: white; border: 1.5px solid var(--border);
-      border-radius: var(--r-lg); padding: 1.5rem 2rem;
-      display: flex; align-items: flex-start; gap: 1rem;
-    }
-    .data-note-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .data-note strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 4px; }
-    .data-note p { font-size: 13px; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
-
     @media (max-width: 1024px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-bg-letter { display: none; }
       .causas-grid { grid-template-columns: repeat(2, 1fr); }
       .criadora-inner { grid-template-columns: 1fr; gap: 3rem; }
       .patas-inner { grid-template-columns: 1fr; gap: 3rem; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
+      .apoiadoras-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .steps-row { flex-direction: column; gap: 2rem; }
@@ -895,14 +506,39 @@
       .stat-item { padding: 0 1.5rem; }
       .stat-item:nth-child(3), .stat-item:nth-child(4) { display: none; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stat-row { display: none; }
+      .ong-card-dark { grid-template-columns: 1fr; gap: 2rem; }
+      .ong-dark-cta-wrap { width: 100%; }
+      .btn-email { width: 100%; justify-content: center; }
     }
     @media (max-width: 600px) {
       .causas-grid { grid-template-columns: 1fr; }
       .section { padding: 70px 1.5rem; }
+      .apoiadoras-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ONG MODAL -->
+  <div class="ong-modal-overlay" id="ongModalOverlay" onclick="if(event.target===this)fecharOngModal()">
+    <div class="ong-modal-box" id="ongModalBox">
+      <div class="ong-modal-header">
+        <div class="ong-modal-header-left">
+          <div class="ong-modal-avatar" id="ongModalAvatar"></div>
+          <div>
+            <div class="ong-modal-name" id="ongModalName"></div>
+            <div class="ong-modal-cat" id="ongModalCat"></div>
+          </div>
+        </div>
+        <button class="ong-modal-close" onclick="fecharOngModal()">✕</button>
+      </div>
+      <div class="ong-modal-body">
+        <p class="ong-modal-full-desc" id="ongModalDesc"></p>
+        <div class="ong-modal-actions" id="ongModalActions"></div>
+      </div>
+    </div>
+  </div>
 
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
@@ -923,74 +559,86 @@
     </div>
   </nav>
 
+
   <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-orb-1"></div>
-    <div class="hero-orb-2"></div>
+    <div class="hero-bg-letter">G</div>
     <div class="hero-inner">
+
       <div class="hero-left">
-        <div class="hero-badge">
-          <div class="badge-dot"></div>
-          Comunidade aberta · Distrito Federal
+        <div class="hero-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">Comunidade aberta · Distrito Federal · 100% gratuito</span>
         </div>
+
         <h1>
-          Conheça pessoas,<br>aprenda<br>e <em>transforme</em><br>junto
+          <span class="word-give">Give</span>
+          <span class="word-and">&amp;</span>
+          <span class="word-give">Grow</span>
         </h1>
-        <p class="hero-sub">Uma plataforma gratuita que conecta pessoas dispostas a aprender, compartilhar conhecimentos e participar de ações de voluntariado no DF.</p>
+
+        <p class="hero-tagline">
+          Uma plataforma que conecta pessoas que querem <strong>aprender</strong>, compartilhar conhecimentos e participar de ações de <strong>voluntariado</strong> no DF — sem custo, sem burocracia.
+        </p>
+
         <div class="hero-ctas">
           <a href="#participar" class="btn-primary">🌱 Quero participar</a>
           <a href="#causas" class="btn-secondary">Ver causas →</a>
         </div>
       </div>
-      <div class="hero-right">
-        <div style="display:flex;flex-direction:column;gap:16px;animation:fadeUp 0.8s 0.2s ease both;">
-          <div style="background:white;border:1.5px solid var(--border-dark);border-radius:var(--r-xl);padding:1.75rem 2rem;box-shadow:var(--shadow-lg);animation:cardFloat 9s ease-in-out infinite;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;">Comunidade ativa · DF</div>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <div style="width:40px;height:40px;background:var(--sage-pale);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📚</div>
-                <div>
-                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Aprender algo novo</div>
-                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Inglês, tecnologia, artesanato e mais</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;">
-                <div style="width:40px;height:40px;background:rgba(196,146,42,0.12);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🙌</div>
-                <div>
-                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Compartilhar o que sabe</div>
-                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Qualquer habilidade tem valor aqui</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:12px;">
-                <div style="width:40px;height:40px;background:rgba(184,92,56,0.1);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🤝</div>
-                <div>
-                  <div style="font-size:13px;font-weight:600;color:var(--ink);">Fazer voluntariado</div>
-                  <div style="font-size:12px;font-weight:300;color:var(--ink-soft);">Ações mensais com ONGs do DF</div>
-                </div>
-              </div>
+
+      <!-- RIGHT — info pills + stats -->
+      <div>
+        <div class="hero-right">
+          <a href="#causas" class="info-pill">
+            <div class="info-pill-icon sage">📚</div>
+            <div>
+              <div class="info-pill-label">Aprender algo novo</div>
+              <div class="info-pill-sub">Inglês, tecnologia, artesanato e mais</div>
             </div>
+            <span class="info-pill-arrow">→</span>
+          </a>
+          <a href="#participar" class="info-pill">
+            <div class="info-pill-icon gold">🙌</div>
+            <div>
+              <div class="info-pill-label">Compartilhar o que sabe</div>
+              <div class="info-pill-sub">Qualquer habilidade tem valor aqui</div>
+            </div>
+            <span class="info-pill-arrow">→</span>
+          </a>
+          <a href="voluntariado.html" class="info-pill">
+            <div class="info-pill-icon rust">🤝</div>
+            <div>
+              <div class="info-pill-label">Fazer voluntariado</div>
+              <div class="info-pill-sub">Ações mensais com ONGs do DF</div>
+            </div>
+            <span class="info-pill-arrow">→</span>
+          </a>
+          <a href="patasdf.html" class="info-pill">
+            <div class="info-pill-icon sage">🐾</div>
+            <div>
+              <div class="info-pill-label">PatasDF</div>
+              <div class="info-pill-sub">Reencontrar animais perdidos no DF</div>
+            </div>
+            <span class="info-pill-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="hero-stat-row" style="margin-top: 16px;">
+          <div class="hero-stat">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Gratuito</div>
           </div>
-          <div style="background:var(--ink);border-radius:var(--r-xl);padding:1.5rem 2rem;box-shadow:var(--shadow-lg);animation:cardFloat 11s 1.5s ease-in-out infinite;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
-              <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;animation:dotPulse 2s ease-in-out infinite;"></div>
-              <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Comunidade aberta · Gratuito</span>
-            </div>
-            <div style="display:flex;gap:1.5rem;">
-              <div style="text-align:center;">
-                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">100%</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Gratuito</div>
-              </div>
-              <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
-              <div style="text-align:center;">
-                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">12+</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Áreas</div>
-              </div>
-              <div style="width:1px;background:rgba(255,255,255,0.1);"></div>
-              <div style="text-align:center;">
-                <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:white;line-height:1;">DF</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;">Brasília</div>
-              </div>
-            </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">12+</div>
+            <div class="hero-stat-label">Áreas</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">DF</div>
+            <div class="hero-stat-label">Brasília</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">∞</div>
+            <div class="hero-stat-label">Pessoas</div>
           </div>
         </div>
       </div>
@@ -999,99 +647,47 @@
 
   <div class="ticker">
     <div class="ticker-inner" id="tickerInner">
-      <span class="ticker-item">💬 Inglês online · 10h</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🎓 Mentoria profissional · Online </span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">💬 Inglês online · 10h</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🎓 Mentoria profissional · Online </span>
-      <span class="ticker-sep">·</span>
-      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span>
-      <span class="ticker-sep">·</span>
+      <span class="ticker-item">💬 Inglês online · 10h</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🎓 Mentoria profissional · Online</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">💬 Inglês online · 10h</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🎓 Mentoria profissional · Online</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span><span class="ticker-sep">·</span>
     </div>
   </div>
 
   <div class="stats-strip">
-    <div class="stat-item">
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Gratuito</div>
-      </div>
-    </div>
-    <div class="stat-item">
-      <div>
-        <div class="stat-num">DF</div>
-        <div class="stat-label">Distrito Federal</div>
-      </div>
-    </div>
-    <div class="stat-item">
-      <div>
-        <div class="stat-num">12</div>
-        <div class="stat-label">Áreas de interesse</div>
-      </div>
-    </div>
-    <div class="stat-item">
-      <div>
-        <div class="stat-num">∞</div>
-        <div class="stat-label">Sem limite de pessoas</div>
-      </div>
-    </div>
+    <div class="stat-item"><div><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div></div>
+    <div class="stat-item"><div><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div></div>
+    <div class="stat-item"><div><div class="stat-num">12</div><div class="stat-label">Áreas de interesse</div></div></div>
+    <div class="stat-item"><div><div class="stat-num">∞</div><div class="stat-label">Sem limite de pessoas</div></div></div>
   </div>
 
+  <!-- COMO FUNCIONA -->
   <section class="section how-section" id="como-funciona">
     <div class="container">
       <span class="label reveal">Como funciona</span>
       <h2 class="display reveal">Participar é<br><em>simples assim</em></h2>
       <p class="lead reveal">Sem burocracia, sem custo. Qualquer pessoa pode dar, receber e crescer junto com a comunidade.</p>
       <div class="steps-row reveal">
-        <div class="step">
-          <div class="step-circle">01</div>
-          <h3>Descubra as causas</h3>
-          <p>Explore as áreas disponíveis e veja onde você pode contribuir ou aprender.</p>
-        </div>
-        <div class="step">
-          <div class="step-circle">02</div>
-          <h3>Preencha o formulário</h3>
-          <p>Conta o que você sabe, o que quer aprender e como prefere participar.</p>
-        </div>
-        <div class="step">
-          <div class="step-circle">03</div>
-          <h3>Receba os eventos</h3>
-          <p>A gente organiza e te avisa sobre os encontros que combinam com você.</p>
-        </div>
-        <div class="step">
-          <div class="step-circle">04</div>
-          <h3>Apareça e conecte</h3>
-          <p>Online ou presencial — você aparece, troca e já faz parte da comunidade.</p>
-        </div>
-        <div class="step">
-          <div class="step-circle">05</div>
-          <h3>Impacto real!</h3>
-          <p>Cada encontro cria conexões, aprendizados e transforma o DF de dentro pra fora.</p>
-        </div>
+        <div class="step"><div class="step-circle">01</div><h3>Descubra as causas</h3><p>Explore as áreas disponíveis e veja onde você pode contribuir ou aprender.</p></div>
+        <div class="step"><div class="step-circle">02</div><h3>Preencha o formulário</h3><p>Conta o que você sabe, o que quer aprender e como prefere participar.</p></div>
+        <div class="step"><div class="step-circle">03</div><h3>Receba os eventos</h3><p>A gente organiza e te avisa sobre os encontros que combinam com você.</p></div>
+        <div class="step"><div class="step-circle">04</div><h3>Apareça e conecte</h3><p>Online ou presencial — você aparece, troca e já faz parte da comunidade.</p></div>
+        <div class="step"><div class="step-circle">05</div><h3>Impacto real!</h3><p>Cada encontro cria conexões, aprendizados e transforma o DF de dentro pra fora.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- CAUSAS -->
   <section class="section causas-section" id="causas">
     <div class="container">
       <div class="causas-header">
@@ -1106,102 +702,38 @@
         </div>
       </div>
       <div class="causas-grid" id="causasGrid">
-        <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-icon">🐾</div>
-          <div class="causa-name" data-causa="causa animal">Causa animal</div>
-          <div class="causa-desc">Ajude a reencontrar animais perdidos no DF e apoie ONGs da causa animal</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-icon">👴</div>
-          <div class="causa-name" data-causa="idosos">Idosos</div>
-          <div class="causa-desc">Visitas, oficinas e inclusão digital em lares de idosos</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-icon">💬</div>
-          <div class="causa-name" data-causa="inglês">Inglês</div>
-          <div class="causa-desc">Conversação online, todos os níveis, toda semana, sem custo</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-icon">💻</div>
-          <div class="causa-name" data-causa="tecnologia">Tecnologia</div>
-          <div class="causa-desc">Cybersegurança, programação e inclusão digital básica</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="aprender">
-          <div class="causa-icon">🪡</div>
-          <div class="causa-name" data-causa="artesanato">Artesanato</div>
-          <div class="causa-desc">Crochê, bordado e costura — presencial e online, toda semana</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-icon">🎓</div>
-          <div class="causa-name" data-causa="educação">Educação</div>
-          <div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-icon">🌿</div>
-          <div class="causa-name" data-causa="meio ambiente">Meio ambiente</div>
-          <div class="causa-desc">Limpeza de áreas, hortas urbanas e conscientização ambiental</div>
-        </div>
-        <div class="causa-card reveal" data-tipo="voluntariado">
-          <div class="causa-icon">🧒</div>
-          <div class="causa-name" data-causa="crianças">Crianças</div>
-          <div class="causa-desc">Uma forma de contribuir para o desenvolvimento e aprendizado de forma leve e acolhedora.</div>
-        </div>
+        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🐾</div><div class="causa-name">Causa animal</div><div class="causa-desc">Ajude a reencontrar animais perdidos no DF e apoie ONGs da causa animal</div></div>
+        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">👴</div><div class="causa-name">Idosos</div><div class="causa-desc">Visitas, oficinas e inclusão digital em lares de idosos</div></div>
+        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">💬</div><div class="causa-name">Inglês</div><div class="causa-desc">Conversação online, todos os níveis, toda semana, sem custo</div></div>
+        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">💻</div><div class="causa-name">Tecnologia</div><div class="causa-desc">Cybersegurança, programação e inclusão digital básica</div></div>
+        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">🪡</div><div class="causa-name">Artesanato</div><div class="causa-desc">Crochê, bordado e costura — presencial e online, toda semana</div></div>
+        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🎓</div><div class="causa-name">Educação</div><div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira</div></div>
+        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🌿</div><div class="causa-name">Meio ambiente</div><div class="causa-desc">Limpeza de áreas, hortas urbanas e conscientização ambiental</div></div>
+        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🧒</div><div class="causa-name">Crianças</div><div class="causa-desc">Uma forma de contribuir para o desenvolvimento e aprendizado de forma leve e acolhedora.</div></div>
       </div>
       <div style="text-align:center;margin-top:2.5rem;" class="reveal">
-        <a href="causas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(14,26,15,0.16);" onmouseover="this.style.background='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)'">
-          Ver todas as áreas de interesse →
-        </a>
+        <a href="causas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(14,26,15,0.16);" onmouseover="this.style.background='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)'">Ver todas as áreas de interesse →</a>
       </div>
     </div>
   </section>
 
+  <!-- EVENTOS -->
   <section class="section eventos-section" id="eventos">
     <div class="container">
       <span class="label reveal">Agenda</span>
       <h2 class="display reveal">Próximos<br><em>encontros</em></h2>
       <p class="lead reveal">Encontros Online · Eventos Presenciais · Parcerias com ONGs do DF</p>
       <div class="eventos-grid">
-        <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
-          <div class="ev-content">
-            <span class="ev-tag ev-online">Online</span>
-            <div class="ev-name">Oficina de Crochê — nível iniciante</div>
-            <div class="ev-info">Quer participar? Inscreva-se · 12 vagas</div>
-          </div>
-        </div>
-        <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
-          <div class="ev-content">
-            <span class="ev-tag ev-online">Online</span>
-            <div class="ev-name">Conversação em Inglês</div>
-            <div class="ev-info">Google Meet · 15 vagas</div>
-          </div>
-        </div>
-        <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
-          <div class="ev-content">
-            <span class="ev-tag ev-presencial">Presencial</span>
-            <div class="ev-name">Voluntariado com ONGs do DF</div>
-            <div class="ev-info">Local a confirmar · Vagas limitadas</div>
-          </div>
-        </div>
-        <div class="evento-card reveal">
-          <div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div>
-          <div class="ev-content">
-            <span class="ev-tag ev-parceria">Parceria ONG</span>
-            <div class="ev-name">Feira de adoção — parceria PatasDF</div>
-            <div class="ev-info">Local a confirmar · Voluntários bem-vindos</div>
-          </div>
-        </div>
+        <div class="evento-card reveal"><div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div><div class="ev-content"><span class="ev-tag ev-online">Online</span><div class="ev-name">Oficina de Crochê — nível iniciante</div><div class="ev-info">Quer participar? Inscreva-se · 12 vagas</div></div></div>
+        <div class="evento-card reveal"><div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div><div class="ev-content"><span class="ev-tag ev-online">Online</span><div class="ev-name">Conversação em Inglês</div><div class="ev-info">Google Meet · 15 vagas</div></div></div>
+        <div class="evento-card reveal"><div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div><div class="ev-content"><span class="ev-tag ev-presencial">Presencial</span><div class="ev-name">Voluntariado com ONGs do DF</div><div class="ev-info">Local a confirmar · Vagas limitadas</div></div></div>
+        <div class="evento-card reveal"><div class="ev-date"><div class="ev-day">Em</div><div class="ev-month">breve</div></div><div class="ev-content"><span class="ev-tag ev-parceria">Parceria ONG</span><div class="ev-name">Feira de adoção — parceria PatasDF</div><div class="ev-info">Local a confirmar · Voluntários bem-vindos</div></div></div>
       </div>
       <div class="cal-block reveal">
         <div class="cal-header">
           <div class="cal-header-left">
             <div class="cal-icon">📅</div>
-            <div>
-              <div class="cal-title">Agenda completa do Give&Grow</div>
-              <div class="cal-sub">Todos os eventos · Atualizado em tempo real</div>
-            </div>
+            <div><div class="cal-title">Agenda completa do Give&amp;Grow</div><div class="cal-sub">Todos os eventos · Atualizado em tempo real</div></div>
           </div>
           <div class="cal-actions">
             <button class="cal-btn" onclick="toggleCalendar()">Ver agenda completa ↓</button>
@@ -1209,17 +741,13 @@
           </div>
         </div>
         <div id="calendarEmbed" style="display:none;">
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo"
-            style="border:0;width:100%;height:520px;"
-            frameborder="0" scrolling="no"
-            title="Agenda Give&Grow">
-          </iframe>
+          <iframe src="https://calendar.google.com/calendar/embed?src=f966a5aa6c3a2e6e953029df6875e0b035dfc5a0577ab1ee072df353fa7fc4fa%40group.calendar.google.com&ctz=America%2FSao_Paulo" style="border:0;width:100%;height:520px;" frameborder="0" scrolling="no" title="Agenda Give&Grow"></iframe>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PARTICIPAR -->
   <section class="section participar-section" id="participar">
     <div class="container">
       <span class="label reveal">Quero participar</span>
@@ -1227,72 +755,42 @@
       <p class="lead reveal">Escolha como quer se envolver. Leva menos de 2 minutos.</p>
       <div class="participar-grid">
         <div class="part-card reveal">
-          <div class="part-card-top">
-            <div class="part-icon">🎓</div>
-            <div class="part-title">Quero aprender</div>
-          </div>
+          <div class="part-card-top"><div class="part-icon">🎓</div><div class="part-title">Quero aprender</div></div>
           <div class="part-desc">Inglês, tecnologia, artesanato, culinária. A gente organiza os grupos e te avisa dos eventos.</div>
-          <ul class="part-checks">
-            <li><div class="check-icon">✓</div> Sem pré-requisito, qualquer nível</li>
-            <li><div class="check-icon">✓</div> Online ou presencial, você escolhe</li>
-            <li><div class="check-icon">✓</div> 100% gratuito, sem compromisso</li>
-          </ul>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Sem pré-requisito, qualquer nível</li><li><div class="check-icon">✓</div> Online ou presencial, você escolhe</li><li><div class="check-icon">✓</div> 100% gratuito, sem compromisso</li></ul>
           <button onclick="abrirModal('aprender')" class="part-btn">🎓 Quero aprender — formulário</button>
           <p class="part-note">Você será levado ao Google Forms</p>
         </div>
         <div class="part-card reveal">
-          <div class="part-card-top">
-            <div class="part-icon">🙌</div>
-            <div class="part-title">Quero ensinar</div>
-          </div>
+          <div class="part-card-top"><div class="part-icon">🙌</div><div class="part-title">Quero ensinar</div></div>
           <div class="part-desc">Tem uma habilidade para compartilhar? Você decide o quanto pode dar.</div>
-          <ul class="part-checks">
-            <li><div class="check-icon">✓</div> Você define o tempo disponível</li>
-            <li><div class="check-icon">✓</div> Online ou presencial</li>
-            <li><div class="check-icon">✓</div> A comunidade cresce com você</li>
-          </ul>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Você define o tempo disponível</li><li><div class="check-icon">✓</div> Online ou presencial</li><li><div class="check-icon">✓</div> A comunidade cresce com você</li></ul>
           <button onclick="abrirModal('ensinar')" class="part-btn">🙌 Quero ensinar — formulário</button>
           <p class="part-note">Você será levado ao Google Forms</p>
         </div>
         <div class="part-card reveal">
-          <div class="part-card-top">
-            <div class="part-icon">🤝</div>
-            <div class="part-title">Quero fazer voluntariado</div>
-          </div>
+          <div class="part-card-top"><div class="part-icon">🤝</div><div class="part-title">Quero fazer voluntariado</div></div>
           <div class="part-desc">Feiras de adoção, lares de idosos, ações presenciais. A gente te encaminha para as causas mais próximas.</div>
-          <ul class="part-checks">
-            <li><div class="check-icon">✓</div> Escolha a causa que te move</li>
-            <li><div class="check-icon">✓</div> Ações no DF</li>
-            <li><div class="check-icon">✓</div> Em parceria com ONGs reais</li>
-          </ul>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Escolha a causa que te move</li><li><div class="check-icon">✓</div> Ações no DF</li><li><div class="check-icon">✓</div> Em parceria com ONGs reais</li></ul>
           <a href="voluntariado.html" class="part-btn">🤝 Quero fazer voluntariado →</a>
           <p class="part-note">Saiba mais sobre como participar</p>
         </div>
         <div class="part-card reveal">
-          <div class="part-card-top">
-            <div class="part-icon">💡</div>
-            <div class="part-title">Ainda não sei por onde começar</div>
-          </div>
+          <div class="part-card-top"><div class="part-icon">💡</div><div class="part-title">Ainda não sei por onde começar</div></div>
           <div class="part-desc">Explore todas as causas e áreas da comunidade e encontre o que te move.</div>
-          <ul class="part-checks">
-            <li><div class="check-icon">✓</div> 20+ áreas de interesse</li>
-            <li><div class="check-icon">✓</div> Aprender, ensinar e voluntariado</li>
-            <li><div class="check-icon">✓</div> Sem pressão, no seu ritmo</li>
-          </ul>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> 20+ áreas de interesse</li><li><div class="check-icon">✓</div> Aprender, ensinar e voluntariado</li><li><div class="check-icon">✓</div> Sem pressão, no seu ritmo</li></ul>
           <a href="causas.html" class="part-btn">💡 Explorar todas as áreas →</a>
           <p class="part-note">Veja o que a comunidade oferece</p>
         </div>
       </div>
       <div class="data-note reveal">
         <div class="data-note-icon">🔒</div>
-        <div>
-          <strong>Seus dados ficam protegidos</strong>
-          <p>Os formulários são hospedados no Google Forms. O Give&Grow não armazena suas informações diretamente. Nenhum dado é vendido ou compartilhado com terceiros.</p>
-        </div>
+        <div><strong>Seus dados ficam protegidos</strong><p>Os formulários são hospedados no Google Forms. O Give&amp;Grow não armazena suas informações diretamente. Nenhum dado é vendido ou compartilhado com terceiros.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- PATAS -->
   <section class="section patas-section" id="patasdf">
     <div class="container">
       <div class="patas-inner">
@@ -1303,7 +801,6 @@
           <div class="patas-pills reveal">
             <span class="patas-pill">😢 Perdi meu animal</span>
             <span class="patas-pill">🐾 Encontrei um animal</span>
-        
           </div>
           <a href="patasdf.html" class="btn-gold-outline reveal">🐾 Acessar o PatasDF →</a>
           <a href="voluntariado.html" class="btn-gold-outline reveal">🏥 ONGs para apoiar →</a>
@@ -1328,20 +825,19 @@
     </div>
   </section>
 
-
+  <!-- ONGs APOIADORAS -->
   <section class="ongs-apoiadoras" id="ongs">
     <div class="ongs-apoiadoras-inner">
-
       <div class="apoiadoras-header">
         <div class="apoiadoras-header-left">
           <span class="label reveal">ONGs apoiadoras</span>
           <h2 class="display reveal">Organizações que<br><em>fazem a diferença</em></h2>
-          <p class="lead reveal" style="margin-bottom:0;">Conheça algumas ONGs do DF com quem o Give&Grow busca trabalhar — e saiba como você pode ajudar.</p>
+          <p class="lead reveal" style="margin-bottom:0;">Conheça algumas ONGs do DF com quem o Give&amp;Grow busca trabalhar — e saiba como você pode ajudar.</p>
         </div>
       </div>
 
       <div class="apoiadoras-grid">
-
+        <!-- Lar dos Anjos -->
         <div class="apoiadora-card">
           <div class="apoiadora-top">
             <div class="apoiadora-avatar">
@@ -1352,14 +848,23 @@
               <span class="apoiadora-cat">🐾 Animais</span>
             </div>
           </div>
-          <p class="apoiadora-desc">O Lar dos Anjos Pet é uma iniciativa dedicada ao resgate, cuidado e encaminhamento para adoção responsável de cachorros em situação de abandono. Atualmente, o projeto cuida de cerca de 300 cães, ...</p>
+          <p class="apoiadora-desc">O Lar dos Anjos Pet é uma iniciativa dedicada ao resgate, cuidado e encaminhamento para adoção responsável de cachorros em situação de abandono. Atualmente, o projeto cuida de cerca de 300 cães...</p>
           <div class="apoiadora-actions">
             <a href="https://www.instagram.com/lardosanjospet/" target="_blank" rel="noopener" class="btn-ig-sm">📸 Instagram</a>
             <a href="https://www.instagram.com/lardosanjosadocao/" target="_blank" rel="noopener" class="btn-ig-sm">🐾 Adoção</a>
-            <a href="mailto:contato@abracogentil.org" class="btn-contact-sm">✉️ Ler mais </a> 
+            <button class="btn-contact-sm" onclick="abrirOngModal({
+              avatar: 'fotos/lar_dos_anjos.jpeg',
+              avatarEmoji: '',
+              nome: 'Lar dos Anjos',
+              cat: '🐾 Animais',
+              desc: `O Lar dos Anjos Pet é uma iniciativa dedicada ao resgate, cuidado e encaminhamento para adoção responsável de cachorros em situação de abandono. Atualmente, o projeto cuida de cerca de 300 cães, todos resgatados de situações de maus-tratos, abandono ou risco nas ruas do Distrito Federal.\n\nA estrutura é mantida com muito esforço voluntário e apoio de doadores. A ONG realiza feiras de adoção, campanhas de castração e ações de conscientização sobre posse responsável. Para adotar ou contribuir com ração, medicamentos e outros itens, entre em contato pelas redes sociais ou acesse o perfil de adoção no Instagram.`,
+              instagram: 'https://www.instagram.com/lardosanjospet/',
+              adocao: 'https://www.instagram.com/lardosanjosadocao/'
+            })">✉️ Ler mais</button>
           </div>
         </div>
 
+<<<<<<< HEAD
        
         <div class="apoiadora-card">
           <div class="apoiadora-top">
@@ -1377,32 +882,31 @@
         </div>
 
         <!-- Crianças -->
+=======
+        <!-- Quero fazer parte -->
+>>>>>>> c588578f3c3c2169e386ef1e5fc517a0bd497a10
         <div class="apoiadora-card">
           <div class="apoiadora-top">
             <div class="apoiadora-avatar">🌱</div>
             <div class="apoiadora-info">
-              <div class="apoiadora-name">Sementinha DF</div>
-              <span class="apoiadora-cat">🧒 Crianças</span>
+              <div class="apoiadora-name">Quer que sua ONG seja nossa parceira?</div>
+              <span class="apoiadora-cat">Entre em contato</span>
             </div>
           </div>
-          <p class="apoiadora-desc">Reforço escolar, atividades lúdicas e apoio psicossocial para crianças em situação de vulnerabilidade nas periferias do DF.</p>
+          <p class="apoiadora-desc">Faça parte desse projeto! Quer que sua ONG participe do nosso site &amp; atividades voluntárias? Entre em contato via e-mail. Esperamos por você.</p>
           <div class="apoiadora-actions">
-            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-ig-sm">📸 Instagram</a>
-            <a href="mailto:contato@sementinhadf.org" class="btn-contact-sm">✉️ Contato</a>
+            <a href="mailto:euclaricenunes@gmail.com" class="btn-contact-sm">✉️ Contato</a>
           </div>
         </div>
-
       </div>
 
-      <!-- Botão Ver mais ONGs centralizado -->
       <div class="apoiadoras-footer reveal">
         <a href="voluntariado.html#ongs" class="btn-ver-mais">Ver todas as ONGs parceiras →</a>
       </div>
-
     </div>
   </section>
-  <!-- ═══════════════════════════════════════════════════ -->
 
+  <!-- SOBRE CRIADORA -->
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
@@ -1410,14 +914,8 @@
           <div class="criadora-circle">
             <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
           </div>
-          <div class="criadora-badge cb1">
-            <span class="cb-emoji">🌱</span>
-            <div class="cb-text"><strong>Criadora do Give&Grow</strong><span>e do PatasDF</span></div>
-          </div>
-          <div class="criadora-badge cb2">
-            <span class="cb-emoji">🎓</span>
-            <div class="cb-text"><strong>Eng. de Software</strong><span>2º semestre</span></div>
-          </div>
+          <div class="criadora-badge cb1"><span class="cb-emoji">🌱</span><div class="cb-text"><strong>Criadora do Give&amp;Grow</strong><span>e do PatasDF</span></div></div>
+          <div class="criadora-badge cb2"><span class="cb-emoji">🎓</span><div class="cb-text"><strong>Eng. de Software</strong><span>2º semestre</span></div></div>
         </div>
         <div class="criadora-text">
           <span class="label reveal">Quem está por trás</span>
@@ -1431,158 +929,59 @@
             <p>"Queria usar a tecnologia para gerar impacto social de verdade. Vejo gente querendo ajudar, mas sem saber como. Vejo gente querendo aprender, mas sem acesso."</p>
           </div>
           <p class="bio-text reveal">Sempre gostei muito de animais e de comunidade. O PatasDF nasceu da partida da minha cachorra Max — e foi crescendo até virar algo maior: uma rede de pessoas que querem transformar o DF de dentro pra fora.</p>
-          <p class="bio-text reveal">O Give&Grow é a evolução natural disso. Feito com a rotina corrida de quem ainda está na faculdade e acredita que tecnologia pode mudar o mundo.</p>
+          <p class="bio-text reveal">O Give&amp;Grow é a evolução natural disso. Feito com a rotina corrida de quem ainda está na faculdade e acredita que tecnologia pode mudar o mundo.</p>
           <div class="criadora-social reveal">
             <a href="https://instagram.com/claricesnunes" target="_blank" rel="noopener" class="social-link">📸 Instagram</a>
             <a href="https://linkedin.com/in/claricesnunes" target="_blank" rel="noopener" class="social-link">💼 LinkedIn</a>
             <a href="https://github.com/claricenunes" target="_blank" rel="noopener" class="social-link">🐙 GitHub</a>
           </div>
-          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;"> Conheça mais →</a>
+          <a href="sobre.html" class="btn-primary reveal" style="margin-top:1.5rem;">Conheça mais →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- COMUNIDADE -->
   <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte do projeto</span>
       <h2 class="display reveal">Como posso<br><em>ajudar?</em></h2>
       <p class="lead reveal">Formas de colaborar sem custo. Qualquer pessoa pode ajudar a comunidade a crescer!</p>
       <div class="comunidade-grid">
-        <div class="comunidade-card reveal">
-          <span class="cc-icon">🌐</span>
-          <div class="cc-title">Compartilhe nas redes</div>
-          <p class="cc-desc">Gostou do projeto? Compartilhe com quem também quer aprender, ensinar ou fazer voluntariado no DF.</p>
-          <button class="cc-btn" onclick="copiarLink()">🔗 Copiar link do site</button>
-        </div>
-        <div class="comunidade-card reveal">
-          <span class="cc-icon">💡</span>
-          <div class="cc-title">Tem uma ideia?</div>
-          <p class="cc-desc">Quer sugerir uma causa, um evento ou uma melhoria? A criadora está sempre aberta para ouvir.</p>
-          <button class="cc-btn" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button>
-        </div>
-        <div class="comunidade-card reveal">
-          <span class="cc-icon">🤝</span>
-          <div class="cc-title">Parcerias com ONGs</div>
-          <p class="cc-desc">Representa uma ONG que quer se conectar com voluntários do DF? Entre em contato.</p>
-          <a class="cc-btn" href="mailto:euclaricenunes@gmail.com">✉️ Enviar email</a>
-        </div>
+        <div class="comunidade-card reveal"><span class="cc-icon">🌐</span><div class="cc-title">Compartilhe nas redes</div><p class="cc-desc">Gostou do projeto? Compartilhe com quem também quer aprender, ensinar ou fazer voluntariado no DF.</p><button class="cc-btn" onclick="copiarLink()">🔗 Copiar link do site</button></div>
+        <div class="comunidade-card reveal"><span class="cc-icon">💡</span><div class="cc-title">Tem uma ideia?</div><p class="cc-desc">Quer sugerir uma causa, um evento ou uma melhoria? A criadora está sempre aberta para ouvir.</p><button class="cc-btn" onclick="location.href='#sobre-criadora'">💡 Enviar ideia</button></div>
+        <div class="comunidade-card reveal"><span class="cc-icon">🤝</span><div class="cc-title">Parcerias com ONGs</div><p class="cc-desc">Representa uma ONG que quer se conectar com voluntários do DF? Entre em contato.</p><a class="cc-btn" href="mailto:euclaricenunes@gmail.com">✉️ Enviar email</a></div>
       </div>
     </div>
   </section>
 
+  <!-- FAQ -->
   <section class="section" id="faq" style="background:var(--white);padding:80px 2rem;">
     <div class="container">
       <span class="label reveal">Dúvidas frequentes</span>
       <h2 class="display reveal" style="margin-bottom:1rem;">Perguntas<br><em>frequentes</em></h2>
-      <p class="lead reveal" style="max-width:520px;margin-bottom:3rem;">Tudo o que você precisa saber sobre o Give&Grow antes de participar.</p>
-
+      <p class="lead reveal" style="max-width:520px;margin-bottom:3rem;">Tudo o que você precisa saber sobre o Give&amp;Grow antes de participar.</p>
       <div style="display:flex;flex-direction:column;gap:12px;max-width:800px;" class="reveal">
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>O Give&Grow é gratuito?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Sim, 100% gratuito. O Give&Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Como funciona depois que eu me cadastro?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Após o cadastro, você recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua área de interesse, você receberá um convite por e-mail com todos os detalhes e um link para confirmar sua presença.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Preciso ter experiência para ensinar?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Não! Você só precisa saber mais do que quem quer aprender. Se você toca violão há 2 anos e quer ensinar iniciantes, já é suficiente. O importante é a disposição de compartilhar. Você define o quanto pode dar e o formato que prefere.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Os eventos são presenciais ou online?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Os dois! Temos eventos online (como conversação em inglês pelo Google Meet) e eventos presenciais em diferentes regiões do DF. Ao se cadastrar, você indica sua preferência e recebe convites para o formato que combina com você.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Claro! Você pode fazer os dois. Basta preencher os dois formulários — um de quem quer aprender e um de quem quer ensinar. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>E se eu confirmar presença e não puder comparecer?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Sem problemas! No e-mail de convite tem um botão "Não vou conseguir ir". Basta clicar e sua vaga é liberada automaticamente para quem está na lista de espera. Entendemos que imprevistos acontecem.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Como funciona o voluntariado?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">O Give&Grow faz parcerias com ONGs do DF para organizar ações — feiras de adoção, visitas a lares de idosos, limpeza de áreas verdes e mais. Você se cadastra na página de voluntariado, indica as causas que te movem e recebe os convites quando uma ação for organizada na sua área.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Meus dados ficam seguros?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Sim. Os formulários são hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Nenhuma informação pessoal é exibida publicamente. Os dados são usados exclusivamente para organizar eventos e enviar convites relevantes para você.</div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Como participo do grupo do WhatsApp da comunidade?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">O link do grupo é enviado automaticamente no e-mail de confirmação de presença quando você confirma participação em um evento. É a nossa forma de garantir que o grupo seja formado por pessoas realmente engajadas com a comunidade. <a href="https://chat.whatsapp.com/Hp58Uu8BLnMEgAou8kmP6Q" target="_blank" rel="noopener" style="color:var(--sage);font-weight:600;">Clique aqui para entrar no grupo →</a></div>
-        </div>
-
-        <div class="gg-faq-item">
-          <button class="gg-faq-btn" onclick="toggleGGFaq(this)">
-            <span>Como posso fazer parceria com o Give&Grow?</span>
-            <span class="gg-faq-arrow">↓</span>
-          </button>
-          <div class="gg-faq-body">Se você representa uma ONG, escola, empresa ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>. Adoramos conversar sobre novas formas de impactar o DF — seja com eventos, espaços para encontros presenciais ou ações conjuntas.</div>
-        </div>
-
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>O Give&amp;Grow é gratuito?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Sim, 100% gratuito. O Give&amp;Grow é um projeto comunitário sem fins lucrativos criado para conectar pessoas que querem aprender, ensinar e fazer voluntariado no DF.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como funciona depois que eu me cadastro?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Após o cadastro, você recebe um e-mail de boas-vindas confirmando que seus dados foram recebidos. Quando um evento for organizado na sua área de interesse, você receberá um convite por e-mail com todos os detalhes.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Preciso ter experiência para ensinar?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Não! Você só precisa saber mais do que quem quer aprender. O importante é a disposição de compartilhar. Você define o quanto pode dar e o formato que prefere.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Os eventos são presenciais ou online?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Os dois! Temos eventos online (como conversação em inglês pelo Google Meet) e eventos presenciais em diferentes regiões do DF. Ao se cadastrar, você indica sua preferência.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Posso me cadastrar para aprender e ensinar ao mesmo tempo?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Claro! Basta preencher os dois formulários. Você pode ensinar crochê e ao mesmo tempo aprender inglês, por exemplo.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como funciona o voluntariado?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">O Give&amp;Grow faz parcerias com ONGs do DF para organizar ações — feiras de adoção, visitas a lares de idosos, limpeza de áreas verdes e mais. Você se cadastra na página de voluntariado e recebe os convites quando uma ação for organizada.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Meus dados ficam seguros?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Sim. Os formulários são hospedados no Google Forms e seus dados ficam apenas na nossa planilha privada. Os dados são usados exclusivamente para organizar eventos e enviar convites relevantes para você.</div></div>
+        <div class="gg-faq-item"><button class="gg-faq-btn" onclick="toggleGGFaq(this)"><span>Como posso fazer parceria com o Give&amp;Grow?</span><span class="gg-faq-arrow">↓</span></button><div class="gg-faq-body">Se você representa uma ONG, escola ou projeto social e quer fazer parceria, entre em contato pelo e-mail <a href="mailto:euclaricenunes@gmail.com" style="color:var(--sage);font-weight:600;">euclaricenunes@gmail.com</a>.</div></div>
       </div>
     </div>
   </section>
 
-  <style>
-    .gg-faq-item { border:1.5px solid var(--border); border-radius:var(--r-lg); overflow:hidden; transition:border-color 0.2s; }
-    .gg-faq-item:hover { border-color:var(--sage-light); }
-    .gg-faq-btn { width:100%; display:flex; justify-content:space-between; align-items:center; padding:1.25rem 1.5rem; background:white; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--ink); text-align:left; gap:1rem; transition:background 0.2s; }
-    .gg-faq-btn:hover { background:var(--sage-pale); }
-    .gg-faq-arrow { font-size:1.1rem; color:var(--sage); transition:transform 0.3s; flex-shrink:0; }
-    .gg-faq-btn.open .gg-faq-arrow { transform:rotate(180deg); }
-    .gg-faq-body { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.3s; font-size:14px; font-weight:300; color:var(--ink-soft); line-height:1.75; padding:0 1.5rem; background:var(--sage-pale); }
-    .gg-faq-body.open { max-height:600px; padding:1.25rem 1.5rem; }
-  </style>
-
+  <!-- ONG DARK CTA -->
   <section class="ong-section">
     <div class="ong-inner">
-      <div class="ong-card reveal">
+      <div class="ong-card-dark reveal">
         <div>
-          <span class="ong-tag">Para organizações</span>
-          <h2 class="ong-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
-          <p class="ong-desc">
-            Estamos construindo uma rede de parcerias com organizações do Distrito Federal para conectar voluntários dispostos a agir com causas reais que precisam de ajuda. Se a sua ONG está buscando voluntários, entra em contato — adoraria conversar e incluir vocês na nossa rede.
-          </p>
+          <span class="ong-dark-tag">Para organizações</span>
+          <h2 class="ong-dark-title">Você é uma ONG e quer<br><em>receber voluntários?</em></h2>
+          <p class="ong-dark-desc">Estamos construindo uma rede de parcerias com organizações do Distrito Federal para conectar voluntários dispostos a agir com causas reais. Entre em contato — adoraria conversar.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:1.75rem;">
             <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">🐾 Causa animal</span>
             <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">👴 Idosos</span>
@@ -1591,15 +990,14 @@
             <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.65);font-size:12px;padding:5px 14px;border-radius:100px;">+ outras</span>
           </div>
         </div>
-        <div class="ong-cta-wrap">
-          <a href="mailto:euclaricenunes@gmail.com" class="btn-email">
-            ✉️ Entrar em contato
-          </a>
+        <div class="ong-dark-cta-wrap">
+          <a href="mailto:euclaricenunes@gmail.com" class="btn-email">✉️ Entrar em contato</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA FINAL -->
   <section class="cta-section">
     <div class="cta-orb cta-orb-1"></div>
     <div class="cta-orb cta-orb-2"></div>
@@ -1621,43 +1019,52 @@
       </div>
       <div class="footer-col">
         <h4>Comunidade</h4>
-        <ul>
-          <li><a href="#como-funciona">Como funciona</a></li>
-          <li><a href="#causas">Causas</a></li>
-          <li><a href="#eventos">Eventos</a></li>
-          <li><a href="#participar">Participar</a></li>
-        </ul>
+        <ul><li><a href="#como-funciona">Como funciona</a></li><li><a href="#causas">Causas</a></li><li><a href="#eventos">Eventos</a></li><li><a href="#participar">Participar</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Projetos</h4>
-        <ul>
-          <li><a href="patasdf.html">PatasDF</a></li>
-          <li><a href="#sobre-criadora">Sobre a Clarice</a></li>
-          <li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li>
-        </ul>
+        <ul><li><a href="patasdf.html">PatasDF</a></li><li><a href="#sobre-criadora">Sobre a Clarice</a></li><li><a href="https://github.com/claricenunes" target="_blank" rel="noopener">GitHub</a></li><li><a href="mailto:euclaricenunes@gmail.com">Contato</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Give&Grow · Todos os direitos reservados </span>
+      <span>© 2026 Give&amp;Grow · Todos os direitos reservados</span>
       <span>Feito por <a href="#sobre-criadora">Clarice Nunes · Engenharia de Software · Brasília</a></span>
     </div>
   </footer>
 
+  <!-- MODAL FORMULÁRIOS -->
+  <div id="m-overlay" onclick="if(event.target===this)fecharModal()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
+    <div id="m-box" style="background:var(--white);border-radius:var(--r-xl);max-width:520px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.22);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
+      <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div id="m-icon" style="width:50px;height:50px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
+          <div><div id="m-title" style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;"></div><div id="m-sub" style="font-size:12px;font-weight:300;color:var(--ink-soft);margin-top:3px;"></div></div>
+        </div>
+        <button onclick="fecharModal()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);flex-shrink:0;">✕</button>
+      </div>
+      <div style="padding:1.75rem 2rem;">
+        <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-bottom:1.5rem;"><p id="m-infotext" style="font-size:14px;font-weight:400;line-height:1.75;color:var(--ink-soft);"></p></div>
+        <div style="margin-bottom:1.5rem;"><div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:10px;">O que você vai preencher</div><div id="m-items" style="display:flex;flex-direction:column;gap:9px;"></div></div>
+        <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.75rem;"><span style="flex-shrink:0;">🔒</span><p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos. Nenhum dado é vendido ou compartilhado com terceiros.</p></div>
+        <div style="display:flex;gap:10px;">
+          <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;">Voltar</button>
+          <button id="m-btn" onclick="abrirFormulario()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // ── NAVBAR
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY > 40;
       document.getElementById('navbar').classList.toggle('scrolled', scrolled);
       document.getElementById('navLinks').style.top = scrolled ? '58px' : '68px';
     });
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+    document.querySelectorAll('#navLinks a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
 
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-    });
-
+    // ── REVEAL
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -1668,7 +1075,6 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ONGs section cards observer */
     const ongObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -1679,15 +1085,52 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.apoiadora-card').forEach(el => ongObserver.observe(el));
 
+    // ── ONG MODAL
+    function abrirOngModal(ong) {
+      const overlay = document.getElementById('ongModalOverlay');
+      const avatar  = document.getElementById('ongModalAvatar');
+      
+      if (ong.avatar) {
+        avatar.innerHTML = `<img src="${ong.avatar}" alt="${ong.nome}" onerror="this.parentElement.textContent='${ong.avatarEmoji || '🌱'}'">`;
+      } else {
+        avatar.textContent = ong.avatarEmoji || '🌱';
+      }
+
+      document.getElementById('ongModalName').textContent = ong.nome;
+      document.getElementById('ongModalCat').textContent  = ong.cat;
+
+      const descEl = document.getElementById('ongModalDesc');
+      descEl.innerHTML = ong.desc.replace(/\n\n/g, '</p><p class="ong-modal-full-desc" style="margin-top:1rem;">').replace(/\n/g, '<br>');
+
+      const actionsEl = document.getElementById('ongModalActions');
+      let actionsHTML = '';
+      if (ong.instagram) actionsHTML += `<a href="${ong.instagram}" target="_blank" rel="noopener" class="btn-modal-ig">📸 Instagram</a>`;
+      if (ong.adocao)    actionsHTML += `<a href="${ong.adocao}" target="_blank" rel="noopener" class="btn-modal-ig">🐾 Perfil de Adoção</a>`;
+      actionsHTML += `<a href="voluntariado.html" class="btn-modal-vol">🤝 Quero me voluntariar</a>`;
+      actionsEl.innerHTML = actionsHTML;
+
+      overlay.classList.add('open');
+      document.body.classList.add('modal-open');
+      document.body.dataset.scrollY = window.scrollY;
+    }
+
+    function fecharOngModal() {
+      document.getElementById('ongModalOverlay').classList.remove('open');
+      const sy = document.body.dataset.scrollY || 0;
+      document.body.classList.remove('modal-open');
+      window.scrollTo(0, parseInt(sy));
+    }
+
+    // ── CAUSAS FILTER
     function filtrarCausas(tipo, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('.causa-card').forEach(card => {
-        const show = tipo === 'todas' || card.dataset.tipo === tipo;
-        card.style.display = show ? '' : 'none';
+        card.style.display = (tipo === 'todas' || card.dataset.tipo === tipo) ? '' : 'none';
       });
     }
 
+    // ── CALENDAR
     function toggleCalendar() {
       const embed = document.getElementById('calendarEmbed');
       const btn = document.querySelector('.cal-btn');
@@ -1696,28 +1139,26 @@
       btn.textContent = isOpen ? 'Ver agenda completa ↓' : 'Fechar agenda ↑';
     }
 
-    function copiarLink() {
-      navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado! 🌱'));
-    }
+    // ── COPY LINK
+    function copiarLink() { navigator.clipboard.writeText(window.location.href).then(() => alert('Link copiado! 🌱')); }
 
+    // ── MODAL FORMULÁRIOS
     const MODAL_CONFIG = {
       aprender: {
         icon: '🎓', iconBg: 'var(--sage-pale)',
-        title: 'Quero aprender',
-        sub: 'Antes de ir para o Google Forms',
-        infoText: 'Estamos te redirecionando para o nosso Google Forms. Lá você vai nos contar seus interesses e como prefere aprender. Com essas informações conseguimos criar atividades novas e te enviar os eventos que podem te agradar.',
+        title: 'Quero aprender', sub: 'Antes de ir para o Google Forms',
+        infoText: 'Estamos te redirecionando para o nosso Google Forms. Lá você vai nos contar seus interesses e como prefere aprender.',
         items: ['Quais áreas te interessam (inglês, tecnologia, artesanato...)', 'Sua disponibilidade de horário', 'Se prefere online, presencial ou os dois', 'Seu nível atual na área escolhida'],
         btnBg: 'var(--sage)', btnText: 'Entendi — ir para o formulário',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSc_5X0QIUh-diP-k2UU1pkSYPdibsTU57rNAbl13HDA7Sdw0g/viewform'
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLScJ8u40L7ZLrqJ-8bHLFrN5xTUNszXJb8A0HZXE5hpw__xe8A/viewform?usp=publish-editor'
       },
       ensinar: {
         icon: '🙌', iconBg: 'var(--sage-pale)',
-        title: 'Quero ensinar',
-        sub: 'Antes de ir para o Google Forms',
-        infoText: 'Estamos te redirecionando para o nosso Google Forms. Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos, criar atividades e conectar você com as pessoas certas na comunidade.',
-        items: ['Qual habilidade ou conhecimento você quer compartilhar', 'Quantas horas por semana pode dedicar', 'Se prefere ensinar online, presencial ou os dois', 'Para qual público se sente mais a vontade'],
+        title: 'Quero ensinar', sub: 'Antes de ir para o Google Forms',
+        infoText: 'Você vai nos contar qual habilidade tem para compartilhar e como prefere ensinar. Assim conseguimos organizar grupos e conectar você com as pessoas certas.',
+        items: ['Qual habilidade ou conhecimento você quer compartilhar', 'Quantas horas por semana pode dedicar', 'Se prefere ensinar online, presencial ou os dois', 'Para qual público se sente mais à vontade'],
         btnBg: 'var(--ink)', btnText: 'Entendi — ir para o formulário',
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSf_x-AdrUnIZfHyYguuTkxmYN26RNbFep6NNLK1z_ENc1kouA/viewform'
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLScJ8u40L7ZLrqJ-8bHLFrN5xTUNszXJb8A0HZXE5hpw__xe8A/viewform?usp=publish-editor'
       }
     };
 
@@ -1729,7 +1170,7 @@
       document.getElementById('m-sub').textContent = c.sub;
       document.getElementById('m-infotext').textContent = c.infoText;
       document.getElementById('m-items').innerHTML = c.items.map(it =>
-        '<div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);font-weight:400;"><div style="width:20px;height:20px;border-radius:50%;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--sage);flex-shrink:0;font-weight:700;margin-top:1px;">&#10003;</div>' + it + '</div>'
+        `<div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-soft);"><div style="width:20px;height:20px;border-radius:50%;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--sage);flex-shrink:0;margin-top:1px;font-weight:700;">✓</div>${it}</div>`
       ).join('');
       const btn = document.getElementById('m-btn');
       btn.style.background = c.btnBg;
@@ -1747,53 +1188,30 @@
       const bx = document.getElementById('m-box');
       ov.style.opacity = '0'; ov.style.pointerEvents = 'none';
       bx.style.transform = 'translateY(24px) scale(0.97)';
-      const sy = document.body.dataset.scrollY || 0; document.body.classList.remove('modal-open'); window.scrollTo(0, parseInt(sy));
+      const sy = document.body.dataset.scrollY || 0;
+      document.body.classList.remove('modal-open');
+      window.scrollTo(0, parseInt(sy));
     }
 
     function abrirFormulario() {
       const url = document.getElementById('m-btn').dataset.url;
-      if (url && url !== '#') {
-        fecharModal();
-        setTimeout(() => { window.open(url, '_blank', 'noopener,noreferrer'); }, 150);
-      }
+      if (url && url !== '#') { fecharModal(); setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 150); }
     }
 
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { fecharModal(); fecharOngModal(); }
+    });
 
-    async function carregarContagemCausas() {
-      try {
-        const resp = await fetch('https://script.google.com/macros/s/AKfycbwDaHzMFLw1TrRzjiYIz1XEzfshVNCy-_1KrrTq3-53zOnzhtYrL9b8yLxpTgZBndtG/exec?acao=contagem');
-        if (!resp.ok) return;
-        const dados = await resp.json();
-        const mapa = {
-          'causa animal':  ['animal', 'causa animal', 'patasdf'],
-          'idosos':        ['idoso', 'idosos', 'terceira idade'],
-          'inglês':        ['inglês', 'ingles', 'english'],
-          'tecnologia':    ['tecnologia', 'programação', 'programacao', 'cyber', 'digital'],
-          'artesanato':    ['artesanato', 'crochê', 'croche', 'bordado', 'costura'],
-          'educação':      ['educação', 'educacao', 'reforço', 'reforco', 'mentoria'],
-          'meio ambiente': ['meio ambiente', 'ambiental', 'horta', 'verde'],
-          'culinária':     ['culinária', 'culinaria', 'cozinha', 'receita'],
-        };
-        document.querySelectorAll('.causa-name[data-causa]').forEach(el => {
-          const causaKey = el.getAttribute('data-causa');
-          const palavras = mapa[causaKey] || [causaKey];
-          let total = 0;
-          Object.entries(dados).forEach(([interesse, count]) => {
-            const i = interesse.toLowerCase();
-            if (palavras.some(p => i.includes(p))) total += count;
-          });
-          const tag = el.closest('.causa-card')?.querySelector('.causa-tag');
-          if (tag && total > 0) {
-            tag.textContent = total + (total === 1 ? ' pessoa' : ' pessoas');
-          }
-        });
-      } catch(e) {
-        console.log('Contagem de causas indisponível:', e);
-      }
+    // ── FAQ
+    function toggleGGFaq(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.gg-faq-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.gg-faq-btn').forEach(b => b.classList.remove('open'));
+      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
     }
-    carregarContagemCausas();
 
+    // ── PATAS MINI
     async function carregarPatasMini() {
       try {
         const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
@@ -1812,53 +1230,13 @@
           const isPerdido = a.status === 'perdido';
           return `<div class="patas-mini">
             <div class="pm-icon">${em[a.tipo]||'🐾'}</div>
-            <div><div class="pm-name">${a.nome || 'Animal ' + a.status} — ${isPerdido ? 'Perdido' : 'Encontrado'}</div><div class="pm-sub">${a.tipo ? a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1) : ''} · ${a.cidade||''}</div></div>
-            <span class="pm-badge">${isPerdido ? '😢 Perdido' : '🐾 Encontrado'}</span>
+            <div><div class="pm-name">${a.nome||'Animal '+a.status} — ${isPerdido?'Perdido':'Encontrado'}</div><div class="pm-sub">${a.tipo?a.tipo.charAt(0).toUpperCase()+a.tipo.slice(1):''} · ${a.cidade||''}</div></div>
+            <span class="pm-badge">${isPerdido?'😢 Perdido':'🐾 Encontrado'}</span>
           </div>`;
         }).join('') + extra;
       } catch(e) { console.log('Erro patas mini:', e); }
     }
     carregarPatasMini();
-
-    function toggleGGFaq(btn) {
-      const body = btn.nextElementSibling;
-      const isOpen = body.classList.contains('open');
-      document.querySelectorAll('.gg-faq-body').forEach(b => b.classList.remove('open'));
-      document.querySelectorAll('.gg-faq-btn').forEach(b => b.classList.remove('open'));
-      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
-    }
   </script>
-
-  <div id="m-overlay" onclick="if(event.target===this)fecharModal()" style="position:fixed;inset:0;z-index:9000;background:rgba(14,26,15,0.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.25s ease;touch-action:none;">
-  <div id="m-box" style="background:var(--white);border-radius:var(--r-xl);max-width:520px;width:100%;max-height:90dvh;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 32px 96px rgba(14,26,15,0.22);transform:translateY(24px) scale(0.97);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">
-    <div style="padding:1.75rem 2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--white);z-index:1;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div id="m-icon" style="width:50px;height:50px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;"></div>
-        <div>
-          <div id="m-title" style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-0.5px;"></div>
-          <div id="m-sub" style="font-size:12px;font-weight:300;color:var(--ink-soft);margin-top:3px;"></div>
-        </div>
-      </div>
-      <button onclick="fecharModal()" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border-dark);background:transparent;cursor:pointer;font-size:15px;color:var(--ink-soft);flex-shrink:0;">✕</button>
-    </div>
-    <div style="padding:1.75rem 2rem;">
-      <div style="background:var(--sage-pale);border:1.5px solid rgba(74,124,89,0.2);border-radius:var(--r-md);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
-        <p id="m-infotext" style="font-size:14px;font-weight:400;line-height:1.75;color:var(--ink-soft);"></p>
-      </div>
-      <div style="margin-bottom:1.5rem;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;margin-bottom:10px;">O que você vai preencher</div>
-        <div id="m-items" style="display:flex;flex-direction:column;gap:9px;"></div>
-      </div>
-      <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.75rem;">
-        <span style="flex-shrink:0;">🔒</span>
-        <p style="font-size:12px;font-weight:300;color:var(--ink-soft);line-height:1.65;">Seus dados ficam no <strong style="font-weight:500;">Google Forms</strong> e são usados só para organizar eventos e atividades que combinam com você. Nenhum dado é vendido ou compartilhado com terceiros.</p>
-      </div>
-      <div style="display:flex;gap:10px;">
-        <button onclick="fecharModal()" style="flex:1;padding:13px;border-radius:100px;border:1.5px solid var(--border-dark);background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink-soft);cursor:pointer;">Voltar</button>
-        <button id="m-btn" onclick="abrirFormulario()" style="flex:2;padding:13px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:white;border:none;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;"></button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
