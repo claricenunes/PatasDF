@@ -718,7 +718,7 @@
     </div>
   </section>
 
-  <!-- EVENTOS -->
+
   <section class="section eventos-section" id="eventos">
     <div class="container">
       <span class="label reveal">Agenda</span>
@@ -748,7 +748,221 @@
     </div>
   </section>
 
-  <!-- PARTICIPAR -->
+
+  <style>
+/* FOTOS SECTION */
+.fotos-section { background: var(--cream); padding: 100px 2rem; }
+.fotos-header { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:3rem; }
+
+/* Wrapper que envolve mosaic + ig-card no desktop */
+.fotos-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 10px;
+  align-items: start;
+}
+
+/* Grid só das fotos */
+.fotos-mosaic {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-rows: 215px 215px;
+  gap: 10px;
+}
+
+.foto-item { position:relative; border-radius:var(--r-lg); overflow:hidden; background:var(--sage-pale); }
+.foto-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s cubic-bezier(.25,.46,.45,.94); }
+.foto-item:hover img { transform:scale(1.06); }
+.foto-overlay { position:absolute; inset:0; border-radius:var(--r-lg); background:linear-gradient(to top,rgba(14,26,15,.55) 0%,transparent 55%); opacity:0; transition:opacity .3s; display:flex; align-items:flex-end; padding:14px; }
+.foto-item:hover .foto-overlay { opacity:1; }
+.foto-tag { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:white; background:var(--sage); padding:4px 12px; border-radius:100px; }
+.foto-tall { grid-row:span 2; }
+.foto-placeholder { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:var(--sage-pale); }
+.ph-icon { font-size:2rem; }
+.ph-label { font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--sage); }
+
+/* Rodapé — abaixo das fotos, acima do ig-card */
+.fotos-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+}
+.fotos-hashtags { display:flex; gap:6px; flex-wrap:wrap; }
+.fotos-hashtag { background:var(--sage-pale); color:var(--sage); font-size:12px; font-weight:600; padding:4px 11px; border-radius:100px; }
+
+/* ig-card: coluna direita no desktop, altura total do mosaic */
+.ig-card {
+  background: var(--white);
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--r-xl);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  height: 440px; /* 215px + 10px gap + 215px */
+}
+.ig-card-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.ig-avatar { width:48px; height:48px; border-radius:50%; overflow:hidden; flex-shrink:0; border:2px solid var(--border-dark); background:var(--sage-pale); display:flex; align-items:center; justify-content:center; }
+.ig-avatar img { width:100%; height:100%; object-fit:cover; }
+.ig-handle { font-size:14px; font-weight:700; color:var(--ink); }
+.ig-subname { font-size:11px; font-weight:300; color:var(--ink-soft); margin-top:2px; }
+.ig-bio { font-size:12px; line-height:1.7; color:var(--ink-soft); border-top:1px solid var(--border); padding-top:12px; margin-bottom:14px; }
+.ig-stats { display:flex; margin-bottom:14px; }
+.ig-stat { flex:1; text-align:center; }
+.ig-stat-n { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); line-height:1; }
+.ig-stat-l { font-size:9px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); margin-top:3px; font-weight:600; }
+.ig-mini-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; border-radius:var(--r-sm); overflow:hidden; margin-bottom:14px; flex:1; min-height:0; }
+.ig-mini-photo { aspect-ratio:1; background:var(--sage-pale); overflow:hidden; display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+.ig-mini-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+.ig-follow-btn { display:block; text-align:center; background:var(--sage); color:white; padding:11px; border-radius:100px; font-size:13px; font-weight:600; text-decoration:none; transition:background .2s,transform .15s; margin-top:auto; }
+.ig-follow-btn:hover { background:var(--ink); transform:translateY(-1px); }
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .fotos-layout { grid-template-columns: 1fr; }
+  .fotos-mosaic {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+  }
+  .foto-tall { grid-row: span 1; }
+  .foto-item:last-child { display: none; } /* esconde 7ª foto */
+  .ig-card {
+    height: auto;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .fotos-section { padding: 70px 1.25rem; }
+  .fotos-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .fotos-layout { grid-template-columns: 1fr; }
+  .fotos-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 8px;
+  }
+  .foto-item { height: 130px; }
+  .foto-tall { grid-row: span 1; }
+  .foto-item:nth-child(n+5) { display: none; }
+  .ig-card {
+    height: auto;
+    max-width: 100%;
+    margin: 0;
+  }
+  .fotos-footer { flex-direction: column; align-items: flex-start; }
+  .fotos-footer .btn-primary { width: 100%; justify-content: center; }
+}
+</style>
+
+<section class="fotos-section" id="fotos">
+  <div class="container">
+
+    <div class="fotos-header">
+      <div>
+        <span class="label reveal">Momentos da comunidade</span>
+        <h2 class="display reveal">Veja o que estamos<br><em>construindo</em></h2>
+      </div>
+    </div>
+
+    <div class="fotos-layout reveal">
+
+      <!-- Coluna esquerda: fotos + footer -->
+      <div>
+        <div class="fotos-mosaic">
+
+          <div class="foto-item foto-tall">
+            <img src="fotos/evento1.jpg" alt="Voluntariado Give&Grow"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">🤝</span><span class="ph-label">Adicione fotos/evento1.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Voluntariado</span></div>
+          </div>
+
+          <div class="foto-item">
+            <img src="fotos/evento2.jpg" alt="Aprendizado"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">📚</span><span class="ph-label">Adicione fotos/evento2.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Aprendizado</span></div>
+          </div>
+
+          <div class="foto-item">
+            <img src="fotos/evento3.jpg" alt="Artesanato"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">🪡</span><span class="ph-label">Adicione fotos/evento3.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Artesanato</span></div>
+          </div>
+
+          <div class="foto-item">
+            <img src="fotos/evento4.jpg" alt="Idosos"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">👴</span><span class="ph-label">Adicione fotos/evento4.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Idosos</span></div>
+          </div>
+
+          <div class="foto-item">
+            <img src="fotos/evento5.jpg" alt="Inglês"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">💬</span><span class="ph-label">Adicione fotos/evento5.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Inglês</span></div>
+          </div>
+
+          <div class="foto-item">
+            <img src="fotos/evento6.jpg" alt="Meio ambiente"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="foto-placeholder" style="display:none"><span class="ph-icon">🌿</span><span class="ph-label">Adicione fotos/evento6.jpg</span></div>
+            <div class="foto-overlay"><span class="foto-tag">Meio ambiente</span></div>
+          </div>
+
+        </div><!-- /fotos-mosaic -->
+
+        <!-- Footer: abaixo das fotos, acima do ig-card no tablet/mobile -->
+        <div class="fotos-footer">
+          <div class="fotos-hashtags">
+            <span class="fotos-hashtag">#GiveAndGrow</span>
+            <span class="fotos-hashtag">#PatasDF</span>
+            <span class="fotos-hashtag">#VoluntariadoDF</span>
+          </div>
+          <a href="galeria.html" class="btn-primary">📷 Ver todas as fotos →</a>
+        </div>
+      </div>
+
+      <!-- Coluna direita: ig-card -->
+      <div class="ig-card">
+        <div class="ig-card-top">
+          <div class="ig-avatar">
+            <img src="fotos/logo.jpeg" alt="Give&Grow"
+                 onerror="this.style.display='none'">
+          </div>
+          <div>
+            <div class="ig-handle">@wegivegrow</div>
+            <div class="ig-subname">Give&Grow · Brasília, DF</div>
+          </div>
+        </div>
+        <p class="ig-bio">Comunidade de troca, aprendizado e voluntariado no DF. 100% gratuito. 🌱</p>
+        <div class="ig-stats">
+          <div class="ig-stat"><div class="ig-stat-n">DF</div><div class="ig-stat-l">Cidade</div></div>
+          <div class="ig-stat"><div class="ig-stat-n">100%</div><div class="ig-stat-l">Grátis</div></div>
+          <div class="ig-stat"><div class="ig-stat-n">∞</div><div class="ig-stat-l">Pessoas</div></div>
+        </div>
+        <div class="ig-mini-grid">
+          <div class="ig-mini-photo"><img src="fotos/post1.png" alt="" onerror="this.style.display='none';this.parentElement.textContent='🐾'"></div>
+          <div class="ig-mini-photo"><img src="fotos/post2.png" alt="" onerror="this.style.display='none';this.parentElement.textContent='💬'"></div>
+          <div class="ig-mini-photo"><img src="fotos/post3.png" alt="" onerror="this.style.display='none';this.parentElement.textContent='🌿'"></div>
+        </div>
+        <a href="https://www.instagram.com/wegivegrow/" target="_blank" rel="noopener" class="ig-follow-btn">
+          Seguir no Instagram →
+        </a>
+      </div>
+
+    </div><!-- /fotos-layout -->
+
+  </div>
+</section>
+  
   <section class="section participar-section" id="participar">
     <div class="container">
       <span class="label reveal">Quero participar</span>
@@ -886,7 +1100,7 @@
     </div>
   </section>
 
-  <!-- SOBRE CRIADORA -->
+
   <section class="section criadora-section" id="sobre-criadora">
     <div class="container">
       <div class="criadora-inner">
@@ -921,7 +1135,9 @@
     </div>
   </section>
 
-  <!-- COMUNIDADE -->
+
+
+
   <section class="section comunidade-section" id="parte-projeto">
     <div class="container">
       <span class="label reveal">Quero fazer parte do projeto</span>

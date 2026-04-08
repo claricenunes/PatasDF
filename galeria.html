@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeria de Fotos — Give&Grow</title>
+  <meta name="description" content="Veja os momentos dos eventos e ações da comunidade Give&Grow no Distrito Federal."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#0e1a0f;--ink-soft:#2d3d2e;
+    --sage:#4a7c59;--sage-pale:#e8f2e8;--sage-light:#a8cba8;
+    --cream:#f5f0e8;--gold:#c4922a;
+    --white:#fdfcf8;--border:rgba(14,26,15,.1);--border-dark:rgba(14,26,15,.18);
+    --shadow:0 2px 20px rgba(14,26,15,.08);--shadow-lg:0 12px 60px rgba(14,26,15,.14);
+    --r-sm:8px;--r-md:16px;--r-lg:24px;--r-xl:32px;
+  }
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden}
+  body.lb-open{overflow:hidden;position:fixed;width:100%}
+
+  /* NAV */
+  .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:68px;display:flex;align-items:center;background:rgba(253,252,248,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);text-decoration:none}
+  .logo em{color:var(--sage);font-style:italic}
+  .nav-back{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:14px;font-weight:500;text-decoration:none;padding:8px 18px;border-radius:100px;border:1.5px solid var(--border-dark);transition:all .2s}
+  .nav-back:hover{border-color:var(--sage);color:var(--sage)}
+
+  /* HERO */
+  .hero{background:var(--cream);padding:108px 2rem 52px;text-align:center;border-bottom:1px solid var(--border)}
+  .label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);background:var(--sage-pale);padding:4px 12px;border-radius:100px;margin-bottom:1.25rem}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--ink);margin-bottom:1rem}
+  .hero h1 em{font-style:italic;color:var(--sage)}
+  .hero-sub{font-size:16px;font-weight:300;color:var(--ink-soft);max-width:480px;margin:0 auto 2rem;line-height:1.75}
+  .hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--ink);color:var(--white);padding:13px 26px;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary:hover{background:var(--sage);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--ink);padding:13px 26px;border-radius:100px;font-size:14px;font-weight:500;text-decoration:none;border:1.5px solid var(--border-dark);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-outline:hover{border-color:var(--sage);color:var(--sage)}
+
+  /* FILTRO STICKY */
+  .filtro-bar{position:sticky;top:68px;z-index:50;background:rgba(253,252,248,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 2rem}
+  .filtro-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .filtro-inner::-webkit-scrollbar{display:none}
+  .filtro-pill{flex-shrink:0;padding:7px 16px;border-radius:100px;font-size:13px;font-weight:500;border:1.5px solid var(--border-dark);background:transparent;color:var(--ink-soft);cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+  .filtro-pill.ativo,.filtro-pill:hover{background:var(--ink);color:white;border-color:var(--ink)}
+  .filtro-count{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:300;color:var(--ink-soft);white-space:nowrap}
+
+  /* BODY */
+  .galeria-body{max-width:1200px;margin:0 auto;padding:0 2rem 80px}
+
+  /* BLOCO DE EVENTO */
+  .evento-bloco{margin-top:60px}
+  .evento-bloco.oculto{display:none}
+  .evento-header{display:flex;align-items:center;gap:16px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+  .evento-icon{width:48px;height:48px;border-radius:var(--r-md);background:var(--sage-pale);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+  .evento-nome{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--ink);letter-spacing:-.5px}
+  .evento-info{font-size:13px;font-weight:300;color:var(--ink-soft);margin-top:3px}
+  .evento-badge{margin-left:auto;flex-shrink:0;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+  .badge-voluntariado{background:rgba(74,124,89,.12);color:var(--sage)}
+  .badge-aprendizado{background:rgba(196,146,42,.12);color:var(--gold)}
+  .badge-animais{background:rgba(184,92,56,.1);color:#b85c38}
+
+  /* GRID DE FOTOS */
+  .foto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .foto-card{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--sage-pale);aspect-ratio:4/3;cursor:pointer}
+  .foto-card.foto-destaque{grid-column:span 2;aspect-ratio:16/7}
+  .foto-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.25,.46,.45,.94)}
+  .foto-card:hover img{transform:scale(1.06)}
+  .foto-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,26,15,.55) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:14px;border-radius:var(--r-lg)}
+  .foto-card:hover .foto-overlay{opacity:1}
+  .foto-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:white;background:var(--sage);padding:4px 12px;border-radius:100px}
+  .foto-num{position:absolute;top:10px;right:10px;background:rgba(253,252,248,.85);backdrop-filter:blur(4px);font-size:11px;font-weight:600;color:var(--ink);padding:3px 8px;border-radius:100px}
+  .foto-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .ph-icon{font-size:2rem}
+  .ph-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+
+  /* EMPTY STATE */
+  .empty-state{text-align:center;padding:60px 20px;color:var(--ink-soft)}
+  .empty-state .es-icon{font-size:2.5rem;margin-bottom:12px}
+  .empty-state p{font-size:15px;font-weight:300}
+
+  /* CTA IG */
+  .cta-ig{background:var(--ink);border-radius:var(--r-xl);padding:3rem 2.5rem;margin-top:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .cta-ig-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;line-height:1.1;color:white}
+  .cta-ig-text h2 em{font-style:italic;color:var(--gold)}
+  .cta-ig-text p{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);margin-top:.75rem;line-height:1.75}
+  .btn-ig{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:white;padding:14px 28px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 4px 24px rgba(196,146,42,.3)}
+  .btn-ig:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,146,42,.4)}
+
+  /* LIGHTBOX */
+  .lb-overlay{position:fixed;inset:0;z-index:9900;background:rgba(10,16,10,.95);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .25s}
+  .lb-overlay.aberto{opacity:1;pointer-events:all}
+  .lb-box{position:relative;max-width:900px;width:100%;max-height:90dvh;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .lb-img-wrap{position:relative;width:100%;border-radius:var(--r-lg);overflow:hidden;background:rgba(255,255,255,.05)}
+  .lb-img{width:100%;max-height:70dvh;object-fit:contain;display:block;border-radius:var(--r-lg)}
+  .lb-caption{text-align:center;color:rgba(255,255,255,.7);font-size:13px;font-weight:300}
+  .lb-close{position:fixed;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10}
+  .lb-close:hover{background:rgba(255,255,255,.2)}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:white;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10}
+  .lb-nav:hover{background:rgba(255,255,255,.22)}
+  .lb-prev{left:-56px}.lb-next{right:-56px}
+  @media(max-width:700px){.lb-prev{left:4px}.lb-next{right:4px}}
+
+  /* FOOTER */
+  footer{background:var(--ink);padding:48px 2rem 0}
+  .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:white;text-decoration:none}
+  .footer-logo em{color:var(--sage-light);font-style:italic}
+  .footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;font-size:12px;color:rgba(255,255,255,.3);font-weight:300;flex-wrap:wrap;gap:.5rem}
+  .footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .foto-grid{grid-template-columns:repeat(2,1fr)}
+    .foto-card.foto-destaque{grid-column:span 2}
+    .cta-ig{flex-direction:column;text-align:center}
+    .lb-nav{display:none}
+  }
+  @media(max-width:480px){
+    .foto-grid{grid-template-columns:1fr 1fr;gap:8px}
+    .filtro-bar{padding:10px 1.25rem}
+    .galeria-body{padding:0 1.25rem 60px}
+  }
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" onclick="if(event.target===this)fecharLB()">
+  <div class="lb-box">
+    <button class="lb-close" onclick="fecharLB()">&#10005;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" onclick="navLB(-1)">&#8592;</button>
+    <button class="lb-nav lb-next" id="lbNext" onclick="navLB(1)">&#8594;</button>
+    <div class="lb-img-wrap">
+      <img class="lb-img" id="lbImg" src="" alt=""/>
+    </div>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Give<em>&amp;</em>Grow</a>
+    <a href="index.html" class="nav-back">&#8592; Voltar ao site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="label">Galeria</div>
+  <h1>Momentos da<br><em>comunidade</em></h1>
+  <p class="hero-sub">Fotos dos eventos, ações voluntárias e encontros do Give&amp;Grow no Distrito Federal.</p>
+  <div class="hero-btns">
+    <a href="https://www.instagram.com/wegivegrow/" target="_blank" rel="noopener" class="btn-primary">📸 Ver no Instagram</a>
+    <a href="index.html#participar" class="btn-outline">Quero participar &#8594;</a>
+  </div>
+</header>
+
+<!-- FILTRO -->
+<div class="filtro-bar">
+  <div class="filtro-inner">
+    <button class="filtro-pill ativo" data-filtro="todos" onclick="filtrar('todos',this)">Todos os eventos</button>
+    <button class="filtro-pill" data-filtro="animais" onclick="filtrar('animais',this)">🐾 Causa animal</button>
+    <button class="filtro-pill" data-filtro="voluntariado" onclick="filtrar('voluntariado',this)">🤝 Voluntariado</button>
+    <button class="filtro-pill" data-filtro="aprendizado" onclick="filtrar('aprendizado',this)">📚 Aprendizado</button>
+    <button class="filtro-pill" data-filtro="idosos" onclick="filtrar('idosos',this)">👴 Idosos</button>
+    <button class="filtro-pill" data-filtro="meio-ambiente" onclick="filtrar('meio-ambiente',this)">🌿 Meio ambiente</button>
+    <span class="filtro-count" id="fotoCount"></span>
+  </div>
+</div>
+
+<!-- GALERIA -->
+<main class="galeria-body">
+
+  <!-- ─── EVENTO 1: Feirinha de Adoção ─── -->
+  <div class="evento-bloco reveal" data-categoria="animais" id="bloco-animais">
+    <div class="evento-header">
+      <div class="evento-icon">🐾</div>
+      <div>
+        <div class="evento-nome">Feirinha de Adoção — Lar dos Anjos</div>
+        <div class="evento-info">Abril 2025 &middot; Brasília, DF &middot; Presencial</div>
+      </div>
+      <span class="evento-badge badge-animais">🐾 Causa animal</span>
+    </div>
+    <div class="foto-grid">
+      <!-- Foto destaque (wide) -->
+      <div class="foto-card foto-destaque" onclick="abrirLB(this,'Feirinha de Adoção — Lar dos Anjos','Causa animal')">
+        <img src="fotos/adocao1.jpg" alt="Feirinha de adoção"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🐾</span><span class="ph-label">Adicione fotos/adocao1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Adoção</span></div>
+      </div>
+      <!-- Fotos menores -->
+      <div class="foto-card" onclick="abrirLB(this,'Feirinha de Adoção — Lar dos Anjos','Causa animal')">
+        <img src="fotos/adocao2.jpg" alt="Feirinha de adoção"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🐕</span><span class="ph-label">Adicione fotos/adocao2.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Adoção</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Voluntários na feira','Causa animal')">
+        <img src="fotos/adocao3.jpg" alt="Voluntários"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🐱</span><span class="ph-label">Adicione fotos/adocao3.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Voluntários</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Animais resgatados','Causa animal')">
+        <img src="fotos/adocao4.jpg" alt="Animais"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🏡</span><span class="ph-label">Adicione fotos/adocao4.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Animais</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Lar dos Anjos','Causa animal')">
+        <img src="fotos/adocao5.jpg" alt="Lar dos Anjos"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">❤️</span><span class="ph-label">Adicione fotos/adocao5.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Lar dos Anjos</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+  <div class="evento-bloco reveal" data-categoria="voluntariado" id="bloco-voluntariado">
+    <div class="evento-header">
+      <div class="evento-icon">🤝</div>
+      <div>
+        <div class="evento-nome">Ação de Voluntariado — DF</div>
+        <div class="evento-info">2025 &middot; Brasília, DF &middot; Presencial</div>
+      </div>
+      <span class="evento-badge badge-voluntariado">🤝 Voluntariado</span>
+    </div>
+    <div class="foto-grid">
+      <div class="foto-card foto-destaque" onclick="abrirLB(this,'Ação de voluntariado no DF','Voluntariado')">
+        <img src="fotos/evento1.jpg" alt="Voluntariado"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🤝</span><span class="ph-label">Adicione fotos/evento1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Voluntariado</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Equipe de voluntários','Voluntariado')">
+        <img src="fotos/evento2.jpg" alt="Equipe"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🌱</span><span class="ph-label">Adicione fotos/evento2.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Equipe</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Comunidade Give&Grow','Voluntariado')">
+        <img src="fotos/evento3.jpg" alt="Comunidade"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🙌</span><span class="ph-label">Adicione fotos/evento3.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Comunidade</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Ação no DF','Voluntariado')">
+        <img src="fotos/evento4.jpg" alt="Ação"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">💪</span><span class="ph-label">Adicione fotos/evento4.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Ação</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Impacto real','Voluntariado')">
+        <img src="fotos/evento5.jpg" alt="Impacto"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">✨</span><span class="ph-label">Adicione fotos/evento5.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Impacto</span></div>
+      </div>
+    </div>
+  </div>-->
+
+  <!--
+  <div class="evento-bloco reveal" data-categoria="aprendizado" id="bloco-aprendizado">
+    <div class="evento-header">
+      <div class="evento-icon">📚</div>
+      <div>
+        <div class="evento-nome">Conversação em Inglês &amp; Artesanato</div>
+        <div class="evento-info">2025 &middot; Online &amp; Presencial</div>
+      </div>
+      <span class="evento-badge badge-aprendizado">📚 Aprendizado</span>
+    </div>
+    <div class="foto-grid">
+      <div class="foto-card foto-destaque" onclick="abrirLB(this,'Conversação em inglês online','Aprendizado')">
+        <img src="fotos/ingles1.jpg" alt="Inglês online"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">💬</span><span class="ph-label">Adicione fotos/ingles1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Inglês</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Aula de crochê','Aprendizado')">
+        <img src="fotos/artesanato1.jpg" alt="Crochê"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🪡</span><span class="ph-label">Adicione fotos/artesanato1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Crochê</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Workshop artesanato','Aprendizado')">
+        <img src="fotos/artesanato2.jpg" alt="Artesanato"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🎨</span><span class="ph-label">Adicione fotos/artesanato2.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Artesanato</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Grupo de aprendizado','Aprendizado')">
+        <img src="fotos/evento6.jpg" alt="Grupo"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🎓</span><span class="ph-label">Adicione fotos/evento6.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Grupo</span></div>
+      </div>
+    </div>
+  </div>-->
+
+  <!-- 
+  <div class="evento-bloco reveal" data-categoria="idosos" id="bloco-idosos">
+    <div class="evento-header">
+      <div class="evento-icon">👴</div>
+      <div>
+        <div class="evento-nome">Visita ao Lar de Idosos</div>
+        <div class="evento-info">2025 &middot; Brasília, DF &middot; Presencial</div>
+      </div>
+      <span class="evento-badge badge-voluntariado">👴 Idosos</span>
+    </div>
+    <div class="foto-grid">
+      <div class="foto-card foto-destaque" onclick="abrirLB(this,'Visita ao lar de idosos','Idosos')">
+        <img src="fotos/idosos1.jpg" alt="Lar de idosos"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">👴</span><span class="ph-label">Adicione fotos/idosos1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Lar de idosos</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Inclusão digital','Idosos')">
+        <img src="fotos/idosos2.jpg" alt="Inclusão digital"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">💻</span><span class="ph-label">Adicione fotos/idosos2.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Inclusão digital</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Momento especial','Idosos')">
+        <img src="fotos/idosos3.jpg" alt="Momento especial"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">❤️</span><span class="ph-label">Adicione fotos/idosos3.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Conexão</span></div>
+      </div>
+    </div>
+  </div>-->
+
+  <!--
+  <div class="evento-bloco reveal" data-categoria="meio-ambiente" id="bloco-meio-ambiente">
+    <div class="evento-header">
+      <div class="evento-icon">🌿</div>
+      <div>
+        <div class="evento-nome">Horta Urbana &amp; Meio Ambiente</div>
+        <div class="evento-info">2025 &middot; Brasília, DF &middot; Presencial</div>
+      </div>
+      <span class="evento-badge badge-voluntariado">🌿 Meio ambiente</span>
+    </div>
+    <div class="foto-grid">
+      <div class="foto-card foto-destaque" onclick="abrirLB(this,'Horta urbana no DF','Meio ambiente')">
+        <img src="fotos/horta1.jpg" alt="Horta urbana"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🌿</span><span class="ph-label">Adicione fotos/horta1.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Horta urbana</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Plantio comunitário','Meio ambiente')">
+        <img src="fotos/horta2.jpg" alt="Plantio"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">🌱</span><span class="ph-label">Adicione fotos/horta2.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Plantio</span></div>
+      </div>
+      <div class="foto-card" onclick="abrirLB(this,'Limpeza de área verde','Meio ambiente')">
+        <img src="fotos/evento7.jpg" alt="Limpeza"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="foto-placeholder" style="display:none"><span class="ph-icon">♻️</span><span class="ph-label">Adicione fotos/evento7.jpg</span></div>
+        <div class="foto-overlay"><span class="foto-tag">Limpeza</span></div>
+      </div>
+    </div>
+  </div>-->
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="emptyState" style="display:none">
+    <div class="es-icon">📷</div>
+    <p>Nenhum evento encontrado nessa categoria.</p>
+  </div>
+
+  <!-- CTA INSTAGRAM -->
+  <div class="cta-ig reveal">
+    <div class="cta-ig-text">
+      <h2>Quer ver mais?<br><em>Siga no Instagram</em></h2>
+      <p>Publicamos novidades, bastidores e próximos eventos toda semana.</p>
+    </div>
+    <a href="https://www.instagram.com/wegivegrow/" target="_blank" rel="noopener" class="btn-ig">
+      📸 @wegivegrow &#8594;
+    </a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Give<em>&amp;</em>Grow</a>
+    <a href="index.html" class="btn-outline" style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.2);">&#8592; Voltar ao site</a>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Give&amp;Grow &middot; Todos os direitos reservados</span>
+    <span>Feito por <a href="index.html#sobre-criadora">Clarice Nunes</a></span>
+  </div>
+</footer>
+
+<script>
+  // ── REVEAL
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'), i*80); obs.unobserve(e.target); }
+    });
+  },{threshold:0.06});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // ── FILTRO
+  function filtrar(cat, btn) {
+    document.querySelectorAll('.filtro-pill').forEach(p=>p.classList.remove('ativo'));
+    btn.classList.add('ativo');
+    const blocos = document.querySelectorAll('.evento-bloco');
+    let vis = 0;
+    blocos.forEach(b => {
+      const ok = cat==='todos' || b.dataset.categoria===cat;
+      b.classList.toggle('oculto', !ok);
+      if(ok) vis++;
+    });
+    document.getElementById('emptyState').style.display = vis===0 ? 'block' : 'none';
+    const total = document.querySelectorAll('.foto-card:not(.evento-bloco.oculto .foto-card)').length;
+    document.getElementById('fotoCount').textContent = vis + (vis===1?' evento':' eventos');
+  }
+
+  // Conta inicial
+  document.addEventListener('DOMContentLoaded', () => {
+    const total = document.querySelectorAll('.evento-bloco').length;
+    document.getElementById('fotoCount').textContent = total + ' eventos';
+  });
+
+  // ── LIGHTBOX
+  let lbFotos = [];
+  let lbIdx   = 0;
+
+  function abrirLB(card, caption, tag) {
+    // Coleta todas as fotos do mesmo bloco de evento
+    const bloco = card.closest('.evento-bloco');
+    const cards  = [...bloco.querySelectorAll('.foto-card')];
+    lbFotos = cards.map(c => {
+      const img = c.querySelector('img');
+      return { src: img ? img.src : '', alt: img ? img.alt : '' };
+    });
+    lbIdx = cards.indexOf(card);
+    renderLB();
+    document.getElementById('lb').classList.add('aberto');
+    document.body.classList.add('lb-open');
+    document.body.dataset.scrollY = window.scrollY;
+  }
+
+  function renderLB() {
+    const f = lbFotos[lbIdx];
+    document.getElementById('lbImg').src = f.src;
+    document.getElementById('lbImg').alt = f.alt;
+    document.getElementById('lbCaption').textContent = f.alt || '';
+    document.getElementById('lbPrev').style.opacity = lbIdx>0 ? '1' : '0.3';
+    document.getElementById('lbNext').style.opacity = lbIdx<lbFotos.length-1 ? '1' : '0.3';
+  }
+
+  function navLB(dir) {
+    const next = lbIdx + dir;
+    if(next>=0 && next<lbFotos.length){ lbIdx=next; renderLB(); }
+  }
+
+  function fecharLB() {
+    document.getElementById('lb').classList.remove('aberto');
+    const sy = document.body.dataset.scrollY || 0;
+    document.body.classList.remove('lb-open');
+    window.scrollTo(0, parseInt(sy));
+  }
+
+  document.addEventListener('keydown', e => {
+    if(!document.getElementById('lb').classList.contains('aberto')) return;
+    if(e.key==='Escape') fecharLB();
+    if(e.key==='ArrowLeft') navLB(-1);
+    if(e.key==='ArrowRight') navLB(1);
+  });
+</script>
+</body>
+</html>
