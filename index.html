@@ -540,7 +540,7 @@
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#causas">Causas</a></li>
+        <li><a href="causas.html">Causas</a></li>
         <li><a href="#eventos">Eventos</a></li>
         <li><a href="#patasdf">PatasDF</a></li>
         <li><a href="#ongs">ONGs</a></li>
@@ -680,36 +680,47 @@
     </div>
   </section>
 
-  <!-- CAUSAS -->
-  <section class="section causas-section" id="causas">
+<section class="section participar-section" id="participar">
     <div class="container">
-      <div class="causas-header">
-        <div>
-          <span class="label reveal">Áreas de interesse</span>
-          <h2 class="display reveal">O que move<br>você no DF?</h2>
+      <span class="label reveal">Quero participar</span>
+      <h2 class="display reveal">Como você quer<br>fazer a <em>diferença?</em></h2>
+      <p class="lead reveal">Escolha como quer se envolver. Leva menos de 2 minutos.</p>
+      <div class="participar-grid">
+        <div class="part-card reveal">
+          <div class="part-card-top"><div class="part-icon">🎓</div><div class="part-title">Quero aprender</div></div>
+          <div class="part-desc">Inglês, tecnologia, artesanato, culinária. A gente organiza os grupos e te avisa dos eventos.</div>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Sem pré-requisito, qualquer nível</li><li><div class="check-icon">✓</div> Online ou presencial, você escolhe</li><li><div class="check-icon">✓</div> 100% gratuito, sem compromisso</li></ul>
+          <button onclick="abrirModal('aprender')" class="part-btn">🎓 Quero aprender — formulário</button>
+          <p class="part-note">Você será levado ao Google Forms</p>
         </div>
-        <div class="filter-pills reveal">
-          <button class="filter-pill active" onclick="filtrarCausas('todas', this)">Todas</button>
-          <button class="filter-pill" onclick="filtrarCausas('aprender', this)">📚 Aprender</button>
-          <button class="filter-pill" onclick="filtrarCausas('voluntariado', this)">🤝 Voluntariado</button>
+        <div class="part-card reveal">
+          <div class="part-card-top"><div class="part-icon">🙌</div><div class="part-title">Quero ensinar</div></div>
+          <div class="part-desc">Tem uma habilidade para compartilhar? Você decide o quanto pode dar.</div>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Você define o tempo disponível</li><li><div class="check-icon">✓</div> Online ou presencial</li><li><div class="check-icon">✓</div> A comunidade cresce com você</li></ul>
+          <button onclick="abrirModal('ensinar')" class="part-btn">🙌 Quero ensinar — formulário</button>
+          <p class="part-note">Você será levado ao Google Forms</p>
+        </div>
+        <div class="part-card reveal">
+          <div class="part-card-top"><div class="part-icon">🤝</div><div class="part-title">Quero fazer voluntariado</div></div>
+          <div class="part-desc">Feiras de adoção, lares de idosos, ações presenciais. A gente te encaminha para as causas mais próximas.</div>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> Escolha a causa que te move</li><li><div class="check-icon">✓</div> Ações no DF</li><li><div class="check-icon">✓</div> Em parceria com ONGs reais</li></ul>
+          <a href="voluntariado.html" class="part-btn">🤝 Quero fazer voluntariado →</a>
+          <p class="part-note">Saiba mais sobre como participar</p>
+        </div>
+        <div class="part-card reveal">
+          <div class="part-card-top"><div class="part-icon">💡</div><div class="part-title">Ainda não sei por onde começar</div></div>
+          <div class="part-desc">Explore todas as causas e áreas da comunidade e encontre o que te move.</div>
+          <ul class="part-checks"><li><div class="check-icon">✓</div> 20+ áreas de interesse</li><li><div class="check-icon">✓</div> Aprender, ensinar e voluntariado</li><li><div class="check-icon">✓</div> Sem pressão, no seu ritmo</li></ul>
+          <a href="causas.html" class="part-btn">💡 Explorar todas as áreas →</a>
+          <p class="part-note">Veja o que a comunidade oferece</p>
         </div>
       </div>
-      <div class="causas-grid" id="causasGrid">
-        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🐾</div><div class="causa-name">Causa animal</div><div class="causa-desc">Ajude a reencontrar animais perdidos no DF e apoie ONGs da causa animal</div></div>
-        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">👴</div><div class="causa-name">Idosos</div><div class="causa-desc">Visitas, oficinas e inclusão digital em lares de idosos</div></div>
-        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">💬</div><div class="causa-name">Inglês</div><div class="causa-desc">Conversação online, todos os níveis, toda semana, sem custo</div></div>
-        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">💻</div><div class="causa-name">Tecnologia</div><div class="causa-desc">Cybersegurança, programação e inclusão digital básica</div></div>
-        <div class="causa-card reveal" data-tipo="aprender"><div class="causa-icon">🪡</div><div class="causa-name">Artesanato</div><div class="causa-desc">Crochê, bordado e costura — presencial e online, toda semana</div></div>
-        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🎓</div><div class="causa-name">Educação</div><div class="causa-desc">Reforço escolar, orientação profissional e mentoria de carreira</div></div>
-        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🌿</div><div class="causa-name">Meio ambiente</div><div class="causa-desc">Limpeza de áreas, hortas urbanas e conscientização ambiental</div></div>
-        <div class="causa-card reveal" data-tipo="voluntariado"><div class="causa-icon">🧒</div><div class="causa-name">Crianças</div><div class="causa-desc">Uma forma de contribuir para o desenvolvimento e aprendizado de forma leve e acolhedora.</div></div>
-      </div>
-      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
-        <a href="causas.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 20px rgba(14,26,15,0.16);" onmouseover="this.style.background='var(--sage)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)'">Ver todas as áreas de interesse →</a>
+      <div class="data-note reveal">
+        <div class="data-note-icon">🔒</div>
+        <div><strong>Seus dados ficam protegidos</strong><p>Os formulários são hospedados no Google Forms. O Give&amp;Grow não armazena suas informações diretamente. Nenhum dado é vendido ou compartilhado com terceiros.</p></div>
       </div>
     </div>
   </section>
-
 
   <section class="section eventos-section" id="eventos">
     <div class="container">
@@ -955,47 +966,7 @@
   </div>
 </section>
   
-  <section class="section participar-section" id="participar">
-    <div class="container">
-      <span class="label reveal">Quero participar</span>
-      <h2 class="display reveal">Como você quer<br>fazer a <em>diferença?</em></h2>
-      <p class="lead reveal">Escolha como quer se envolver. Leva menos de 2 minutos.</p>
-      <div class="participar-grid">
-        <div class="part-card reveal">
-          <div class="part-card-top"><div class="part-icon">🎓</div><div class="part-title">Quero aprender</div></div>
-          <div class="part-desc">Inglês, tecnologia, artesanato, culinária. A gente organiza os grupos e te avisa dos eventos.</div>
-          <ul class="part-checks"><li><div class="check-icon">✓</div> Sem pré-requisito, qualquer nível</li><li><div class="check-icon">✓</div> Online ou presencial, você escolhe</li><li><div class="check-icon">✓</div> 100% gratuito, sem compromisso</li></ul>
-          <button onclick="abrirModal('aprender')" class="part-btn">🎓 Quero aprender — formulário</button>
-          <p class="part-note">Você será levado ao Google Forms</p>
-        </div>
-        <div class="part-card reveal">
-          <div class="part-card-top"><div class="part-icon">🙌</div><div class="part-title">Quero ensinar</div></div>
-          <div class="part-desc">Tem uma habilidade para compartilhar? Você decide o quanto pode dar.</div>
-          <ul class="part-checks"><li><div class="check-icon">✓</div> Você define o tempo disponível</li><li><div class="check-icon">✓</div> Online ou presencial</li><li><div class="check-icon">✓</div> A comunidade cresce com você</li></ul>
-          <button onclick="abrirModal('ensinar')" class="part-btn">🙌 Quero ensinar — formulário</button>
-          <p class="part-note">Você será levado ao Google Forms</p>
-        </div>
-        <div class="part-card reveal">
-          <div class="part-card-top"><div class="part-icon">🤝</div><div class="part-title">Quero fazer voluntariado</div></div>
-          <div class="part-desc">Feiras de adoção, lares de idosos, ações presenciais. A gente te encaminha para as causas mais próximas.</div>
-          <ul class="part-checks"><li><div class="check-icon">✓</div> Escolha a causa que te move</li><li><div class="check-icon">✓</div> Ações no DF</li><li><div class="check-icon">✓</div> Em parceria com ONGs reais</li></ul>
-          <a href="voluntariado.html" class="part-btn">🤝 Quero fazer voluntariado →</a>
-          <p class="part-note">Saiba mais sobre como participar</p>
-        </div>
-        <div class="part-card reveal">
-          <div class="part-card-top"><div class="part-icon">💡</div><div class="part-title">Ainda não sei por onde começar</div></div>
-          <div class="part-desc">Explore todas as causas e áreas da comunidade e encontre o que te move.</div>
-          <ul class="part-checks"><li><div class="check-icon">✓</div> 20+ áreas de interesse</li><li><div class="check-icon">✓</div> Aprender, ensinar e voluntariado</li><li><div class="check-icon">✓</div> Sem pressão, no seu ritmo</li></ul>
-          <a href="causas.html" class="part-btn">💡 Explorar todas as áreas →</a>
-          <p class="part-note">Veja o que a comunidade oferece</p>
-        </div>
-      </div>
-      <div class="data-note reveal">
-        <div class="data-note-icon">🔒</div>
-        <div><strong>Seus dados ficam protegidos</strong><p>Os formulários são hospedados no Google Forms. O Give&amp;Grow não armazena suas informações diretamente. Nenhum dado é vendido ou compartilhado com terceiros.</p></div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- PATAS -->
   <section class="section patas-section" id="patasdf">
@@ -1098,7 +1069,7 @@
       <div class="criadora-inner">
         <div class="criadora-img-wrap reveal">
           <div class="criadora-circle">
-            <img src="fotos/clarice2.jpg" alt="Clarice Nunes" onerror="this.style.display='none'">
+            <img src="fotos/clarice1.jpeg" alt="Clarice Nunes" onerror="this.style.display='none'">
           </div>
           <div class="criadora-badge cb1"><span class="cb-emoji">🌱</span><div class="cb-text"><strong>Criadora do Give&amp;Grow</strong><span>e do PatasDF</span></div></div>
           <div class="criadora-badge cb2"><span class="cb-emoji">🎓</span><div class="cb-text"><strong>Eng. de Software</strong><span>2º semestre</span></div></div>
