@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="4HNpzftqS3hNCB7TtEqnaa3-RcVvin-B9rhNenokQxc" />
   <title>VIVE — Comunidade de Troca, Aprendizado e Voluntariado no DF</title>
   <meta name="description" content="Comunidade gratuita que conecta pessoas que querem aprender, ensinar e fazer voluntariado no Distrito Federal." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1348,7 +1349,7 @@
     // ── PATAS MINI
     async function carregarPatasMini() {
       try {
-        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/VIVE-Comunidade/main/animais.json?t=' + Date.now());
         if (!resp.ok) return;
         const animais = await resp.json();
         const container = document.getElementById('patasMini');

@@ -554,7 +554,7 @@
 
     async function carregarAnimais() {
       try {
-        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/VIVE-Comunidade/main/animais.json?t=' + Date.now());
         if (resp.ok) {
           const d = await resp.json();
           ANIMALS = d;
@@ -664,7 +664,7 @@
 
     async function carregarEstatisticas() {
       try {
-        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/Give-and-Grow/main/animais.json?t=' + Date.now());
+        const resp = await fetch('https://raw.githubusercontent.com/claricenunes/VIVE-Comunidade/main/animais.json?t=' + Date.now());
         if (!resp.ok) return;
         const animais = await resp.json();
         const perdidos    = animais.filter(a => a.status === 'perdido').length;
