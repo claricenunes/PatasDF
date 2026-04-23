@@ -44,7 +44,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 0 2rem; height: 68px;
       display: flex; align-items: center;
-      background: rgba(253,252,248,0.88); backdrop-filter: blur(16px);
+      background: rgb(248,245,238); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border); transition: all 0.3s;
     }
     .navbar.scrolled { height: 58px; box-shadow: 0 2px 24px rgba(14,26,15,0.08); }
@@ -52,21 +52,23 @@
     .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
     .logo em { color: var(--sage); font-style: italic; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; transition: color 0.2s; }
+    .nav-links a { color: rgb(119,153,127); text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: 0.01em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--sage); }
-    .nav-cta { background: var(--ink) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
+    .nav-cta { background: rgb(104,145,115) !important; color: var(--BLACK) !important; padding: 9px 22px !important; border-radius: 100px !important; font-weight: 600 !important; transition: background 0.2s, transform 0.15s !important; }
     .nav-cta:hover { background: var(--sage) !important; transform: translateY(-1px); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
 
 
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 120px 2rem 80px;
-      background: var(--cream);
-      position: relative; overflow: hidden;
-    }
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 2rem 60px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
 
     .hero::before {
       content: '';
@@ -74,6 +76,21 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       opacity: 0.4; pointer-events: none;
     }
+
+    .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(74,124,89,0.06) 0px,
+    rgba(74,124,89,0.06) 6px,
+    transparent 2px,
+    transparent 18px
+  );
+  pointer-events: none;
+}
 
     /* Large decorative background letter */
     .hero-bg-letter {
@@ -98,6 +115,11 @@
       display: grid; grid-template-columns: 1fr 380px;
       gap: 6rem; align-items: center;
     }
+    .hero-image {
+  order: -1; 
+}
+
+    
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
@@ -117,17 +139,17 @@
       animation: fadeUp 0.7s 0.08s ease both;
       margin-bottom: 0.15em;
     }
-    .hero h1 .word-give { display: block; }
+    .hero h1 .word-give { display: block; color: var(--sage); }
     .hero h1 .word-and  { display: block; color: var(--sage); font-style: italic; padding-left: 0.08em; }
     .hero h1 .word-grow { display: block; -webkit-text-stroke: 2px var(--ink); color: transparent; }
 
     .hero-tagline {
       font-size: clamp(1rem, 1.6vw, 1.2rem);
-      font-weight: 300; line-height: 1.75; color: var(--ink-soft);
+      font-weight: 300; line-height: 1.75; color: var(--sage);
       max-width: 480px; margin: 2.5rem 0 3rem;
       animation: fadeUp 0.7s 0.16s ease both;
     }
-    .hero-tagline strong { font-weight: 600; color: var(--ink); }
+    .hero-tagline strong { font-weight: 600; color: var(--sage); }
 
     .hero-ctas {
       display: flex; gap: 12px; flex-wrap: wrap;
@@ -183,7 +205,7 @@
 
     /* ── BUTTONS ── */
     .btn-primary {
-      background: var(--ink); color: var(--white);
+      background: var(--sage); color: var(--white);
       padding: 14px 28px; border-radius: 100px;
       font-size: 15px; font-weight: 600; text-decoration: none;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
@@ -208,11 +230,11 @@
     .ticker-sep { color: rgba(255,255,255,0.4); font-size: 1.2rem; margin: 0 0.5rem; }
 
     /* ── STATS STRIP ── */
-    .stats-strip { background: var(--ink); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: center; }
+    .stats-strip { background: rgb(235,233,223); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
     .stat-item { display: flex; align-items: center; gap: 1rem; padding: 0 3rem; border-right: 1px solid rgba(255,255,255,0.1); }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: white; line-height: 1; }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 300; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: rgb(151,175,148); line-height: 1; }
+    .stat-label { font-size: 12px; color: rgb(104,145,115); font-weight: 500; }
 
     /* ── SECTIONS ── */
     .section { padding: 100px 2rem; }
@@ -418,6 +440,105 @@
     .cc-btn { background: var(--ink); color: white; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: background 0.2s; display: inline-block; text-decoration: none; }
     .cc-btn:hover { background: var(--sage); }
 
+    .voluntariado-section {
+  background-image: url("fotos/fundo.png");
+  background-size: cover;        /* cobre toda a área */
+  background-position: center;   /* centraliza */
+  background-repeat: no-repeat;
+  min-height: 900px;
+  justify-content: flex-start;
+  text-align: left;
+  
+  padding: 80px 2rem;            /* espaço interno */
+  position: relative;
+}
+
+.voluntariado-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* escurece a imagem */
+  z-index: 0;
+}
+
+.voluntariado-section .container {
+  position: relative;
+  z-index: 1; 
+  
+  margin: 0;
+  max-width: 700px;
+}
+
+/* container sobre a imagem */
+.voluntariado-section {
+  display: flex;
+  align-items: center;
+  padding: 80px 2rem;
+}
+
+/* título gigante */
+.hero-title {
+  font-family: 'Arial Black', sans-serif;
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  color: #f5f1dc; /* tom creme */
+  margin-bottom: 20px;
+}
+
+/* subtítulo */
+.hero-subtitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f1dc;
+  max-width: 600px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+/* botão */
+.hero-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #6f8f74;
+  border-radius: 30px;
+  color: #6f8f74;
+  background: #f5f1dc;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.hero-btn:hover {
+  background: #6f8f74;
+  color: #fff;
+}
+
+    .navbar .logo img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* Ajuste para telas pequenas, se necessário */
+@media (max-width: 768px) {
+  .navbar .logo img {
+    height: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    display: none !important; /* força esconder */
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
     /* ── ONG SECTION DARK ── */
     .ong-section { padding: 0 2rem 100px; background-color: #F5F0E8;}
     .ong-inner { max-width: 1200px; margin: 0 auto; }
@@ -447,6 +568,23 @@
     .btn-white-outline { background: transparent; color: white; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; border: 2px solid rgba(255,255,255,0.4); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-white-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
+
+    .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+         gap: 40px;
+        }
+
+    .hero-left {
+         flex: 1;
+        }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        }
 
 
     /* ── FOOTER ── */
@@ -534,137 +672,82 @@
   </div>
 
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo"><em>somos</em>VIVE</a>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="causas.html">Causas</a></li>
-        <li><a href="#eventos">Eventos</a></li>
-        <li><a href="#patasdf">PatasDF</a></li>
-        <li><a href="#ongs">Parceiros</a></li>
-        <li><a href="#sobre-criadora">Sobre</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li style="margin-top:8px;"><a href="#participar" class="nav-cta">Quero participar</a></li>
-      </ul>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="fotos/logo.png" alt="VIVE – Comunidade de Troca, Aprendizado e Voluntariado no DF">
+    </a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
-  </nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#como-funciona">COMO FUNCIONA</a></li>
+      <li><a href="causas.html">CAUSAS</a></li>
+      <li><a href="#eventos">EVENTOS</a></li>
+      <li><a href="#patasdf">PATADF</a></li>
+      <li><a href="#ongs">PARCEIROS</a></li>
+      <li><a href="#sobre-criadora">SOBRE</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li style="margin-top:8px;"><a href="#participar" class="nav-cta">QUERO PARTICIPAR</a></li>
+    </ul>
+  </div>
+</nav>
 
 
   <section class="hero">
-    <div class="hero-bg-letter">VV</div>
-    <div class="hero-inner">
+  <div class="hero-inner">
 
-      <div class="hero-left">
-        <div class="hero-eyebrow">
-          <div class="eyebrow-line"></div>
-          <span class="eyebrow-text">Comunidade aberta · Distrito Federal · 100% gratuito</span>
-        </div>
-
-        <h1>
-          <span class="word-give">VIVE</span>
-          <span class="word-and">&amp; transforme</span>
-          <span class="word-give"></span>
-        </h1>
-
-        <p class="hero-tagline">
-          Uma plataforma que conecta pessoas que querem <strong>aprender</strong>, compartilhar conhecimentos e participar de ações de <strong>voluntariado</strong> no DF — sem custo, sem burocracia.
-        </p>
-
-        <div class="hero-ctas">
-          <a href="#participar" class="btn-primary">🌱 Quero participar</a>
-          <a href="https://www.instagram.com/vivecomunidade/" class="btn-secondary" target="_blank">Instagram →</a>
-          <a href="#causas" class="btn-secondary">Ver causas →</a>
-        </div>
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Comunidade aberta · Distrito Federal · 100% gratuito</span>
       </div>
 
+      <h1>
+        <span class="word-give">VIVE</span>
+      </h1>
 
-      <div>
-        <div class="hero-right">
-          <a href="#causas" class="info-pill">
-            <div class="info-pill-icon sage">📚</div>
-            <div>
-              <div class="info-pill-label">Aprender algo novo</div>
-              <div class="info-pill-sub">Inglês, tecnologia, artesanato e mais</div>
-            </div>
-            <span class="info-pill-arrow">→</span>
-          </a>
-          <a href="#participar" class="info-pill">
-            <div class="info-pill-icon gold">🙌</div>
-            <div>
-              <div class="info-pill-label">Compartilhar o que sabe</div>
-              <div class="info-pill-sub">Qualquer habilidade tem valor aqui</div>
-            </div>
-            <span class="info-pill-arrow">→</span>
-          </a>
-          <a href="voluntariado.html" class="info-pill">
-            <div class="info-pill-icon rust">🤝</div>
-            <div>
-              <div class="info-pill-label">Fazer voluntariado</div>
-              <div class="info-pill-sub">Ações mensais com ONGs do DF</div>
-            </div>
-            <span class="info-pill-arrow">→</span>
-          </a>
-          <a href="patasdf.html" class="info-pill">
-            <div class="info-pill-icon sage">🐾</div>
-            <div>
-              <div class="info-pill-label">PatasDF</div>
-              <div class="info-pill-sub">Reencontrar animais perdidos no DF</div>
-            </div>
-            <span class="info-pill-arrow">→</span>
-          </a>
-        </div>
+      <p class="hero-tagline">
+        Uma plataforma que conecta pessoas que querem <strong>aprender</strong>, compartilhar conhecimentos e participar de ações de <strong>voluntariado</strong> no DF — sem custo, sem burocracia.
+      </p>
 
-        <div class="hero-stat-row" style="margin-top: 16px;">
-          <div class="hero-stat">
-            <div class="hero-stat-num">100%</div>
-            <div class="hero-stat-label">Gratuito</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">12+</div>
-            <div class="hero-stat-label">Áreas</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">DF</div>
-            <div class="hero-stat-label">Brasília</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">∞</div>
-            <div class="hero-stat-label">Pessoas</div>
-          </div>
-        </div>
+      <div class="hero-ctas">
+        <a href="#participar" class="btn-primary">QUERO PARTICIPAR →</a>
+        <a href="https://www.instagram.com/vivecomunidade/" class="btn-secondary" target="_blank">INSTAGRAM →</a>
+        <a href="#causas" class="btn-secondary">VER CAUSAS →</a>
       </div>
     </div>
-  </section>
 
-  <div class="ticker">
-    <div class="ticker-inner" id="tickerInner">
-      <span class="ticker-item">💬 Inglês online · 10h</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🎓 Mentoria profissional · Online</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">💬 Inglês online · 10h</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🐾 PatasDF · Encontre animais perdidos</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">👴 Cyber para idosos · Lar São Vicente</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🪡 Crochê · Parque da Cidade · Abr</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🌿 Horta urbana · Voluntários bem-vindos</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🎓 Mentoria profissional · Online</span><span class="ticker-sep">·</span>
-      <span class="ticker-item">🤝 ONGs parceiras · Ações mensais no DF</span><span class="ticker-sep">·</span>
+    <div class="hero-image">
+      <img src="fotos/fotohero.png" alt="Pessoas da comunidade VIVE">
     </div>
+
   </div>
+</section>
 
   <div class="stats-strip">
     <div class="stat-item"><div><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div></div>
-    <div class="stat-item"><div><div class="stat-num">DF</div><div class="stat-label">Distrito Federal</div></div></div>
-    <div class="stat-item"><div><div class="stat-num">12</div><div class="stat-label">Áreas de interesse</div></div></div>
-    <div class="stat-item"><div><div class="stat-num">∞</div><div class="stat-label">Sem limite de pessoas</div></div></div>
+    <div class="stat-item"><div><div class="stat-num">BRASÍLIA</div><div class="stat-label">Distrito Federal</div></div></div>
+    <div class="stat-item"><div><div class="stat-num">@VIVECOMUNIDADE</div><div class="stat-label">INSTAGRAM</div></div></div>
   </div>
 
+  <section>
+
+
+    
+
+  <section class="voluntariado-section">
+  <div class="container">
+    <h1 class="hero-title">
+      TRABALHO<br>VOLUNTÁRIO
+    </h1>
+
+    <p class="hero-subtitle">
+      PARTICIPE DE PROJETOS INESQUECÍVEIS. CAUSA ANIMAL, CRIANÇAS & ADOLESCENTES, IDOSOS!
+    </p>
+
+    <a href="#participar" class="hero-btn">QUERO PARTICIPAR →</a>
+  </div>
+</section>
 
   <section class="section how-section" id="como-funciona">
     <div class="container">
