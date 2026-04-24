@@ -98,12 +98,17 @@
       gap: 16px;
     }
     .nav-logo {
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--green);
-      letter-spacing: -.01em;
-      flex-shrink: 0;
-    }
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 36px;   /* controla o tamanho real da logo */
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
     .nav-links {
       display: flex;
       gap: 4px;
@@ -141,16 +146,19 @@
       padding: 56px 40px 0;
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--green-dark);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
+  display: flex; /* 👈 importante */
+  align-items: center;
+  justify-content: center; /* 👈 centraliza conteúdo interno */
+  gap: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+
+  margin: 0 auto 20px; /* 👈 isso centraliza o bloco */
+}
     .hero-eyebrow::before {
       content: '';
       display: block;
@@ -159,7 +167,15 @@
       background: var(--green);
       border-radius: 2px;
     }
-    .hero-title-block { position: relative; }
+    .hero-title-block {
+        position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centraliza horizontal */
+  justify-content: center; /* centraliza vertical */
+  text-align: center;
+  min-height: 30vh;
+    }
     .hero-vive {
       font-family: 'DM Sans', sans-serif;
       font-weight: 800;
@@ -170,7 +186,8 @@
     }
     .hero-sub {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4.5vw, 68px);
+      font-weight: 800;
+      font-size: clamp(30px, 4.5vw, 68px);
       color: var(--green-dark);
       line-height: 1;
       margin-top: -4px;
@@ -183,7 +200,24 @@
       margin-top: 40px;
       padding-bottom: 56px;
     }
-    .hero-left {}
+
+    .hero-left {
+  display: flex;
+  align-items: center;     /* centraliza vertical */
+  justify-content: center; /* centraliza horizontal */
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 400px;      
+  height: auto;
+
+  border-radius: 24px;     /* deixa mais moderno */
+  object-fit: cover;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08); /* profundidade suave */
+}
+ 
     .hero-right {
       display: flex;
       flex-direction: column;
@@ -191,7 +225,7 @@
       padding-bottom: 8px;
     }
     .hero-desc {
-      font-size: 13px;
+      font-size: 25px;
       font-weight: 600;
       color: var(--green-dark);
       letter-spacing: .05em;
@@ -242,12 +276,12 @@
     }
     .section-header hr { flex: 1; border: none; border-top: 1px solid var(--border); }
     .section-title {
-      font-family: 'Berkshire Swash', cursive;
-      font-size: clamp(28px, 4vw, 52px);
-      color: var(--green);
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  color: var(--green);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
     .section-desc {
       font-size: 13px;
       font-weight: 600;
@@ -309,7 +343,7 @@
     /* ── PARTICIPE CARDS ── */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
       margin-top: 40px;
     }
@@ -322,13 +356,35 @@
       flex-direction: column;
       gap: 16px;
       transition: border-color .2s, box-shadow .2s, transform .2s;
+
+      min-height: 260px;
     }
+
+    .card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 128, 0, 0.08); /* verde bem suave */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+}
+
+.card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--green); /* mais seguro que color */
+  display: block;
+}
     .card:hover {
       border-color: var(--green);
       box-shadow: 0 8px 32px rgba(156,178,149,.15);
       transform: translateY(-2px);
     }
-    .card-icon { font-size: 36px; line-height: 1; }
+  
     .card h3 {
       font-size: 14px;
       font-weight: 800;
@@ -991,7 +1047,9 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">VIVE</div>
+    <div class="nav-logo">
+      <img src="fotos/logo.png" alt="VIVE">
+    </div>
     <div class="nav-links">
       <a href="#como-funciona">Como funciona</a>
       <a href="#causas">Causas</a>
@@ -1012,11 +1070,17 @@
   <p class="hero-eyebrow">Comunidade aberta · DF · 100% gratuito</p>
   <div class="hero-title-block">
     <div class="hero-vive">VIVE</div>
-    <div class="hero-sub">Comunidade</div>
+    <div class="hero-sub">COMUNIDADE</div>
   </div>
+
+<div class="container" style="padding-top:1;padding-bottom:0;">
+  <hr class="divider divider-double">
+  <hr class="divider divider-double" style="margin-top:4px;">
+</div>
+
   <div class="hero-layout">
     <div class="hero-left">
-      <!-- intentionally empty for breathing room / visual balance -->
+      <img src="fotos/fotohero.png" alt="Foto de um evento de voluntariado, com pessoas sorrindo e interagindo em um ambiente comunitário." class="hero-img">
     </div>
     <div class="hero-right">
       <p class="hero-desc">
@@ -1049,10 +1113,6 @@
   </div>
 </div>
 
-<div class="container" style="padding-top:0;padding-bottom:0;">
-  <hr class="divider divider-double">
-  <hr class="divider divider-double" style="margin-top:4px;">
-</div>
 
 <!-- COMO FUNCIONA -->
 <section class="section" id="como-funciona">
@@ -1102,10 +1162,14 @@
   </div>
   <div class="section-title">quero<br>participar</div>
 
-  <div class="cards-grid">
-    <div class="card">
-      <div class="card-icon">🤝</div>
-      <h3>Ser Voluntário</h3>
+<div class="cards-grid">
+  <div class="card">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+    <h3>Ser Voluntário</h3>
       <ul>
         <li>Escolha a causa que te move</li>
         <li>Ações no DF</li>
@@ -1114,8 +1178,13 @@
       <button class="btn btn-dark btn-sm">Voluntariado →</button>
     </div>
     <div class="card">
-      <div class="card-icon">🙌</div>
-      <h3>Quero Ensinar</h3>
+  <div class="card-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
+      <path d="M20 22V6a2 2 0 00-2-2H6.5A2.5 2.5 0 004 6.5v13z"></path>
+    </svg>
+  </div>
+  <h3>Quero Ensinar</h3>
       <ul>
         <li>Você define o tempo disponível</li>
         <li>Online ou presencial</li>
@@ -1124,7 +1193,11 @@
       <button class="btn btn-dark btn-sm">Quero Ensinar →</button>
     </div>
     <div class="card">
-      <div class="card-icon">💡</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 3l14 9-14 9V3z"></path>
+        </svg>
+      </div>
       <h3>Quero Aprender</h3>
       <ul>
         <li>Sem pré-requisito, qualquer nível</li>
@@ -1134,7 +1207,12 @@
       <button class="btn btn-dark btn-sm">Quero Aprender →</button>
     </div>
     <div class="card">
-      <div class="card-icon">🎓</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M16 8l-4 4-2 6 6-2 4-4z"></path>
+        </svg>
+      </div>
       <h3>Ainda Não Sei</h3>
       <ul>
         <li>10+ áreas de interesse</li>
@@ -1354,7 +1432,7 @@
         <span class="criadora-badge-icon">🌱</span>
         <div class="criadora-badge-text">
           Fundadora do VIVE
-          <small>Desde 2024 · Brasília, DF</small>
+          <small>Desde 2026 · Brasília, DF</small>
         </div>
       </div>
     </div>
@@ -1472,7 +1550,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">VIVE</div>
-  <p>Brasília, DF · 100% Gratuito · 2024</p>
+  <p>Brasília, DF · 100% Gratuito · 2026</p>
   <div class="footer-links">
     <a href="#como-funciona">Como funciona</a>
     <a href="#eventos">Eventos</a>
